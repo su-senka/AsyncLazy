@@ -1,0 +1,22 @@
+# Executed by Azure Run Command (as root), which allows 90 minutes at most, so it only starts
+# vm-linux.sh in the background and returns. run.sh fills in the __NAME__ placeholders.
+set -e
+ROOT='__ROOT__'
+mkdir -p "$ROOT"
+cat >"$ROOT/config.env" <<'CONFIG'
+BLOB_BASE='__BASE__'
+BLOB_SAS='__SAS__'
+SDK_VERSION='__SDK__'
+ENV_NAME='__ENV__'
+COMMIT='__COMMIT__'
+BENCH_MODE='__MODE__'
+RUN_ID='__RUNID__'
+CONFIG
+chmod 600 "$ROOT/config.env"
+curl -fsSL --retry 5 -o "$ROOT/run.sh" '__BASE__/vm-linux.sh?__SAS__'
+if command -v systemd-run >/dev/null 2>&1; then
+    systemd-run --unit=asynclazy-bench --collect --setenv=BENCH_ROOT="$ROOT" /bin/bash "$ROOT/run.sh"
+else
+    BENCH_ROOT="$ROOT" nohup /bin/bash "$ROOT/run.sh" >/dev/null 2>&1 &
+fi
+echo launched

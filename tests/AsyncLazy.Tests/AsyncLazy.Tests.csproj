@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>AsyncLazyTests</RootNamespace>
+    <!--
+      xUnit1031: some tests block on tasks on purpose, to reproduce sync-over-async deadlocks
+      xUnit1051: many tests call GetValueAsync() without a token on purpose, to test the default
+    -->
+    <NoWarn>$(NoWarn);xUnit1031;xUnit1051</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" Version="4.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AsyncLazy\AsyncLazy.csproj" />
+  </ItemGroup>
+</Project>

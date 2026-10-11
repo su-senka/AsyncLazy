@@ -1,0 +1,3 @@
+*.sh text eol=lf
+*.sh.template text eol=lf
+benchmarks/azure/test/az text eol=lf

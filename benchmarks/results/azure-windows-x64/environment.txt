@@ -1,0 +1,10 @@
+environment: windows-x64
+commit: fdb8e88423f4
+mode: full
+date (UTC): 2026-10-10T18:50:26Z
+vm size: Standard_D8s_v5
+region: SwedenCentral
+image: WindowsServer 2025-datacenter-g2
+cpu: INTEL(R) XEON(R) PLATINUM 8573C (4 cores, 8 logical)
+os: Microsoft Windows Server 2025 Datacenter 10.0.26100
+sdk: 10.0.401

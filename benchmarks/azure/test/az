@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# A fake Azure CLI for the local test only. It answers what run.sh asks, records what it was told
+# in $FAKE_AZ_STATE, and "runs" the launch script locally instead of on a VM.
+
+set -euo pipefail
+state=${FAKE_AZ_STATE:?}
+echo "az $*" >>"$state/calls"
+arg() { local name=$1; shift; while [ $# -gt 0 ]; do [ "$1" = "$name" ] && { echo "$2"; return 0; }; shift; done; return 1; }
+
+case "$1 ${2:-} ${3:-}" in
+"account show "*) [[ " $* " == *" --query name "* ]] && echo "Fake subscription"; exit 0 ;;
+"account get-access-token"*) exit 0 ;;
+"provider show "*) echo Registered ;;
+"vm list-usage "*) cat <<'JSON'
+[{"name":{"value":"cores"},"currentValue":0,"limit":100},
+ {"name":{"value":"standardDSv5Family"},"currentValue":0,"limit":100},
+ {"name":{"value":"standardDPSv5Family"},"currentValue":0,"limit":100},
+ {"name":{"value":"standardDASv5Family"},"currentValue":0,"limit":100}]
+JSON
+;;
+"vm list-skus "*) echo "[{\"name\": \"$(arg --size "$@")\", \"restrictions\": []}]" ;;
+"vm image show") exit 0 ;;
+"group create "*) arg -n "$@" >>"$state/groups" ;;
+"group delete "*) arg -n "$@" >>"$state/deleted" ;;
+"group list "*) [ -f "$state/groups" ] && grep -vxF -f <(cat "$state/deleted" 2>/dev/null || true) "$state/groups" || true ;;
+"storage account create") exit 0 ;;
+"storage account keys") echo fakekey ;;
+"storage container create") exit 0 ;;
+"storage container generate-sas") echo 'sv=2024-11-04&se=2099-01-01T00%3A00Z&sr=c&sp=racwl&sig=fake%2Bsig%3D' ;;
+"vm create "*)
+    for required in --nsg-rule --public-ip-sku --size --image --tags; do arg "$required" "$@" >/dev/null || { echo "missing $required" >&2; exit 1; }; done
+    [ "$(arg --nsg-rule "$@")" = NONE ] || { echo "inbound ports must stay closed" >&2; exit 1; }
+    sleep "${FAKE_AZ_CREATE_SECONDS:-0}"
+    ;;
+"vm auto-shutdown "*) exit 0 ;;
+"vm run-command invoke")
+    script=$(arg --scripts "$@"); script=${script#@}
+    case "$(arg --command-id "$@")" in
+    RunShellScript) out=$(bash "$script" 2>&1) ;;
+    RunPowerShellScript)
+        # Task Scheduler doesn't exist here: stub it, and start the task with pwsh instead.
+        stub=$state/launch-stubbed.ps1
+        cat >"$stub" <<'PS'
+function New-ScheduledTaskAction { param($Execute, $Argument) [pscustomobject]@{ Argument = $Argument } }
+function New-ScheduledTaskPrincipal { param($UserId, $LogonType, $RunLevel) }
+function New-ScheduledTaskSettingsSet { param($ExecutionTimeLimit, [switch] $AllowStartIfOnBatteries, [switch] $DontStopIfGoingOnBatteries) [pscustomobject]@{ Priority = 7 } }
+function Register-ScheduledTask { param($TaskName, $Action, $Principal, $Settings, [switch] $Force) $script:task = $Action }
+function Start-ScheduledTask { param($TaskName) Start-Process pwsh -ArgumentList @('-NoProfile', '-File', (Join-Path $Root 'run.ps1')) -RedirectStandardOutput (Join-Path $Root 'task.out') -RedirectStandardError (Join-Path $Root 'task.err') }
+PS
+        cat "$script" >>"$stub"
+        out=$(pwsh -NoProfile -File "$stub" 2>&1) ;;
+    esac
+    python3 -c 'import json,sys; print(json.dumps({"value": [{"message": sys.argv[1]}]}))' "$out"
+    ;;
+*) echo "fake az: unexpected call: $*" >&2; exit 1 ;;
+esac

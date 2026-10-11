@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AsyncLazy/AsyncLazy.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AsyncLazy.Tests/AsyncLazy.Tests.csproj" />
+  </Folder>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/AsyncLazy.Benchmarks/AsyncLazy.Benchmarks.csproj" />
+    <Project Path="benchmarks/AsyncLazy.Ablation.NoHop/AsyncLazy.Ablation.NoHop.csproj" />
+    <Project Path="benchmarks/AsyncLazy.Ablation.NoRecursionDetection/AsyncLazy.Ablation.NoRecursionDetection.csproj" />
+  </Folder>
+</Solution>

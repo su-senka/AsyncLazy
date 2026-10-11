@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>AsyncLazyBenchmarks</RootNamespace>
+    <Optimize>true</Optimize>
+    <NoWarn>$(NoWarn);CA1822</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Only" Version="18.7.23" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AsyncLazy\AsyncLazy.csproj" />
+    <ProjectReference Include="..\AsyncLazy.Ablation.NoHop\AsyncLazy.Ablation.NoHop.csproj" Aliases="NoHop" />
+    <ProjectReference Include="..\AsyncLazy.Ablation.NoRecursionDetection\AsyncLazy.Ablation.NoRecursionDetection.csproj" Aliases="NoRecursionDetection" />
+  </ItemGroup>
+</Project>

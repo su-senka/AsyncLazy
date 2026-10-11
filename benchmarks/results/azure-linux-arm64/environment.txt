@@ -1,0 +1,15 @@
+environment: linux-arm64
+commit: fdb8e88423f4
+mode: full
+date (UTC): 2026-10-10T19:46:10Z
+vm size: Standard_D8ps_v5
+region: SwedenCentral
+image: ubuntu-24_04-lts server-arm64
+Architecture:                            aarch64
+CPU(s):                                  8
+Model name:                              Neoverse-N1
+Thread(s) per core:                      1
+Core(s) per socket:                      8
+os: Ubuntu 24.04.4 LTS
+kernel: Linux 6.17.0-1022-azure
+sdk: 10.0.401

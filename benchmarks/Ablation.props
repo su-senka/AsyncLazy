@@ -1,0 +1,15 @@
+<Project>
+  <!--
+    An ablation compiles the library's own source with one design decision removed, so the benchmark
+    measures that decision's cost on otherwise identical code. Each build gets its own assembly name;
+    the benchmark project tells the identical type names apart with extern aliases.
+  -->
+  <PropertyGroup>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)..\src\AsyncLazy\*.cs" />
+  </ItemGroup>
+</Project>

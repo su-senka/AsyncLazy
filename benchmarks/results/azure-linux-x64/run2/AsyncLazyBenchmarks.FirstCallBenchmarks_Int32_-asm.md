@@ -1,0 +1,8863 @@
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].LazyOfTask()
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        short M00_L00
+       lea       rdi,[r15+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       cmp       qword ptr [r15+8],0
+       je        short M00_L01
+       mov       rdi,r15
+       pop       rbx
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [714B3DEAC438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M00_L00:
+       mov       edi,1817
+       mov       rsi,714B3C664000
+       call      qword ptr [714B3D65EF88]
+       mov       rdi,rax
+       call      qword ptr [714B3E1BCC48]
+       int       3
+M00_L01:
+       mov       rax,[r15+18]
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 142
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [714B3E1BCC90]
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M02_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M02_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M02_L04
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M02_L05
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      0000714BBB8E6020
+       test      eax,eax
+       jne       short M02_L02
+       mov       rdi,rbx
+       call      qword ptr [714B3E1B71B0]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+M02_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M02_L03
+       mov       esi,2
+       call      qword ptr [714B3DEAC468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       nop
+M02_L03:
+       mov       rdi,rbx
+       call      0000714BBB8E6790
+       test      eax,eax
+       jne       near ptr M02_L11
+M02_L04:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M02_L12
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [714B3DEAC438]
+M02_L05:
+       cmp       eax,8
+       ja        short M02_L06
+       mov       eax,eax
+       lea       rcx,[714B3D6CB088]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M02_L01]
+       add       rcx,rdx
+       jmp       rcx
+M02_L06:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [714B3E1BCD80]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [714B3E1BCD20]
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [714B3DEAC468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M02_L07
+       jmp       short M02_L08
+M02_L07:
+       mov       rdi,rsi
+       mov       rsi,714B3E1DAB40
+       call      qword ptr [714B3D65F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M02_L08:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M02_L09
+       jmp       short M02_L10
+M02_L09:
+       mov       rdi,rax
+       mov       rsi,714B3E1DABE0
+       call      qword ptr [714B3D65F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M02_L10:
+       call      qword ptr [714B3E1BCCC0]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [714B3E1BCD38]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [714B3E1BCD50]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       call      qword ptr [714B3E1BCD68]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [714B3DEAC450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M02_L04
+M02_L11:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [714B3E1BCC60]
+       jmp       near ptr M02_L04
+M02_L12:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M02_L13
+       mov       rdi,[rbp-28]
+       call      0000714BBB8E6790
+       test      eax,eax
+       je        short M02_L13
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [714B3E1BCC60]
+M02_L13:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 438
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].LazyOfTask_TaskRun()
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+10]
+       test      rsi,rsi
+       je        short M00_L00
+       lea       rdi,[r15+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       cmp       qword ptr [r15+8],0
+       je        short M00_L01
+       mov       rdi,r15
+       pop       rbx
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7CC5C869C438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M00_L00:
+       mov       edi,1817
+       mov       rsi,7CC5C6E54000
+       call      qword ptr [7CC5C7E4EF88]
+       mov       rdi,rax
+       call      qword ptr [7CC5C89AEAC0]
+       int       3
+M00_L01:
+       mov       rax,[r15+18]
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 142
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7CC5C89A76A8]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M02_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M02_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M02_L04
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M02_L05
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      00007CC6460E6020
+       test      eax,eax
+       jne       short M02_L02
+       mov       rdi,rbx
+       call      qword ptr [7CC5C89AC9A8]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+M02_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M02_L03
+       mov       esi,2
+       call      qword ptr [7CC5C869C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       nop
+M02_L03:
+       mov       rdi,rbx
+       call      00007CC6460E6790
+       test      eax,eax
+       jne       near ptr M02_L11
+M02_L04:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M02_L12
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [7CC5C869C438]
+M02_L05:
+       cmp       eax,8
+       ja        short M02_L06
+       mov       eax,eax
+       lea       rcx,[7CC5C7EC6A48]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M02_L01]
+       add       rcx,rdx
+       jmp       rcx
+M02_L06:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [7CC5C89AECE8]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [7CC5C89AEC88]
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [7CC5C869C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M02_L07
+       jmp       short M02_L08
+M02_L07:
+       mov       rdi,rsi
+       mov       rsi,7CC5C8A210B0
+       call      qword ptr [7CC5C7E4F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M02_L08:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M02_L09
+       jmp       short M02_L10
+M02_L09:
+       mov       rdi,rax
+       mov       rsi,7CC5C8A21150
+       call      qword ptr [7CC5C7E4F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M02_L10:
+       call      qword ptr [7CC5C89AEC28]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [7CC5C89AECA0]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [7CC5C89AECB8]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       call      qword ptr [7CC5C89AECD0]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [7CC5C869C450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M02_L04
+M02_L11:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [7CC5C89AC990]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       jmp       near ptr M02_L04
+M02_L12:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M02_L13
+       mov       rdi,[rbp-28]
+       call      00007CC6460E6790
+       test      eax,eax
+       je        short M02_L13
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [7CC5C89AC990]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+M02_L13:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 438
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M03_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [7CC5C89A76C0]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M03_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M03_L03
+M03_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M03_L04
+M03_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M03_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M03_L01
+       mov       rdi,rbx
+       call      qword ptr [7CC5C89AF468]
+       jmp       short M03_L01
+M03_L04:
+       test      r15b,2
+       jne       short M03_L05
+       mov       rdi,rbx
+       call      qword ptr [7CC5C89AF480]
+M03_L05:
+       mov       rdi,rbx
+       call      qword ptr [7CC5C89AFA38]
+       jmp       short M03_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].AsyncLazy()
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        short M00_L00
+       lea       rdi,[r15+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[r15+10]
+       test      rax,rax
+       jne       short M00_L01
+       mov       rdi,r15
+       xor       esi,esi
+       pop       rbx
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7C24F53968F8]; System.Threading.Tasks.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetOrStartAttemptAsync(System.Threading.CancellationToken)
+M00_L00:
+       mov       edi,1
+       mov       rsi,7C24F53C7C08
+       call      qword ptr [7C24F483EF88]
+       mov       rdi,rax
+       call      qword ptr [7C24F539EE80]
+       int       3
+M00_L01:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 108
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7C24F53975E8]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetOrStartAttemptAsync(System.Threading.CancellationToken)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+30]
+       mov       rbx,rdi
+       mov       r15,rsi
+M02_L00:
+       mov       r14,[rbx+8]
+       mov       rsi,r14
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       test      rax,rax
+       jne       near ptr M02_L18
+       test      r14,r14
+       je        short M02_L01
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       cmp       [r14],rdi
+       je        near ptr M02_L11
+M02_L01:
+       lea       rdi,[rbx+20]
+       cmp       qword ptr [rdi],0
+       jne       near ptr M02_L17
+M02_L02:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       call      CORINFO_HELP_NEWSFAST
+       mov       r13,rax
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCompletionSource<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       xor       edi,edi
+       mov       [rax+8],rdi
+       mov       [rax+10],rdi
+       mov       [rax+18],rdi
+       mov       dword ptr [rax+34],2000440
+       lea       rdi,[r14+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r13+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r13+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[rbx+8]
+       test      rdi,rdi
+       je        near ptr M02_L20
+       mov       rsi,r13
+       xor       edx,edx
+       call      00007C2572C74060
+       test      rax,rax
+       jne       near ptr M02_L00
+       mov       rdi,7C1530C01380
+       mov       rbx,[rdi]
+       test      rbx,rbx
+       je        near ptr M02_L21
+M02_L03:
+       mov       rdi,7C2572EA0D68
+       mov       rax,7C2573841820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L22
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M02_L22
+M02_L04:
+       mov       rax,[rax+10]
+       test      rax,rax
+       jne       short M02_L05
+       call      qword ptr [7C24F508C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L05:
+       mov       r14,[rax+8]
+       test      r14,r14
+       jne       near ptr M02_L23
+       mov       rdi,7C1530C01388
+       mov       r14,[rdi]
+M02_L06:
+       test      r14,r14
+       je        short M02_L07
+       cmp       byte ptr [r14+19],0
+       je        near ptr M02_L24
+M02_L07:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallbackDefaultContext<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       lea       rdi,[r12+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r12+10]
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+M02_L08:
+       mov       rdi,7C1530C01398
+       mov       rbx,[rdi]
+       cmp       byte ptr [rbx+38],0
+       jne       near ptr M02_L25
+M02_L09:
+       mov       rdi,[rbx+8]
+       mov       rsi,[rdi+10]
+       mov       rcx,[rsi+8]
+M02_L10:
+       mov       r14d,[rsi+0A0]
+       mov       eax,r14d
+       and       eax,[rsi+18]
+       cmp       eax,[rcx+8]
+       jae       near ptr M02_L28
+       shl       rax,4
+       lea       rdx,[rcx+rax+10]
+       mov       eax,[rdx+8]
+       sub       eax,r14d
+       jne       near ptr M02_L13
+       lea       r8,[rsi+0A0]
+       lea       r9d,[r14+1]
+       mov       eax,r14d
+       lock cmpxchg [r8],r9d
+       cmp       eax,r14d
+       jne       short M02_L10
+       mov       rax,rdx
+       mov       [rbp-30],rax
+       mov       rdi,rax
+       mov       rsi,r12
+       call      CORINFO_HELP_ASSIGN_REF
+       inc       r14d
+       mov       r12,[rbp-30]
+       mov       [r12+8],r14d
+       jmp       short M02_L14
+M02_L11:
+       mov       rdi,r14
+       call      qword ptr [7C24F53969B8]
+       test      eax,eax
+       je        short M02_L12
+       mov       rdi,offset MT_System.InvalidOperationException
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,r14
+       mov       rsi,7C24F0C09FE0
+       call      qword ptr [7C24F5085260]
+       mov       rdi,r14
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7C24F5396970]
+M02_L12:
+       mov       rdi,r14
+       mov       rsi,r15
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7C24F53969D0]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+M02_L13:
+       test      eax,eax
+       jge       near ptr M02_L10
+       mov       rsi,r12
+       call      qword ptr [7C24F539EF88]
+M02_L14:
+       add       rbx,78
+       mov       edi,1
+       xchg      edi,[rbx]
+       test      edi,edi
+       jne       short M02_L15
+       mov       rdi,7C1530C013C0
+       mov       rbx,[rdi]
+       lea       rdi,[rbx+160]
+       lock inc  dword ptr [rdi]
+       mov       rdi,rbx
+       call      qword ptr [7C24F5396E68]; System.Threading.PortableThreadPool+WorkerThread.MaybeAddWorkingWorker(System.Threading.PortableThreadPool)
+       cmp       dword ptr [rbx+164],6
+       jne       near ptr M02_L26
+M02_L15:
+       test      r15,r15
+       jne       near ptr M02_L27
+       mov       rdi,[r13+10]
+       mov       rax,[rdi+8]
+M02_L16:
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M02_L17:
+       mov       rdi,[rdi]
+       cmp       dword ptr [rdi+20],0
+       je        near ptr M02_L02
+       jmp       short M02_L19
+M02_L18:
+       jmp       short M02_L16
+M02_L19:
+       mov       rdi,[rbx+20]
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7C24F53968B0]
+M02_L20:
+       call      qword ptr [7C24F539EE08]
+       int       3
+M02_L21:
+       mov       rdi,offset MT_System.Action<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,7C1530C01378
+       mov       rsi,[rdi]
+       lea       rdi,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset System.Threading.Tasks.AsyncLazy`1+<>c[[System.Int32, System.Private.CoreLib]].<GetOrStartAttemptAsync>b__11_0(Attempt<Int32>)
+       mov       [rbx+18],rdi
+       mov       rdi,7C1530C01380
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       near ptr M02_L03
+M02_L22:
+       mov       edi,4
+       call      qword ptr [7C24F539EAF0]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L04
+M02_L23:
+       xor       edi,edi
+       cmp       byte ptr [r14+18],0
+       cmovne    r14,rdi
+       jmp       near ptr M02_L06
+M02_L24:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallback<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       mov       rdi,r12
+       mov       rsi,rbx
+       mov       rdx,r13
+       mov       rcx,r14
+       call      qword ptr [7C24F539EF40]
+       jmp       near ptr M02_L08
+M02_L25:
+       mov       rdi,7C1530C013B0
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       je        near ptr M02_L09
+       mov       rdi,7C1530C013B0
+       mov       rdi,[rdi]
+       mov       rsi,r12
+       call      qword ptr [7C24F539EF58]
+       jmp       near ptr M02_L09
+M02_L26:
+       mov       rdi,rbx
+       call      qword ptr [7C24F53970C0]; System.Threading.PortableThreadPool+GateThread.EnsureRunningSlow(System.Threading.PortableThreadPool)
+       jmp       near ptr M02_L15
+M02_L27:
+       mov       rdi,[r13+10]
+       mov       rbx,[rdi+8]
+       cmp       [rbx],bl
+       mov       rdi,offset MT_System.TimeProvider
+       call      qword ptr [7C24F4835728]; System.Runtime.CompilerServices.StaticsHelpers.GetNonGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdx,7C1530C01498
+       mov       rdx,[rdx]
+       mov       rcx,r15
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7C24F539F468]
+M02_L28:
+       call      CORINFO_HELP_RNGCHKFAIL
+       int       3
+; Total bytes of code 1085
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M03_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [7C24F5397600]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M03_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M03_L03
+M03_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M03_L04
+M03_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M03_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M03_L01
+       mov       rdi,rbx
+       call      qword ptr [7C24F539EFD0]
+       jmp       short M03_L01
+M03_L04:
+       test      r15b,2
+       jne       short M03_L05
+       mov       rdi,rbx
+       call      qword ptr [7C24F539EFE8]
+M03_L05:
+       mov       rdi,rbx
+       call      qword ptr [7C24F539F5E8]
+       jmp       short M03_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].AsyncLazy_NoHop()
+       push      rbp
+       push      r15
+       push      r14
+       push      rbx
+       sub       rsp,58
+       lea       rbp,[rsp+70]
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu   ymmword ptr [rbp-50],ymm8
+       vmovdqa   xmmword ptr [rbp-30],xmm8
+       xor       eax,eax
+       mov       [rbp-20],rax
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        near ptr M00_L13
+       lea       rdi,[r15+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[r15+10]
+       test      rax,rax
+       jne       near ptr M00_L14
+M00_L00:
+       mov       rbx,[r15+8]
+       mov       rsi,rbx
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       test      rax,rax
+       jne       near ptr M00_L16
+       test      rbx,rbx
+       je        short M00_L01
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       cmp       [rbx],rdi
+       je        near ptr M00_L05
+M00_L01:
+       lea       rdi,[r15+20]
+       cmp       qword ptr [rdi],0
+       jne       near ptr M00_L15
+M00_L02:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCompletionSource<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       xor       edi,edi
+       mov       [rax+8],rdi
+       mov       [rax+10],rdi
+       mov       [rax+18],rdi
+       mov       dword ptr [rax+34],2000440
+       lea       rdi,[rbx+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r15+8]
+       test      rdi,rdi
+       je        near ptr M00_L18
+       mov       rsi,r14
+       xor       edx,edx
+       call      00007D1AF1074060
+       test      rax,rax
+       jne       near ptr M00_L00
+       xor       edi,edi
+       mov       [rbp-30],rdi
+       mov       [rbp-50],r14
+       mov       dword ptr [rbp-38],0FFFFFFFF
+       mov       rdi,7D1AF12A0D68
+       mov       rax,7D1AF1B05820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M00_L19
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M00_L19
+M00_L03:
+       mov       r15,[rax+10]
+       test      r15,r15
+       jne       short M00_L04
+       call      qword ptr [7D1A734AC048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r15,rax
+M00_L04:
+       mov       [rbp-58],r15
+       mov       rsi,[r15+8]
+       mov       [rbp-60],rsi
+       mov       rsi,[r15+10]
+       mov       [rbp-68],rsi
+       jmp       short M00_L07
+M00_L05:
+       mov       rdi,rbx
+       call      qword ptr [7D1A737B6868]
+       test      eax,eax
+       je        short M00_L06
+       mov       rdi,offset MT_System.InvalidOperationException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,rbx
+       mov       rsi,7D1A61C09FE0
+       call      qword ptr [7D1A734A5260]
+       mov       rdi,rbx
+       call      qword ptr [7D1A737B6838]
+       jmp       short M00_L12
+M00_L06:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7D1A737B6880]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+       jmp       short M00_L12
+M00_L07:
+       lea       rdi,[rbp-50]
+       call      qword ptr [7D1A737B6A60]; System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]].MoveNext()
+       nop
+       mov       rsi,[rbp-68]
+       cmp       rsi,[r15+10]
+       je        short M00_L08
+       lea       rdi,[r15+10]
+       call      CORINFO_HELP_ASSIGN_REF
+M00_L08:
+       mov       rdi,[r15+8]
+       mov       rbx,rdi
+       mov       rsi,[rbp-60]
+       cmp       rsi,rbx
+       je        short M00_L10
+       lea       rdi,[r15+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      rbx,rbx
+       je        short M00_L09
+       cmp       qword ptr [rbx+10],0
+       jne       near ptr M00_L21
+M00_L09:
+       cmp       qword ptr [rbp-60],0
+       jne       short M00_L20
+M00_L10:
+       cmp       qword ptr [rbp-30],0
+       je        near ptr M00_L22
+M00_L11:
+       mov       rax,[r14+10]
+       mov       rax,[rax+8]
+M00_L12:
+       add       rsp,58
+       pop       rbx
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L13:
+       mov       edi,1
+       mov       rsi,7D1A737E7390
+       call      qword ptr [7D1A72C5EF88]
+       mov       rdi,rax
+       call      qword ptr [7D1A737BD938]
+       int       3
+M00_L14:
+       jmp       short M00_L12
+M00_L15:
+       mov       rdi,[rdi]
+       cmp       dword ptr [rdi+20],0
+       je        near ptr M00_L02
+       jmp       short M00_L17
+M00_L16:
+       jmp       short M00_L12
+M00_L17:
+       mov       rdi,[r15+20]
+       call      qword ptr [7D1A737B67C0]
+       jmp       short M00_L12
+M00_L18:
+       call      qword ptr [7D1A737BD878]
+       int       3
+M00_L19:
+       mov       edi,4
+       call      qword ptr [7D1A737BD650]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M00_L03
+M00_L20:
+       mov       rsi,[rbp-60]
+       cmp       qword ptr [rsi+10],0
+       je        short M00_L10
+M00_L21:
+       mov       rdi,rbx
+       mov       rsi,[rbp-60]
+       call      qword ptr [7D1A737BD8F0]
+       jmp       near ptr M00_L10
+M00_L22:
+       lea       rdi,[rbp-30]
+       call      qword ptr [7D1A737BD908]
+       jmp       near ptr M00_L11
+       push      rax
+       mov       rsi,[rbp-68]
+       mov       rax,[rbp-58]
+       cmp       rsi,[rax+10]
+       je        short M00_L23
+       lea       rdi,[rax+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-58]
+M00_L23:
+       mov       r14,[rax+8]
+       mov       rsi,[rbp-60]
+       cmp       rsi,r14
+       je        short M00_L26
+       lea       rdi,[rax+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r14,r14
+       je        short M00_L24
+       cmp       qword ptr [r14+10],0
+       jne       short M00_L25
+M00_L24:
+       cmp       qword ptr [rbp-60],0
+       je        short M00_L26
+       mov       rsi,[rbp-60]
+       cmp       qword ptr [rsi+10],0
+       je        short M00_L26
+M00_L25:
+       mov       rdi,r14
+       mov       rsi,[rbp-60]
+       call      qword ptr [7D1A737BD8F0]
+M00_L26:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 816
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7D1A737BD770]
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       push      rbp
+       mov       rbp,rsp
+       test      rsi,rsi
+       jne       short M02_L01
+M02_L00:
+       mov       rax,rsi
+       pop       rbp
+       ret
+M02_L01:
+       cmp       [rsi],rdi
+       je        short M02_L00
+       mov       rax,[rsi]
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+M02_L02:
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       jmp       short M02_L02
+M02_L03:
+       xor       esi,esi
+       jmp       short M02_L00
+; Total bytes of code 93
+```
+```assembly
+; System.Threading.Thread.InitializeCurrentThread()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-30],rax
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [7D1A727FEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [7D1A727FEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       mov       rbx,[rbp-30]
+       call      qword ptr [7D1A72800B98]
+       lea       rdi,[rax+10]
+       mov       rsi,[rbp-30]
+       call      qword ptr [7D1A727FEEB8]; CORINFO_HELP_ASSIGN_REF
+       mov       rax,rbx
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 123
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+       push      r15
+       push      rbx
+       push      rax
+       mov       rbx,rsi
+       test      rbx,rbx
+       jne       short M04_L00
+       mov       rax,[rdi+10]
+       mov       rax,[rax+8]
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       ret
+M04_L00:
+       mov       rdi,[rdi+10]
+       mov       r15,[rdi+8]
+       cmp       [r15],r15b
+       mov       rdi,offset MT_System.TimeProvider
+       call      qword ptr [7D1A72C55728]; System.Runtime.CompilerServices.StaticsHelpers.GetNonGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdx,7D0AB0C013E8
+       mov       rdx,[rdx]
+       mov       rcx,rbx
+       mov       rdi,r15
+       mov       esi,0FFFFFFFF
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       jmp       qword ptr [7D1A737BDAE8]
+; Total bytes of code 92
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]].MoveNext()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,98
+       lea       rbp,[rsp+0C0]
+       xor       eax,eax
+       mov       [rbp-58],rax
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu   ymmword ptr [rbp-50],ymm8
+       mov       [rbp-30],rax
+       mov       [rbp-70],rdi
+       mov       eax,[rdi+18]
+       mov       rbx,[rdi]
+       test      eax,eax
+       je        near ptr M05_L30
+       mov       rax,7D0AB0C01378
+       mov       r15,[rax]
+       mov       r14,r15
+       mov       rdi,7D1AF12A0D68
+       mov       rax,7D1AF1B05820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M05_L26
+       mov       rdi,[rax+8]
+       mov       r13,[rdi+20]
+       test      r13,r13
+       je        near ptr M05_L26
+M05_L00:
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M05_L01
+       call      qword ptr [7D1A734AC048]; System.Threading.Thread.InitializeCurrentThread()
+M05_L01:
+       mov       rdi,[rax+8]
+       test      rdi,rdi
+       je        short M05_L02
+       mov       rdi,[rdi+8]
+       lea       rdx,[rbp-40]
+       mov       rsi,r14
+       mov       r11,7D1A71C70500
+       call      qword ptr [r11]
+       mov       rsi,[rbp-40]
+       jmp       short M05_L03
+M05_L02:
+       xor       esi,esi
+M05_L03:
+       xor       edi,edi
+       mov       [rbp-40],rdi
+       mov       r14,rsi
+       test      r14,r14
+       je        short M05_L04
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazyAttemptFrame
+       cmp       [r14],rdi
+       jne       near ptr M05_L27
+M05_L04:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazyAttemptFrame
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       lea       rdi,[r12+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r12+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       cmp       qword ptr [r15+8],0
+       setne     r14b
+       movzx     r14d,r14b
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M05_L05
+       call      qword ptr [7D1A734AC048]; System.Threading.Thread.InitializeCurrentThread()
+M05_L05:
+       mov       rax,[rax+8]
+       mov       [rbp-78],rax
+       xor       edi,edi
+       mov       [rbp-48],rdi
+       xor       ecx,ecx
+       test      rax,rax
+       je        short M05_L06
+       mov       rdi,[rax+8]
+       lea       rdx,[rbp-48]
+       mov       rsi,r15
+       mov       r11,7D1A71C70518
+       call      qword ptr [r11]
+       mov       [rbp-4C],eax
+       mov       rax,[rbp-78]
+       mov       ecx,[rbp-4C]
+M05_L06:
+       cmp       [rbp-48],r12
+       je        near ptr M05_L15
+       xor       edi,edi
+       mov       [rbp-58],rdi
+       mov       [rbp-5C],edi
+       test      rax,rax
+       jne       short M05_L07
+       mov       [rbp-4C],ecx
+       mov       rdi,offset MT_System.Threading.AsyncLocalValueMap+OneElementAsyncLocalValueMap
+       call      CORINFO_HELP_NEWSFAST
+       mov       [rbp-98],rax
+       lea       rdi,[rax+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-98]
+       lea       rdi,[rax+10]
+       mov       rsi,r12
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-98]
+       mov       [rbp-80],rax
+       jmp       short M05_L08
+M05_L07:
+       mov       [rbp-4C],ecx
+       movzx     edx,byte ptr [rax+18]
+       mov       [rbp-5C],edx
+       test      r14d,r14d
+       sete      cl
+       movzx     ecx,cl
+       mov       rdi,[rax+8]
+       mov       rsi,r15
+       mov       rdx,r12
+       mov       r11,7D1A71C70510
+       call      qword ptr [r11]
+       mov       [rbp-80],rax
+       mov       rdx,[rbp-78]
+       mov       rdx,[rdx+10]
+       mov       [rbp-58],rdx
+M05_L08:
+       test      r14d,r14d
+       je        short M05_L10
+       cmp       dword ptr [rbp-4C],0
+       jne       short M05_L10
+       cmp       qword ptr [rbp-58],0
+       je        short M05_L09
+       mov       rdx,[rbp-58]
+       mov       ecx,[rdx+8]
+       mov       [rbp-60],ecx
+       lea       edx,[rcx+1]
+       lea       rsi,[rbp-58]
+       mov       rdi,7D1A737ECD70
+       call      qword ptr [7D1A7308C480]; System.Array.Resize[[System.__Canon, System.Private.CoreLib]](System.__Canon[] ByRef, Int32)
+       mov       esi,[rbp-60]
+       mov       rdi,[rbp-58]
+       mov       rdx,r15
+       call      qword ptr [7D1A72C557A0]; System.Runtime.CompilerServices.CastHelpers.StelemRef(System.Object[], IntPtr, System.Object)
+       jmp       short M05_L10
+M05_L09:
+       mov       rdi,offset MT_System.Threading.IAsyncLocal[]
+       mov       esi,1
+       call      CORINFO_HELP_NEWARR_1_PTR
+       mov       [rbp-90],rax
+       lea       rdi,[rax+10]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-90]
+       mov       [rbp-58],rax
+M05_L10:
+       mov       r13,[r13+10]
+       test      r13,r13
+       jne       short M05_L11
+       call      qword ptr [7D1A734AC048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r13,rax
+M05_L11:
+       cmp       dword ptr [rbp-5C],0
+       jne       short M05_L12
+       mov       rdi,7D0AB0C01380
+       mov       rax,[rbp-80]
+       cmp       rax,[rdi]
+       jne       short M05_L12
+       xor       esi,esi
+       jmp       short M05_L13
+M05_L12:
+       mov       rdi,offset MT_System.Threading.ExecutionContext
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       mov       [rbp-88],rsi
+       mov       rax,[rbp-58]
+       mov       [rbp-0A0],rax
+       lea       rdi,[rsi+8]
+       mov       rsi,[rbp-80]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-88]
+       lea       rdi,[rsi+10]
+       mov       rsi,[rbp-0A0]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-88]
+       mov       edi,[rbp-5C]
+       mov       [rsi+18],dil
+M05_L13:
+       lea       rdi,[r13+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r14d,r14d
+       je        short M05_L15
+       mov       rsi,[rbp-48]
+       test      rsi,rsi
+       jne       near ptr M05_L25
+       xor       edi,edi
+M05_L14:
+       mov       rax,[r15+8]
+       xor       ecx,ecx
+       mov       [rsp],rdi
+       mov       [rsp+8],r12
+       mov       [rsp+10],cl
+       mov       rdi,[rax+8]
+       call      qword ptr [rax+18]
+M05_L15:
+       xor       edi,edi
+       mov       [rbp-48],rdi
+       mov       [rbp-58],rdi
+       mov       rdi,[rbp-70]
+       lea       rdi,[rdi+8]
+       mov       rsi,r12
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       mov       rdi,rbx
+       call      qword ptr [7D1A737B6AD8]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].InvokeFactory()
+       mov       rdi,[rbp-70]
+       lea       rdi,[rdi+10]
+       mov       rsi,rax
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       mov       rdi,[rbp-70]
+       mov       rsi,[rdi+10]
+       cmp       [rsi],sil
+       mov       [rbp-38],rsi
+       mov       dword ptr [rbp-30],2
+       test      byte ptr [rbp-30],4
+       jne       near ptr M05_L29
+       mov       rsi,[rbp-38]
+       test      dword ptr [rsi+34],1600000
+       je        near ptr M05_L29
+M05_L16:
+       mov       rsi,[rbp-38]
+       mov       eax,[rbp-30]
+       mov       ecx,[rsi+34]
+       and       ecx,11000000
+       cmp       ecx,1000000
+       jne       near ptr M05_L31
+M05_L17:
+       mov       rsi,[rdi+8]
+       xor       eax,eax
+       mov       [rsi+8],rax
+       mov       r15,[rdi+10]
+       mov       esi,[r15+34]
+       and       esi,1600000
+       cmp       esi,1000000
+       jne       near ptr M05_L39
+       mov       esi,[r15+34]
+       and       esi,11000000
+       cmp       esi,1000000
+       jne       near ptr M05_L32
+       mov       r14d,[r15+38]
+M05_L18:
+       mov       rax,[rbx+8]
+       xor       ecx,ecx
+       mov       [rax+18],rcx
+       mov       [rax+20],rcx
+       lea       eax,[r14+1]
+       cmp       eax,0A
+       jb        near ptr M05_L33
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       dword ptr [r15+34],1000000
+       mov       [r15+38],r14d
+M05_L19:
+       mov       rdi,[rbx+8]
+       lea       rdi,[rdi+10]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,[rbx+8]
+       lea       rdi,[rdi+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rbx,[rbx+10]
+       mov       r15,[rbx+8]
+       xor       r13d,r13d
+       mov       eax,[r15+34]
+       mov       [rbp-64],eax
+       test      eax,5600000
+       jne       short M05_L23
+       lea       rdi,[r15+34]
+       mov       esi,eax
+       or        esi,4000000
+       lock cmpxchg [rdi],esi
+       cmp       eax,[rbp-64]
+       jne       near ptr M05_L34
+M05_L20:
+       mov       [r15+38],r14d
+       lea       rdi,[r15+34]
+       mov       eax,[r15+34]
+       or        eax,1000000
+       xchg      eax,[rdi]
+       mov       r13,[r15+28]
+       test      r13,r13
+       jne       near ptr M05_L35
+M05_L21:
+       lea       rdi,[r15+20]
+       test      rdi,rdi
+       je        near ptr M05_L36
+       mov       rsi,7D0AB0C00238
+       mov       rsi,[rsi]
+       call      00007D1AF1074040
+       test      rax,rax
+       je        short M05_L22
+       mov       rdi,r15
+       mov       rsi,rax
+       call      qword ptr [7D1A737BD890]
+M05_L22:
+       mov       r13d,1
+M05_L23:
+       test      r13d,r13d
+       je        near ptr M05_L37
+M05_L24:
+       test      r13b,r13b
+       jne       near ptr M05_L42
+       jmp       near ptr M05_L38
+M05_L25:
+       mov       rdi,rsi
+       mov       rax,offset MT_System.Threading.Tasks.AsyncLazyAttemptFrame
+       cmp       [rdi],rax
+       jne       short M05_L28
+       jmp       near ptr M05_L14
+M05_L26:
+       mov       edi,4
+       call      qword ptr [7D1A737BD650]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       r13,rax
+       jmp       near ptr M05_L00
+M05_L27:
+       call      qword ptr [7D1A72C56310]; System.Runtime.CompilerServices.CastHelpers.ChkCastClass(Void*, System.Object)
+       int       3
+M05_L28:
+       mov       rdi,rax
+       call      qword ptr [7D1A72C56310]; System.Runtime.CompilerServices.CastHelpers.ChkCastClass(Void*, System.Object)
+       int       3
+M05_L29:
+       xor       esi,esi
+       mov       [rdi+18],esi
+       lea       rdi,[rdi+28]
+       mov       rsi,[rbp-38]
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       mov       esi,[rbp-30]
+       mov       rdi,[rbp-70]
+       mov       [rdi+30],esi
+       lea       rsi,[rdi+20]
+       call      qword ptr [7D1A737BDB60]
+       mov       rsi,rax
+       lea       rdi,[rbp-38]
+       call      qword ptr [7D1A737BDB78]
+       jmp       near ptr M05_L43
+M05_L30:
+       mov       rdi,[rbp-70]
+       vmovdqu   xmm0,xmmword ptr [rdi+28]
+       vmovdqu   xmmword ptr [rbp-38],xmm0
+       xor       esi,esi
+       mov       [rdi+28],rsi
+       mov       [rdi+30],rsi
+       mov       dword ptr [rdi+18],0FFFFFFFF
+       mov       rdi,[rbp-70]
+       jmp       near ptr M05_L16
+M05_L31:
+       mov       rdi,rsi
+       mov       esi,eax
+       call      qword ptr [7D1A737BD770]
+       mov       rdi,[rbp-70]
+       jmp       near ptr M05_L17
+M05_L32:
+       mov       rdi,r15
+       mov       esi,1
+       call      qword ptr [7D1A737BDAD0]
+       mov       r14d,eax
+       jmp       near ptr M05_L18
+M05_L33:
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCache
+       call      System.Runtime.CompilerServices.StaticsHelpers.GetGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdi,7D0AB0C013B8
+       mov       rdi,[rdi]
+       lea       esi,[r14+1]
+       cmp       esi,[rdi+8]
+       jae       near ptr M05_L40
+       lea       esi,[r14+1]
+       mov       r15,[rdi+rsi*8+10]
+       jmp       near ptr M05_L19
+M05_L34:
+       mov       rdi,r15
+       mov       esi,4000000
+       mov       edx,5600000
+       call      qword ptr [7D1A737BD830]
+       test      eax,eax
+       je        near ptr M05_L23
+       jmp       near ptr M05_L20
+M05_L35:
+       mov       rdi,r15
+       call      qword ptr [7D1A737BD848]
+       mov       rdi,r13
+       call      qword ptr [7D1A737BD860]
+       jmp       near ptr M05_L21
+M05_L36:
+       call      qword ptr [7D1A737BD878]
+       int       3
+M05_L37:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [7D1A737BD800]
+       jmp       near ptr M05_L24
+M05_L38:
+       mov       edi,18
+       call      qword ptr [7D1A737B6EC8]
+       int       3
+M05_L39:
+       mov       rax,[rbx+8]
+       xor       ecx,ecx
+       mov       [rax+8],rcx
+       mov       rdi,r15
+       call      qword ptr [7D1A737B6E08]
+       test      eax,eax
+       je        short M05_L41
+       mov       rbx,[rbx+10]
+       mov       rdi,r15
+       call      qword ptr [7D1A737B6E20]
+       mov       rsi,rax
+       mov       rdi,rbx
+       cmp       [rdi],edi
+       call      qword ptr [7D1A737B6E38]
+       jmp       short M05_L42
+M05_L40:
+       call      CORINFO_HELP_RNGCHKFAIL
+       int       3
+M05_L41:
+       mov       r14,[rbx+10]
+       mov       rdi,r15
+       call      qword ptr [7D1A737B6E50]
+       mov       rdi,rax
+       cmp       [rdi],edi
+       call      qword ptr [7D1A737B6E68]
+       mov       rsi,rax
+       mov       rdi,r14
+       cmp       [rdi],edi
+       call      qword ptr [7D1A737B6E80]
+       mov       rdi,[rbx+10]
+       mov       rdi,[rdi+8]
+       cmp       [rdi],edi
+       call      qword ptr [7D1A737B6E50]
+       nop
+M05_L42:
+       mov       rdi,[rbp-70]
+       mov       dword ptr [rdi+18],0FFFFFFFE
+       xor       esi,esi
+       mov       [rdi+8],rsi
+       mov       [rdi+10],rsi
+       add       rdi,20
+       cmp       qword ptr [rdi],0
+       jne       short M05_L44
+       mov       rsi,7D0AB0C00250
+       mov       rsi,[rsi]
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+M05_L43:
+       nop
+       add       rsp,98
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M05_L44:
+       mov       rdi,[rdi]
+       xor       esi,esi
+       call      qword ptr [7D1A737BD8D8]
+       jmp       short M05_L43
+       sub       rsp,18
+       mov       rsi,rdi
+       mov       rdi,[rbp-70]
+       mov       dword ptr [rdi+18],0FFFFFFFE
+       xor       eax,eax
+       mov       [rdi+8],rax
+       mov       [rdi+10],rax
+       add       rdi,20
+       call      qword ptr [7D1A737B6B98]
+       lea       rax,[M05_L43]
+       add       rsp,18
+       ret
+; Total bytes of code 1826
+```
+```assembly
+; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       push      rbp
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+10]
+       mov       ebx,edi
+       call      qword ptr [7D1A72816AF0]; Precode of System.Threading.Thread.GetThreadStaticsBase()
+       mov       edi,ebx
+       and       edi,0FFFFFF
+       mov       ecx,edi
+       mov       edx,ebx
+       sar       edx,18
+       jne       short M06_L01
+       cmp       [rax],edi
+       jle       short M06_L03
+       mov       rax,[rax+8]
+       cmp       [rax],al
+       add       ecx,0FFFFFFFE
+       movsxd    rdi,ecx
+       mov       rax,[rax+rdi*8+10]
+       test      rax,rax
+       je        short M06_L03
+M06_L00:
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       ret
+M06_L01:
+       mov       edi,ebx
+       sar       edi,18
+       cmp       edi,2
+       jne       short M06_L02
+       movsxd    rcx,ecx
+       add       rax,rcx
+       jmp       short M06_L00
+M06_L02:
+       cmp       [rax+4],ecx
+       jle       short M06_L03
+       mov       rdi,[rax+10]
+       movsxd    rax,ecx
+       mov       rdi,[rdi+rax*8]
+       test      rdi,rdi
+       je        short M06_L03
+       mov       rax,[rdi]
+       test      rax,rax
+       je        short M06_L03
+       jmp       short M06_L00
+M06_L03:
+       mov       edi,ebx
+       lea       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [rax]
+; Total bytes of code 133
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].AsyncLazy_NoRecursionDetection()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+30]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        near ptr M00_L16
+       lea       rdi,[r15+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[r15+10]
+       test      rax,rax
+       jne       near ptr M00_L17
+M00_L00:
+       mov       rbx,[r15+8]
+       mov       rsi,rbx
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       test      rax,rax
+       jne       near ptr M00_L19
+       test      rbx,rbx
+       je        short M00_L01
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       cmp       [rbx],rdi
+       je        near ptr M00_L11
+M00_L01:
+       lea       rdi,[r15+20]
+       cmp       qword ptr [rdi],0
+       jne       near ptr M00_L18
+M00_L02:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCompletionSource<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       xor       edi,edi
+       mov       [rax+8],rdi
+       mov       [rax+10],rdi
+       mov       [rax+18],rdi
+       mov       dword ptr [rax+34],2000440
+       lea       rdi,[rbx+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r15+8]
+       test      rdi,rdi
+       je        near ptr M00_L21
+       mov       rsi,r14
+       xor       edx,edx
+       call      000079C183074060
+       test      rax,rax
+       jne       near ptr M00_L00
+       mov       rdi,79B140C01380
+       mov       r15,[rdi]
+       test      r15,r15
+       je        near ptr M00_L22
+M00_L03:
+       mov       rdi,79C1832A0D68
+       mov       rax,79C183B43820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M00_L23
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M00_L23
+M00_L04:
+       mov       rax,[rax+10]
+       test      rax,rax
+       jne       short M00_L05
+       call      qword ptr [79C10549C048]; System.Threading.Thread.InitializeCurrentThread()
+M00_L05:
+       mov       rbx,[rax+8]
+       test      rbx,rbx
+       jne       near ptr M00_L24
+       mov       rdi,79B140C01388
+       mov       rbx,[rdi]
+M00_L06:
+       test      rbx,rbx
+       je        short M00_L07
+       cmp       byte ptr [rbx+19],0
+       je        near ptr M00_L25
+M00_L07:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallbackDefaultContext<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r13,rax
+       lea       rdi,[r13+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r13+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+M00_L08:
+       mov       rdi,79B140C01398
+       mov       rbx,[rdi]
+       cmp       byte ptr [rbx+38],0
+       jne       near ptr M00_L26
+M00_L09:
+       mov       rdi,[rbx+8]
+       mov       rsi,[rdi+10]
+       mov       rcx,[rsi+8]
+M00_L10:
+       mov       r15d,[rsi+0A0]
+       mov       eax,r15d
+       and       eax,[rsi+18]
+       cmp       eax,[rcx+8]
+       jae       near ptr M00_L28
+       shl       rax,4
+       lea       r12,[rcx+rax+10]
+       mov       eax,[r12+8]
+       sub       eax,r15d
+       jne       short M00_L12
+       lea       rdx,[rsi+0A0]
+       lea       r8d,[r15+1]
+       mov       eax,r15d
+       lock cmpxchg [rdx],r8d
+       cmp       eax,r15d
+       jne       short M00_L10
+       mov       rdi,r12
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+       inc       r15d
+       mov       [r12+8],r15d
+       jmp       short M00_L13
+M00_L11:
+       mov       rdi,rbx
+       xor       esi,esi
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [79C1057A6988]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+M00_L12:
+       test      eax,eax
+       jge       short M00_L10
+       mov       rsi,r13
+       call      qword ptr [79C1057AEBE0]
+M00_L13:
+       add       rbx,78
+       mov       edi,1
+       xchg      edi,[rbx]
+       test      edi,edi
+       jne       short M00_L14
+       mov       rdi,79B140C013C0
+       mov       rbx,[rdi]
+       lea       rdi,[rbx+160]
+       lock inc  dword ptr [rdi]
+       mov       rdi,rbx
+       call      qword ptr [79C1057A6E20]; System.Threading.PortableThreadPool+WorkerThread.MaybeAddWorkingWorker(System.Threading.PortableThreadPool)
+       cmp       dword ptr [rbx+164],6
+       jne       near ptr M00_L27
+M00_L14:
+       mov       rax,[r14+10]
+       mov       rax,[rax+8]
+M00_L15:
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L16:
+       mov       edi,1
+       mov       rsi,79C1057D7C18
+       call      qword ptr [79C104C4EF88]
+       mov       rdi,rax
+       call      qword ptr [79C1057AED18]
+       int       3
+M00_L17:
+       jmp       short M00_L15
+M00_L18:
+       mov       rdi,[rdi]
+       cmp       dword ptr [rdi+20],0
+       je        near ptr M00_L02
+       jmp       short M00_L20
+M00_L19:
+       jmp       short M00_L15
+M00_L20:
+       mov       rdi,[r15+20]
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [79C1057A68B0]
+M00_L21:
+       call      qword ptr [79C1057AEB20]
+       int       3
+M00_L22:
+       mov       rdi,offset MT_System.Action<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,79B140C01378
+       mov       rsi,[rdi]
+       lea       rdi,[r15+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset System.Threading.Tasks.AsyncLazy`1+<>c[[System.Int32, System.Private.CoreLib]].<GetOrStartAttemptAsync>b__11_0(Attempt<Int32>)
+       mov       [r15+18],rdi
+       mov       rdi,79B140C01380
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       near ptr M00_L03
+M00_L23:
+       mov       edi,4
+       call      qword ptr [79C1057AE9A0]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M00_L04
+M00_L24:
+       xor       edi,edi
+       cmp       byte ptr [rbx+18],0
+       cmovne    rbx,rdi
+       jmp       near ptr M00_L06
+M00_L25:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallback<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r13,rax
+       mov       rdi,r13
+       mov       rsi,r15
+       mov       rdx,r14
+       mov       rcx,rbx
+       call      qword ptr [79C1057AEB98]
+       jmp       near ptr M00_L08
+M00_L26:
+       mov       rdi,79B140C013B0
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       je        near ptr M00_L09
+       mov       rdi,79B140C013B0
+       mov       rdi,[rdi]
+       mov       rsi,r13
+       call      qword ptr [79C1057AEBB0]
+       jmp       near ptr M00_L09
+M00_L27:
+       mov       rdi,rbx
+       call      qword ptr [79C1057A7078]; System.Threading.PortableThreadPool+GateThread.EnsureRunningSlow(System.Threading.PortableThreadPool)
+       jmp       near ptr M00_L14
+M00_L28:
+       call      CORINFO_HELP_RNGCHKFAIL
+       int       3
+; Total bytes of code 994
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [79C1057A7600]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       push      rbp
+       mov       rbp,rsp
+       test      rsi,rsi
+       je        short M02_L02
+       mov       rax,[rsi]
+       cmp       rax,rdi
+       je        short M02_L02
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L02
+M02_L00:
+       test      rax,rax
+       je        short M02_L01
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L02
+       test      rax,rax
+       je        short M02_L01
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L02
+       test      rax,rax
+       jne       short M02_L03
+M02_L01:
+       xor       esi,esi
+M02_L02:
+       mov       rax,rsi
+       pop       rbp
+       ret
+M02_L03:
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L02
+       test      rax,rax
+       je        short M02_L01
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L02
+       jmp       short M02_L00
+; Total bytes of code 91
+```
+```assembly
+; System.Threading.Thread.InitializeCurrentThread()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-30],rax
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [79C1047EEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [79C1047EEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       mov       rbx,[rbp-30]
+       call      qword ptr [79C1047F0B98]
+       lea       rdi,[rax+10]
+       mov       rsi,[rbp-30]
+       call      qword ptr [79C1047EEEB8]; CORINFO_HELP_ASSIGN_REF
+       mov       rax,rbx
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 123
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+       push      r15
+       push      rbx
+       push      rax
+       mov       rbx,rsi
+       test      rbx,rbx
+       jne       short M04_L00
+       mov       rax,[rdi+10]
+       mov       rax,[rax+8]
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       ret
+M04_L00:
+       mov       rdi,[rdi+10]
+       mov       r15,[rdi+8]
+       cmp       [r15],r15b
+       mov       rdi,offset MT_System.TimeProvider
+       call      qword ptr [79C104C45728]; System.Runtime.CompilerServices.StaticsHelpers.GetNonGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdx,79B140C014A0
+       mov       rdx,[rdx]
+       mov       rcx,rbx
+       mov       rdi,r15
+       mov       esi,0FFFFFFFF
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       jmp       qword ptr [79C1057AF510]
+; Total bytes of code 92
+```
+```assembly
+; System.Threading.PortableThreadPool+WorkerThread.MaybeAddWorkingWorker(System.Threading.PortableThreadPool)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,18
+       lea       rbp,[rsp+40]
+       mov       rax,[rdi+0A0]
+       movsx     rsi,ax
+       mov       rcx,rax
+       shr       rcx,20
+       movsx     rcx,cx
+       cmp       esi,ecx
+       jge       near ptr M05_L08
+M05_L00:
+       lea       ecx,[rsi+1]
+       movsx     rbx,cx
+       mov       rcx,rax
+       shr       rcx,10
+       movsx     rcx,cx
+       cmp       ecx,ebx
+       jge       near ptr M05_L09
+       mov       r15d,ebx
+M05_L01:
+       test      ebx,ebx
+       jle       near ptr M05_L10
+       mov       edx,ebx
+M05_L02:
+       mov       r8,rax
+       and       r8,0FFFFFFFFFFFF0000
+       movzx     edx,dx
+       or        rdx,r8
+       test      r15d,r15d
+       jle       near ptr M05_L11
+       mov       r8d,r15d
+M05_L03:
+       mov       r9,0FFFFFFFF0000FFFF
+       and       rdx,r9
+       movzx     r8d,r8w
+       shl       r8,10
+       or        rdx,r8
+       lea       r8,[rdi+0A0]
+       mov       [rbp-38],rax
+       lock cmpxchg [r8],rdx
+       mov       rdx,[rbp-38]
+       cmp       rax,rdx
+       jne       near ptr M05_L12
+       sub       r15d,ecx
+       sub       ebx,esi
+       test      ebx,ebx
+       jle       short M05_L07
+       mov       rdi,79B140C013C8
+       mov       r14,[rdi]
+       mov       r13,[r14+60]
+M05_L04:
+       mov       [rbp-30],r13
+       mov       edi,ebx
+       add       rdi,[rbp-30]
+       mov       [rbp-30],rdi
+       mov       r12d,[rbp-30]
+       mov       rax,r13
+       shr       rax,20
+       movzx     eax,ax
+       mov       rdi,r13
+       shr       rdi,30
+       movzx     edi,dil
+       add       eax,edi
+       cmp       r12d,eax
+       ja        near ptr M05_L13
+M05_L05:
+       sub       r12d,edi
+       mov       rdi,r13
+       shr       rdi,38
+       movzx     edi,dil
+       sub       r12d,edi
+       test      r12d,r12d
+       jg        short M05_L14
+M05_L06:
+       lea       rdi,[r14+60]
+       mov       rsi,[rbp-30]
+       mov       rax,r13
+       lock cmpxchg [rdi],rsi
+       cmp       rax,r13
+       jne       short M05_L16
+       test      r12d,r12d
+       jg        short M05_L17
+M05_L07:
+       test      r15d,r15d
+       jg        near ptr M05_L19
+M05_L08:
+       add       rsp,18
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M05_L09:
+       mov       r15d,ecx
+       jmp       near ptr M05_L01
+M05_L10:
+       xor       edx,edx
+       jmp       near ptr M05_L02
+M05_L11:
+       xor       r8d,r8d
+       jmp       near ptr M05_L03
+M05_L12:
+       mov       rdx,rax
+       movsx     rsi,dx
+       mov       rcx,rdx
+       shr       rcx,20
+       movsx     rcx,cx
+       cmp       esi,ecx
+       mov       rax,rdx
+       jl        near ptr M05_L00
+       jmp       short M05_L08
+M05_L13:
+       mov       r12d,eax
+       jmp       near ptr M05_L05
+M05_L14:
+       cmp       r12d,ebx
+       jg        short M05_L18
+M05_L15:
+       lea       rdi,[rbp-30]
+       mov       esi,r12d
+       call      qword ptr [79C1057AF498]; System.Threading.LowLevelLifoSemaphore+Counts.AddUpToMaxCountOfWaitersSignaledToWake(UInt32)
+       jmp       near ptr M05_L06
+M05_L16:
+       mov       r13,rax
+       jmp       near ptr M05_L04
+M05_L17:
+       mov       rdi,[r14+8]
+       mov       esi,r12d
+       cmp       [rdi],edi
+       call      qword ptr [79C1057AF4B0]; System.Threading.Semaphore.Release(Int32)
+       jmp       near ptr M05_L07
+M05_L18:
+       mov       r12d,ebx
+       jmp       short M05_L15
+M05_L19:
+       call      qword ptr [79C1057A6FD0]; System.Threading.PortableThreadPool+WorkerThread.CreateWorkerThread()
+       dec       r15d
+       jmp       near ptr M05_L07
+; Total bytes of code 449
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+<>c[[System.Int32, System.Private.CoreLib]].<GetOrStartAttemptAsync>b__11_0(Attempt<Int32>)
+       push      rbp
+       push      r15
+       push      rbx
+       sub       rsp,50
+       lea       rbp,[rsp+60]
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu   ymmword ptr [rbp-40],ymm8
+       vmovdqa   xmmword ptr [rbp-20],xmm8
+       cmp       [rsi],sil
+       mov       [rbp-40],rsi
+       mov       dword ptr [rbp-30],0FFFFFFFF
+       mov       rdi,79C1832A0D68
+       mov       rax,79C183B43820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M06_L08
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M06_L08
+M06_L00:
+       mov       rbx,[rax+10]
+       test      rbx,rbx
+       jne       short M06_L01
+       call      qword ptr [79C10549C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       rbx,rax
+M06_L01:
+       mov       [rbp-48],rbx
+       mov       rsi,[rbx+8]
+       mov       [rbp-50],rsi
+       mov       rsi,[rbx+10]
+       mov       [rbp-58],rsi
+       lea       rdi,[rbp-40]
+       call      qword ptr [79C1057A7A80]; System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]].MoveNext()
+       nop
+       mov       rsi,[rbp-58]
+       cmp       rsi,[rbx+10]
+       je        short M06_L02
+       lea       rdi,[rbx+10]
+       call      CORINFO_HELP_ASSIGN_REF
+M06_L02:
+       mov       r15,[rbx+8]
+       mov       rsi,[rbp-50]
+       cmp       rsi,r15
+       je        short M06_L04
+       lea       rdi,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r15,r15
+       je        short M06_L03
+       cmp       qword ptr [r15+10],0
+       jne       short M06_L07
+M06_L03:
+       cmp       qword ptr [rbp-50],0
+       jne       short M06_L06
+M06_L04:
+       cmp       qword ptr [rbp-28],0
+       je        short M06_L09
+M06_L05:
+       add       rsp,50
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M06_L06:
+       mov       rsi,[rbp-50]
+       cmp       qword ptr [rsi+10],0
+       je        short M06_L04
+M06_L07:
+       mov       rdi,r15
+       mov       rsi,[rbp-50]
+       call      qword ptr [79C1057AEA18]
+       jmp       short M06_L04
+M06_L08:
+       mov       edi,4
+       call      qword ptr [79C1057AE9A0]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M06_L00
+M06_L09:
+       lea       rdi,[rbp-28]
+       call      qword ptr [79C1057AECD0]
+       jmp       short M06_L05
+       push      rax
+       mov       rsi,[rbp-58]
+       mov       rax,[rbp-48]
+       cmp       rsi,[rax+10]
+       je        short M06_L10
+       lea       rdi,[rax+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-48]
+M06_L10:
+       mov       r15,[rax+8]
+       mov       rsi,[rbp-50]
+       cmp       rsi,r15
+       je        short M06_L13
+       lea       rdi,[rax+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r15,r15
+       je        short M06_L11
+       cmp       qword ptr [r15+10],0
+       jne       short M06_L12
+M06_L11:
+       cmp       qword ptr [rbp-50],0
+       je        short M06_L13
+       mov       rsi,[rbp-50]
+       cmp       qword ptr [rsi+10],0
+       je        short M06_L13
+M06_L12:
+       mov       rdi,r15
+       mov       rsi,[rbp-50]
+       call      qword ptr [79C1057AEA18]
+M06_L13:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 368
+```
+```assembly
+; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       push      rbp
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+10]
+       mov       ebx,edi
+       call      qword ptr [79C104806AF0]; Precode of System.Threading.Thread.GetThreadStaticsBase()
+       mov       edi,ebx
+       and       edi,0FFFFFF
+       mov       ecx,edi
+       mov       edx,ebx
+       sar       edx,18
+       jne       short M07_L01
+       cmp       [rax],edi
+       jle       short M07_L03
+       mov       rax,[rax+8]
+       cmp       [rax],al
+       add       ecx,0FFFFFFFE
+       movsxd    rdi,ecx
+       mov       rax,[rax+rdi*8+10]
+       test      rax,rax
+       je        short M07_L03
+M07_L00:
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       ret
+M07_L01:
+       mov       edi,ebx
+       sar       edi,18
+       cmp       edi,2
+       jne       short M07_L02
+       movsxd    rcx,ecx
+       add       rax,rcx
+       jmp       short M07_L00
+M07_L02:
+       cmp       [rax+4],ecx
+       jle       short M07_L03
+       mov       rdi,[rax+10]
+       movsxd    rax,ecx
+       mov       rdi,[rdi+rax*8]
+       test      rdi,rdi
+       je        short M07_L03
+       mov       rax,[rdi]
+       test      rax,rax
+       je        short M07_L03
+       jmp       short M07_L00
+M07_L03:
+       mov       edi,ebx
+       lea       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [rax]
+; Total bytes of code 133
+```
+```assembly
+; System.Threading.PortableThreadPool+GateThread.EnsureRunningSlow(System.Threading.PortableThreadPool)
+       push      rbp
+       mov       rbp,rsp
+       add       rdi,164
+       mov       eax,6
+       xchg      eax,[rdi]
+       cmp       eax,4
+       je        short M08_L03
+       test      al,4
+       je        short M08_L02
+M08_L00:
+       mov       rdi,79C1058D0448
+       call      CORINFO_HELP_COUNTPROFILE32
+M08_L01:
+       nop
+       pop       rbp
+       ret
+M08_L02:
+       mov       rdi,79C1058D0444
+       call      CORINFO_HELP_COUNTPROFILE32
+       call      qword ptr [79C1057A7090]; System.Threading.PortableThreadPool+GateThread.CreateGateThread()
+       jmp       short M08_L00
+M08_L03:
+       mov       rdi,79C1058D0440
+       call      CORINFO_HELP_COUNTPROFILE32
+       mov       rdi,79B140C013F0
+       mov       rdi,[rdi]
+       call      qword ptr [79C1057AF138]
+       jmp       short M08_L01
+; Total bytes of code 104
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M09_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [79C1057A7618]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M09_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M09_L03
+M09_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M09_L04
+M09_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M09_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M09_L01
+       mov       rdi,rbx
+       call      qword ptr [79C1057AEE08]
+       jmp       short M09_L01
+M09_L04:
+       test      r15b,2
+       jne       short M09_L05
+       mov       rdi,rbx
+       call      qword ptr [79C1057AED30]
+M09_L05:
+       mov       rdi,rbx
+       call      qword ptr [79C1057AF660]
+       jmp       short M09_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].Nito()
+       push      rbp
+       push      r15
+       push      r14
+       push      rbx
+       sub       rsp,18
+       lea       rbp,[rsp+30]
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        near ptr M00_L05
+       mov       rdi,offset MT_Nito.AsyncEx.AsyncLazy<System.Int32>+<>c__DisplayClass14_0
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       lea       rdi,[r15+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.Func<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       lea       rdi,[rbx+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset Nito.AsyncEx.AsyncLazy`1+<>c__DisplayClass14_0[[System.Int32, System.Private.CoreLib]].<RunOnThreadPool>b__0()
+       mov       [rbx+18],rdi
+       mov       rdi,offset MT_System.Object
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r14+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-28],r15
+       xor       edi,edi
+       mov       [rbp-1C],edi
+       mov       rdi,r15
+       call      000076FDCF4E6020
+       test      eax,eax
+       je        short M00_L01
+M00_L00:
+       mov       dword ptr [rbp-1C],1
+       cmp       qword ptr [r14+8],0
+       je        short M00_L02
+       mov       rdi,r14
+       call      qword ptr [76FD51A9C438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+       mov       rbx,rax
+       jmp       short M00_L03
+M00_L01:
+       mov       rdi,r15
+       call      qword ptr [76FD51DACA20]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       short M00_L00
+M00_L02:
+       mov       rbx,[r14+18]
+M00_L03:
+       mov       rdi,r15
+       call      000076FDCF4E6790
+       test      eax,eax
+       jne       short M00_L06
+M00_L04:
+       mov       rax,rbx
+       add       rsp,18
+       pop       rbx
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L05:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,10E
+       mov       rsi,76FD51DD7C10
+       call      qword ptr [76FD5124EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [76FD51A9E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+M00_L06:
+       mov       edi,eax
+       mov       rsi,r15
+       call      qword ptr [76FD51DAE718]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       jmp       short M00_L04
+       push      rax
+       cmp       dword ptr [rbp-1C],0
+       je        short M00_L07
+       mov       rdi,[rbp-28]
+       call      000076FDCF4E6790
+       test      eax,eax
+       je        short M00_L07
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [76FD51DAE718]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+M00_L07:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 385
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [76FD51DA77F8]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; Nito.AsyncEx.AsyncLazy`1+<>c__DisplayClass14_0[[System.Int32, System.Private.CoreLib]].<RunOnThreadPool>b__0()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+30]
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        near ptr M02_L16
+       mov       r15,offset MT_System.Threading.Tasks.Task<System.Threading.Tasks.Task<System.Int32>>
+       mov       rdi,r15
+       call      qword ptr [76FD51DA69B8]; System.Threading.Tasks.Task`1[[System.__Canon, System.Private.CoreLib]].get_Factory()
+       cmp       [rax],al
+       mov       rdi,76ED8CC01390
+       mov       r14,[rdi]
+       mov       rdi,r15
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       lea       rdi,[r15+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       edi,edi
+       mov       [r15+10],rdi
+       lea       rdi,[r15+18]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       edi,2008
+       mov       [r15+34],edi
+       mov       rdi,76FDCF8A0D68
+       mov       rax,76FDD0102820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L15
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M02_L15
+M02_L00:
+       mov       rax,[rax+10]
+       test      rax,rax
+       jne       short M02_L01
+       call      qword ptr [76FD51A9C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L01:
+       mov       rbx,[rax+8]
+       test      rbx,rbx
+       je        short M02_L02
+       xor       edi,edi
+       cmp       byte ptr [rbx+18],0
+       cmovne    rbx,rdi
+       jmp       short M02_L03
+M02_L02:
+       mov       rdi,76ED8CC013A0
+       mov       rbx,[rdi]
+M02_L03:
+       test      rbx,rbx
+       je        short M02_L05
+       mov       rdi,76ED8CC013A0
+       cmp       rbx,[rdi]
+       je        short M02_L06
+       mov       rax,[r15+28]
+       test      rax,rax
+       jne       short M02_L04
+       mov       rdi,offset MT_System.Threading.Tasks.Task+ContingentProperties
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       dword ptr [r14+3C],1
+       lea       rdi,[r15+28]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,r14
+M02_L04:
+       lea       rdi,[rax+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       short M02_L06
+M02_L05:
+       or        dword ptr [r15+34],20000000
+M02_L06:
+       mov       rdi,r15
+       xor       esi,esi
+       call      qword ptr [76FD51DA6BB0]; System.Threading.Tasks.Task.ScheduleAndStart(Boolean)
+       mov       rdi,offset MT_System.Threading.Tasks.UnwrapPromise<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       movzx     r14d,word ptr [r15+34]
+       and       r14d,4
+       test      r14d,0FFFFFFBB
+       jne       near ptr M02_L14
+       test      r14b,4
+       je        short M02_L09
+       mov       rdi,76FDCF8A0D68
+       mov       rax,76FDD0102820
+       call      rax
+       cmp       dword ptr [rax],8
+       jle       near ptr M02_L17
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+40]
+       test      rax,rax
+       je        near ptr M02_L17
+M02_L07:
+       mov       r13,[rax+10]
+       test      r13,r13
+       je        short M02_L09
+       mov       rax,[rbx+28]
+       test      rax,rax
+       jne       short M02_L08
+       mov       rdi,offset MT_System.Threading.Tasks.Task+ContingentProperties
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       mov       dword ptr [r12+3C],1
+       lea       rdi,[rbx+28]
+       mov       rsi,r12
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,r12
+M02_L08:
+       lea       rdi,[rax+30]
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+M02_L09:
+       xor       edi,edi
+       mov       [rbx+8],rdi
+       mov       [rbx+10],rdi
+       mov       [rbx+18],rdi
+       test      r14d,0FFFFFFA0
+       jne       near ptr M02_L14
+       mov       edi,r14d
+       or        edi,400
+       or        edi,2000000
+       mov       [rbx+34],edi
+       mov       rdi,[rbx+28]
+       test      rdi,rdi
+       jne       near ptr M02_L18
+M02_L10:
+       mov       byte ptr [rbx+3D],1
+       mov       rdi,76ED8CC013B0
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       jne       near ptr M02_L19
+M02_L11:
+       cmp       byte ptr [76FD5025B06C],0
+       jne       near ptr M02_L20
+M02_L12:
+       test      dword ptr [r15+34],1600000
+       jne       near ptr M02_L21
+       test      dword ptr [r15+34],1600000
+       jne       near ptr M02_L24
+       cmp       qword ptr [r15+20],0
+       jne       near ptr M02_L23
+       lea       rdi,[r15+20]
+       test      rdi,rdi
+       je        near ptr M02_L22
+       mov       rsi,rbx
+       xor       edx,edx
+       call      000076FDCF674060
+       test      rax,rax
+       jne       near ptr M02_L23
+M02_L13:
+       mov       rax,rbx
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M02_L14:
+       mov       edi,2D
+       call      qword ptr [76FD5124F0D8]
+       int       3
+M02_L15:
+       mov       edi,4
+       call      qword ptr [76FD51DAEA78]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L00
+M02_L16:
+       mov       edi,2E
+       call      qword ptr [76FD5124FAE0]
+       int       3
+M02_L17:
+       mov       edi,8
+       call      qword ptr [76FD51DAEA78]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L07
+M02_L18:
+       mov       rdi,[rdi+30]
+       test      rdi,rdi
+       je        near ptr M02_L10
+       test      r14b,4
+       je        near ptr M02_L10
+       test      byte ptr [rdi+34],8
+       jne       near ptr M02_L10
+       call      qword ptr [76FD51DAE880]
+       jmp       near ptr M02_L10
+M02_L19:
+       mov       rdi,rbx
+       call      qword ptr [76FD51DA7528]
+       mov       esi,eax
+       mov       rdi,76ED8CC013B0
+       mov       rdi,[rdi]
+       mov       rdx,76FD4C60AC10
+       xor       ecx,ecx
+       call      qword ptr [76FD51DA7540]
+       jmp       near ptr M02_L11
+M02_L20:
+       mov       rdi,rbx
+       call      qword ptr [76FD51DA7558]
+       jmp       near ptr M02_L12
+M02_L21:
+       mov       rdi,rbx
+       mov       rsi,r15
+       call      qword ptr [76FD51DA7588]; System.Threading.Tasks.UnwrapPromise`1[[System.Int32, System.Private.CoreLib]].ProcessCompletedOuterTask(System.Threading.Tasks.Task)
+       jmp       near ptr M02_L13
+M02_L22:
+       call      qword ptr [76FD51DAE988]
+       int       3
+M02_L23:
+       mov       rdi,r15
+       mov       rsi,rbx
+       xor       edx,edx
+       call      qword ptr [76FD51DACA50]; System.Threading.Tasks.Task.AddTaskContinuationComplex(System.Object, Boolean)
+       test      eax,eax
+       jne       near ptr M02_L13
+M02_L24:
+       mov       rdi,rbx
+       mov       rsi,r15
+       call      qword ptr [76FD51DDDDD0]; System.Threading.Tasks.UnwrapPromise`1[[System.Int32, System.Private.CoreLib]].Invoke(System.Threading.Tasks.Task)
+       jmp       near ptr M02_L13
+; Total bytes of code 893
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M03_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M03_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M03_L05
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M03_L06
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      000076FDCF4E6020
+       test      eax,eax
+       je        short M03_L03
+M03_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M03_L04
+       mov       esi,2
+       call      qword ptr [76FD51A9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M03_L04
+M03_L03:
+       mov       rdi,rbx
+       call      qword ptr [76FD51DACA20]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       short M03_L02
+M03_L04:
+       mov       rdi,rbx
+       call      000076FDCF4E6790
+       test      eax,eax
+       jne       near ptr M03_L12
+M03_L05:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M03_L13
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [76FD51A9C438]
+M03_L06:
+       cmp       eax,8
+       ja        short M03_L07
+       mov       eax,eax
+       lea       rcx,[76FD512C8690]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M03_L01]
+       add       rcx,rdx
+       jmp       rcx
+M03_L07:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [76FD51DAF018]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [76FD51DAEFB8]
+       jmp       short M03_L05
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [76FD51A9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M03_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M03_L08
+       jmp       short M03_L09
+M03_L08:
+       mov       rdi,rsi
+       mov       rsi,76FD51DF7288
+       call      qword ptr [76FD5124F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M03_L09:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M03_L10
+       jmp       short M03_L11
+M03_L10:
+       mov       rdi,rax
+       mov       rsi,76FD51DF7328
+       call      qword ptr [76FD5124F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M03_L11:
+       call      qword ptr [76FD51DAEF58]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [76FD51DAEFD0]
+       jmp       near ptr M03_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [76FD51DAEFE8]
+       jmp       near ptr M03_L05
+       mov       rdi,[rbp-20]
+       call      qword ptr [76FD51DAF000]
+       jmp       near ptr M03_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [76FD51A9C450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M03_L05
+M03_L12:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [76FD51DAE718]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       jmp       near ptr M03_L05
+M03_L13:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M03_L14
+       mov       rdi,[rbp-28]
+       call      000076FDCF4E6790
+       test      eax,eax
+       je        short M03_L14
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [76FD51DAE718]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+M03_L14:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 441
+```
+```assembly
+; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       mov       [rbp-30],rdi
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [76FD50DEEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [76FD50DEEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       nop
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 95
+```
+```assembly
+; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,78
+       lea       rbp,[rsp+0A0]
+       mov       [rbp-30],rsi
+       mov       esi,edi
+       lea       rdi,[rbp-30]
+       mov       [rbp-94],rdi
+       mov       [rbp-8C],esi
+       lea       rdi,[rbp-88]
+       call      qword ptr [76FD50DEEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-94]
+       mov       esi,[rbp-8C]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [76FD50DEEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       nop
+       add       rsp,78
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 109
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M06_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [76FD51DA7810]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M06_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M06_L03
+M06_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M06_L04
+M06_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M06_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M06_L01
+       mov       rdi,rbx
+       call      qword ptr [76FD51DAF558]
+       jmp       short M06_L01
+M06_L04:
+       test      r15b,2
+       jne       short M06_L05
+       mov       rdi,rbx
+       call      qword ptr [76FD51DAF570]
+M06_L05:
+       mov       rdi,rbx
+       call      qword ptr [76FD51DAFB10]
+       jmp       short M06_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].Nito_ExecuteOnCallingThread()
+       push      rbp
+       push      r15
+       push      r14
+       push      rbx
+       sub       rsp,18
+       lea       rbp,[rsp+30]
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        near ptr M00_L05
+       mov       rdi,offset MT_System.Object
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r14+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-28],r15
+       xor       edi,edi
+       mov       [rbp-1C],edi
+       mov       rdi,r15
+       call      000078D9D2CE6020
+       test      eax,eax
+       je        short M00_L01
+M00_L00:
+       mov       dword ptr [rbp-1C],1
+       cmp       qword ptr [r14+8],0
+       je        short M00_L02
+       mov       rdi,r14
+       call      qword ptr [78D9552AC438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+       mov       rbx,rax
+       jmp       short M00_L03
+M00_L01:
+       mov       rdi,r15
+       call      qword ptr [78D9555BCD38]
+       jmp       short M00_L00
+M00_L02:
+       mov       rbx,[r14+18]
+M00_L03:
+       mov       rdi,r15
+       call      000078D9D2CE6790
+       test      eax,eax
+       jne       short M00_L06
+M00_L04:
+       mov       rax,rbx
+       add       rsp,18
+       pop       rbx
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L05:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,10E
+       mov       rsi,78D9555E7C10
+       call      qword ptr [78D954A5EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [78D9552AE1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+M00_L06:
+       mov       edi,eax
+       mov       rsi,r15
+       call      qword ptr [78D9555BCCC0]
+       jmp       short M00_L04
+       push      rax
+       cmp       dword ptr [rbp-1C],0
+       je        short M00_L07
+       mov       rdi,[rbp-28]
+       call      000078D9D2CE6790
+       test      eax,eax
+       je        short M00_L07
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [78D9555BCCC0]
+M00_L07:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 311
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [78D9555BCCF0]
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M02_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M02_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M02_L05
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M02_L06
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      000078D9D2CE6020
+       test      eax,eax
+       je        short M02_L03
+M02_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M02_L04
+       mov       esi,2
+       call      qword ptr [78D9552AC468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L04
+M02_L03:
+       mov       rdi,rbx
+       call      qword ptr [78D9555BCD38]
+       jmp       short M02_L02
+M02_L04:
+       mov       rdi,rbx
+       call      000078D9D2CE6790
+       test      eax,eax
+       jne       near ptr M02_L12
+M02_L05:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M02_L13
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [78D9552AC438]
+M02_L06:
+       cmp       eax,8
+       ja        short M02_L07
+       mov       eax,eax
+       lea       rcx,[78D954ACBA20]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M02_L01]
+       add       rcx,rdx
+       jmp       rcx
+M02_L07:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [78D9555BCE10]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [78D9555BCDB0]
+       jmp       short M02_L05
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [78D9552AC468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M02_L08
+       jmp       short M02_L09
+M02_L08:
+       mov       rdi,rsi
+       mov       rsi,78D9555DF668
+       call      qword ptr [78D954A5F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M02_L09:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M02_L10
+       jmp       short M02_L11
+M02_L10:
+       mov       rdi,rax
+       mov       rsi,78D9555DF708
+       call      qword ptr [78D954A5F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M02_L11:
+       call      qword ptr [78D9555BCD50]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [78D9555BCDC8]
+       jmp       near ptr M02_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [78D9555BCDE0]
+       jmp       near ptr M02_L05
+       mov       rdi,[rbp-20]
+       call      qword ptr [78D9555BCDF8]
+       jmp       near ptr M02_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [78D9552AC450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M02_L05
+M02_L12:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [78D9555BCCC0]
+       jmp       near ptr M02_L05
+M02_L13:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M02_L14
+       mov       rdi,[rbp-28]
+       call      000078D9D2CE6790
+       test      eax,eax
+       je        short M02_L14
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [78D9555BCCC0]
+M02_L14:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 441
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].VsThreading()
+       push      r15
+       push      rbx
+       push      rax
+       mov       rbx,rdi
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rbx,[rbx+8]
+       mov       rdi,offset MT_System.Object
+       call      CORINFO_HELP_NEWSFAST
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       test      rbx,rbx
+       je        short M00_L00
+       lea       rdi,[r15+20]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       edi,edi
+       mov       [r15+10],rdi
+       mov       rdi,r15
+       xor       esi,esi
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       jmp       qword ptr [7B26907A6910]; Microsoft.VisualStudio.Threading.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetValueAsync(System.Threading.CancellationToken)
+M00_L00:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,164
+       mov       rsi,7B26907D7C20
+       call      qword ptr [7B268FC4EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [7B269049E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+; Total bytes of code 157
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7B26907AEF40]
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; Microsoft.VisualStudio.Threading.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetValueAsync(System.Threading.CancellationToken)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,128
+       lea       rbp,[rsp+150]
+       xor       eax,eax
+       mov       [rbp-0C8],rax
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu32 [rbp-0C0],zmm8
+       vmovdqu32 [rbp-80],zmm8
+       mov       [rbp-40],rax
+       mov       [rbp-0B8],rdi
+       mov       [rbp-30],rsi
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.AsyncLazy<System.Int32>+<>c__DisplayClass20_0
+       call      CORINFO_HELP_NEWSFAST
+       mov       [rbp-0C0],rax
+       lea       rdi,[rax+8]
+       mov       rsi,[rbp-0B8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0B8]
+       mov       rdi,[rsi+28]
+       test      rdi,rdi
+       jne       near ptr M02_L56
+M02_L00:
+       mov       rdi,[rsi+18]
+       test      rdi,rdi
+       jne       near ptr M02_L57
+M02_L01:
+       mov       rsi,[rbp-0B8]
+       cmp       qword ptr [rsi+28],0
+       jne       near ptr M02_L52
+       mov       rdi,[rsi+8]
+       test      rdi,rdi
+       je        near ptr M02_L58
+       call      00007B270DEE5C00
+       test      eax,eax
+       jne       near ptr M02_L59
+       xor       edi,edi
+       mov       rax,[rbp-0C0]
+       mov       [rax+10],rdi
+       mov       rsi,[rbp-0B8]
+       mov       rdi,[rsi+8]
+       mov       [rbp-0C8],rdi
+       xor       edi,edi
+       mov       [rbp-34],edi
+       cmp       qword ptr [rbp-0C8],0
+       je        near ptr M02_L29
+       mov       rdi,[rbp-0C8]
+       call      00007B270DEE6020
+       test      eax,eax
+       je        near ptr M02_L30
+M02_L02:
+       mov       dword ptr [rbp-34],1
+       mov       rsi,[rbp-0B8]
+       cmp       qword ptr [rsi+28],0
+       jne       near ptr M02_L34
+       cmp       qword ptr [rbp-30],0
+       je        short M02_L03
+       mov       rdi,[rbp-30]
+       cmp       dword ptr [rdi+20],0
+       jne       near ptr M02_L31
+M02_L03:
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.InlineResumable
+       call      CORINFO_HELP_NEWSFAST
+       mov       rcx,[rbp-0C0]
+       lea       rdi,[rcx+10]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0B8]
+       mov       rsi,[rsi+20]
+       mov       rcx,[rbp-0C0]
+       lea       rdi,[rcx+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       edi,edi
+       mov       rsi,[rbp-0B8]
+       mov       [rsi+20],rdi
+       mov       rdi,offset MT_System.Func<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       lea       rdi,[rbx+8]
+       mov       rsi,[rbp-0C0]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0[[System.Int32, System.Private.CoreLib]].<GetValueAsync>b__0()
+       mov       [rbx+18],rdi
+       mov       rsi,[rbp-0B8]
+       cmp       byte ptr [rsi+38],0
+       jne       near ptr M02_L18
+       cmp       qword ptr [rsi+18],0
+       jne       near ptr M02_L32
+M02_L04:
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.AsyncLocal<System.Object>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,offset MT_System.Threading.AsyncLocal<System.Object>
+       call      CORINFO_HELP_NEWSFAST
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       r14,[r15+8]
+       mov       rdi,7B16CCC01378
+       mov       r13,[rdi]
+       cmp       qword ptr [r14+8],0
+       setne     r12b
+       movzx     r12d,r12b
+       mov       rdi,7B270E2A0D68
+       mov       rax,7B270EBAC820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L33
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M02_L33
+M02_L05:
+       mov       [rbp-130],rax
+       mov       rcx,[rax+10]
+       test      rcx,rcx
+       jne       short M02_L06
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       rcx,rax
+M02_L06:
+       mov       rcx,[rcx+8]
+       mov       [rbp-0D0],rcx
+       xor       edi,edi
+       mov       [rbp-40],rdi
+       xor       r8d,r8d
+       test      rcx,rcx
+       je        short M02_L07
+       mov       rdi,[rcx+8]
+       lea       rdx,[rbp-40]
+       mov       rsi,r14
+       mov       r11,7B268EC60558
+       call      qword ptr [r11]
+       mov       [rbp-44],eax
+       mov       rcx,[rbp-0D0]
+       mov       r8d,[rbp-44]
+M02_L07:
+       cmp       [rbp-40],r13
+       je        near ptr M02_L17
+       xor       edi,edi
+       mov       [rbp-50],rdi
+       mov       [rbp-54],edi
+       test      rcx,rcx
+       je        short M02_L08
+       mov       [rbp-44],r8d
+       movzx     edx,byte ptr [rcx+18]
+       mov       [rbp-54],edx
+       test      r12d,r12d
+       sete      cl
+       movzx     ecx,cl
+       mov       r10,[rbp-0D0]
+       mov       rdi,[r10+8]
+       mov       rsi,r14
+       mov       rdx,r13
+       mov       r11,7B268EC60550
+       call      qword ptr [r11]
+       mov       [rbp-0D8],rax
+       mov       rdx,[rbp-0D0]
+       mov       rdx,[rdx+10]
+       mov       [rbp-50],rdx
+       jmp       short M02_L09
+M02_L08:
+       mov       [rbp-44],r8d
+       mov       rdi,offset MT_System.Threading.AsyncLocalValueMap+OneElementAsyncLocalValueMap
+       call      CORINFO_HELP_NEWSFAST
+       mov       [rbp-0F0],rax
+       lea       rdi,[rax+8]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-0F0]
+       lea       rdi,[rax+10]
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-0F0]
+       mov       [rbp-0D8],rax
+M02_L09:
+       test      r12d,r12d
+       je        short M02_L11
+       cmp       dword ptr [rbp-44],0
+       jne       short M02_L11
+       cmp       qword ptr [rbp-50],0
+       je        short M02_L10
+       mov       rdx,[rbp-50]
+       mov       ecx,[rdx+8]
+       mov       [rbp-58],ecx
+       lea       edx,[rcx+1]
+       lea       rsi,[rbp-50]
+       mov       rdi,7B2690810C68
+       call      qword ptr [7B269007C480]; System.Array.Resize[[System.__Canon, System.Private.CoreLib]](System.__Canon[] ByRef, Int32)
+       mov       esi,[rbp-58]
+       mov       rdi,[rbp-50]
+       mov       rdx,r14
+       call      qword ptr [7B268FC457A0]; System.Runtime.CompilerServices.CastHelpers.StelemRef(System.Object[], IntPtr, System.Object)
+       jmp       short M02_L11
+M02_L10:
+       mov       rdi,offset MT_System.Threading.IAsyncLocal[]
+       mov       esi,1
+       call      CORINFO_HELP_NEWARR_1_PTR
+       mov       [rbp-0E8],rax
+       lea       rdi,[rax+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-0E8]
+       mov       [rbp-50],rax
+M02_L11:
+       mov       rcx,[rbp-130]
+       mov       rcx,[rcx+10]
+       test      rcx,rcx
+       jne       short M02_L12
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       [rbp-0F8],rax
+       mov       rcx,[rbp-0F8]
+M02_L12:
+       cmp       dword ptr [rbp-54],0
+       je        near ptr M02_L25
+       mov       [rbp-0F8],rcx
+M02_L13:
+       mov       rdi,offset MT_System.Threading.ExecutionContext
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       mov       [rbp-0E0],rsi
+       mov       rax,[rbp-50]
+       mov       [rbp-100],rax
+       lea       rdi,[rsi+8]
+       mov       rsi,[rbp-0D8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0E0]
+       lea       rdi,[rsi+10]
+       mov       rsi,[rbp-100]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0E0]
+       mov       edi,[rbp-54]
+       mov       [rsi+18],dil
+M02_L14:
+       mov       rdi,[rbp-0F8]
+       lea       rdi,[rdi+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r12d,r12d
+       je        short M02_L17
+       mov       rsi,[rbp-40]
+       test      rsi,rsi
+       jne       near ptr M02_L27
+       xor       r12d,r12d
+M02_L15:
+       mov       rdi,[r14]
+       mov       rdi,[rdi+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi]
+       mov       rax,r13
+       cmp       [rax],rdi
+       je        short M02_L16
+       mov       rsi,r13
+       call      qword ptr [7B268FC458C0]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+M02_L16:
+       mov       rcx,[r14+8]
+       xor       edi,edi
+       mov       [rsp],r12
+       mov       [rsp+8],rax
+       mov       [rsp+10],dil
+       mov       rdi,[rcx+8]
+       call      qword ptr [rcx+18]
+M02_L17:
+       xor       edi,edi
+       mov       [rbp-40],rdi
+       mov       [rbp-50],rdi
+       mov       rsi,[rbp-0B8]
+       lea       rdi,[rsi+18]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0B8]
+M02_L18:
+       cmp       qword ptr [rsi+10],0
+       jne       short M02_L20
+       mov       rdi,offset Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0[[System.Int32, System.Private.CoreLib]].<GetValueAsync>b__0()
+       cmp       [rbx+18],rdi
+       jne       near ptr M02_L23
+       mov       rdi,[rbx+8]
+       xor       eax,eax
+       mov       [rbp-68],rax
+       mov       [rbp-88],rdi
+       mov       dword ptr [rbp-70],0FFFFFFFF
+       lea       rdi,[rbp-88]
+       call      qword ptr [7B26907A7B58]; System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0+<<GetValueAsync>b__0>d[[System.Int32, System.Private.CoreLib]], Microsoft.VisualStudio.Threading]](<<GetValueAsync>b__0>d<Int32> ByRef)
+       mov       rsi,[rbp-68]
+       test      rsi,rsi
+       je        near ptr M02_L22
+M02_L19:
+       mov       r15,[rbp-0B8]
+       lea       rdi,[r15+28]
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       near ptr M02_L24
+M02_L20:
+       mov       rsi,[rbp-0B8]
+       mov       rdi,[rsi+10]
+       cmp       [rdi],dil
+       mov       rsi,rbx
+       xor       edx,edx
+       xor       ecx,ecx
+       xor       r8d,r8d
+       call      qword ptr [7B26907AF450]
+       mov       r15,[rbp-0B8]
+       lea       rdi,[r15+30]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lock or   dword ptr [rsp],0
+       mov       rdi,[r15+30]
+       cmp       [rdi],dil
+       call      qword ptr [7B26907AF4F8]
+       mov       rsi,rax
+       test      rsi,rsi
+       je        short M02_L21
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       cmp       [rsi],rdi
+       je        short M02_L21
+       mov       rsi,rax
+       call      qword ptr [7B2690074AF8]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       mov       rsi,rax
+M02_L21:
+       lea       rdi,[r15+28]
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       short M02_L24
+M02_L22:
+       lea       rdi,[rbp-68]
+       call      qword ptr [7B26907AF078]
+       mov       rsi,rax
+       jmp       near ptr M02_L19
+M02_L23:
+       mov       rdi,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       rsi,rax
+       jmp       near ptr M02_L19
+M02_L24:
+       call      M02_L66
+       jmp       near ptr M02_L34
+M02_L25:
+       mov       rdi,7B16CCC013B0
+       mov       rax,[rbp-0D8]
+       cmp       rax,[rdi]
+       jne       short M02_L26
+       xor       esi,esi
+       mov       [rbp-0F8],rcx
+       jmp       near ptr M02_L14
+M02_L26:
+       mov       [rbp-0F8],rcx
+       jmp       near ptr M02_L13
+M02_L27:
+       mov       rdi,[r14]
+       mov       rdi,[rdi+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi]
+       mov       r12,rsi
+       cmp       [r12],rdi
+       je        short M02_L28
+       call      qword ptr [7B268FC458C0]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+       mov       r12,rax
+M02_L28:
+       jmp       near ptr M02_L15
+M02_L29:
+       xor       edi,edi
+       call      qword ptr [7B26907AF0A8]
+       int       3
+M02_L30:
+       mov       rdi,[rbp-0C8]
+       call      qword ptr [7B26907AF210]
+       jmp       near ptr M02_L02
+M02_L31:
+       lea       rdi,[rbp-30]
+       call      qword ptr [7B26907AF228]
+       int       3
+M02_L32:
+       mov       rdi,7B269085BA50
+       call      qword ptr [7B26907A6D48]
+       jmp       near ptr M02_L04
+M02_L33:
+       mov       edi,4
+       call      qword ptr [7B26907AEEF8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L05
+M02_L34:
+       mov       rdi,[rbp-0C8]
+       call      00007B270DEE6790
+       test      eax,eax
+       jne       near ptr M02_L60
+M02_L35:
+       mov       rsi,[rbp-0C0]
+       mov       rdi,[rsi+10]
+       test      rdi,rdi
+       je        near ptr M02_L52
+       mov       byte ptr [rdi+18],1
+       mov       rbx,[rdi+8]
+       xor       eax,eax
+       mov       [rdi+8],rax
+       mov       r15,[rdi+10]
+       mov       rdi,7B270E2A0D68
+       mov       rax,7B270EBAC820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L61
+       mov       rdi,[rax+8]
+       mov       r13,[rdi+20]
+       test      r13,r13
+       je        near ptr M02_L61
+M02_L36:
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L37
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L37:
+       mov       r14,[rax+10]
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L38
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L38:
+       lea       rdi,[rax+10]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-128],r14
+       test      rbx,rbx
+       je        near ptr M02_L50
+       mov       rdi,offset System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Int32, System.Private.CoreLib],[Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0+<<GetValueAsync>b__0>d[[System.Int32, System.Private.CoreLib]], Microsoft.VisualStudio.Threading]].MoveNext()
+       cmp       [rbx+18],rdi
+       jne       near ptr M02_L49
+       mov       rbx,[rbx+8]
+       mov       rdi,7B16CCC013A8
+       mov       r15,[rdi]
+       movzx     r12d,byte ptr [r15+9D]
+       test      r12d,r12d
+       jne       near ptr M02_L44
+M02_L39:
+       mov       rdi,[rbx+10]
+       test      rdi,rdi
+       je        near ptr M02_L45
+       mov       rsi,7B16CCC013B8
+       mov       rsi,[rsi]
+       mov       rdx,rbx
+       call      qword ptr [7B26907AC3F0]; System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, System.Object)
+M02_L40:
+       mov       edi,[rbx+34]
+       test      edi,1600000
+       je        short M02_L43
+       cmp       byte ptr [7B268EC5B06C],0
+       jne       near ptr M02_L46
+M02_L41:
+       xor       edi,edi
+       mov       [rbx+40],rdi
+       mov       [rbx+48],rdi
+       mov       [rbx+50],rdi
+       mov       [rbx+58],rdi
+       mov       [rbx+60],rdi
+       mov       [rbx+68],rdi
+       mov       [rbx+10],rdi
+       mov       rdi,r15
+       cmp       byte ptr [rdi+9D],0
+       je        short M02_L43
+       movzx     eax,byte ptr [rdi+9D]
+       mov       ecx,[rdi+98]
+       mov       rdi,[rdi+80]
+       test      eax,eax
+       je        short M02_L43
+       test      ecx,ecx
+       je        short M02_L42
+       cmp       ecx,3
+       jl        short M02_L43
+M02_L42:
+       test      rdi,rdi
+       je        short M02_L47
+       test      edi,100
+       jne       short M02_L47
+M02_L43:
+       test      r12d,r12d
+       je        short M02_L50
+       jmp       short M02_L48
+M02_L44:
+       mov       rdi,rbx
+       call      qword ptr [7B26907AC3C0]
+       mov       esi,eax
+       mov       rdi,r15
+       mov       edx,2
+       call      qword ptr [7B26907AC3D8]
+       jmp       near ptr M02_L39
+M02_L45:
+       lea       rdi,[rbx+40]
+       call      qword ptr [7B26907A7BB8]; Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0+<<GetValueAsync>b__0>d[[System.Int32, System.Private.CoreLib]].MoveNext()
+       jmp       near ptr M02_L40
+M02_L46:
+       mov       rdi,rbx
+       call      qword ptr [7B26907AC5E8]
+       jmp       near ptr M02_L41
+M02_L47:
+       mov       rdi,rbx
+       call      qword ptr [7B2690496880]; System.GC.SuppressFinalize(System.Object)
+       jmp       short M02_L43
+M02_L48:
+       mov       rdi,r15
+       mov       esi,2
+       call      qword ptr [7B26907AC438]
+       jmp       short M02_L50
+M02_L49:
+       mov       rdi,[rbx+8]
+       call      qword ptr [rbx+18]
+       nop
+M02_L50:
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L51
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L51:
+       lea       rdi,[rax+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+M02_L52:
+       mov       rsi,[rbp-0B8]
+       lock or   dword ptr [rsp],0
+       mov       rdi,[rsi+30]
+       test      rdi,rdi
+       jne       near ptr M02_L62
+       xor       eax,eax
+M02_L53:
+       test      rax,rax
+       jne       short M02_L55
+       mov       rsi,[rbp-0B8]
+       mov       rbx,[rsi+28]
+       mov       rdi,[rbp-30]
+       mov       [rbp-0B0],rdi
+       test      rbx,rbx
+       je        near ptr M02_L63
+       cmp       qword ptr [rbp-0B0],0
+       jne       near ptr M02_L64
+M02_L54:
+       mov       rax,rbx
+M02_L55:
+       add       rsp,128
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M02_L56:
+       test      dword ptr [rdi+34],1600000
+       jne       near ptr M02_L01
+       jmp       near ptr M02_L00
+M02_L57:
+       mov       rdi,[rdi+8]
+       cmp       [rdi],edi
+       call      qword ptr [7B26907AF4C8]
+       test      rax,rax
+       je        near ptr M02_L01
+       call      qword ptr [7B26907AF4E0]
+       mov       rdi,rax
+       mov       rdx,7B16CCC01430
+       mov       rdx,[rdx]
+       mov       rsi,7B16A700A868
+       mov       rax,[rax]
+       mov       rax,[rax+48]
+       call      qword ptr [rax+28]
+       mov       rdi,rax
+       xor       eax,eax
+       test      rdi,rdi
+       cmove     rdi,rax
+       call      qword ptr [7B26907A6C28]
+       int       3
+M02_L58:
+       mov       edi,94D
+       mov       rsi,7B268EC54000
+       call      qword ptr [7B268FC4EF88]
+       mov       rdi,rax
+       call      qword ptr [7B26907AF0A8]
+       int       3
+M02_L59:
+       call      qword ptr [7B26907AF4E0]
+       mov       rdi,rax
+       mov       rdx,7B16CCC01430
+       mov       rdx,[rdx]
+       mov       rsi,7B16A700A868
+       mov       rax,[rax]
+       mov       rax,[rax+48]
+       call      qword ptr [rax+28]
+       mov       rdi,rax
+       xor       eax,eax
+       test      rdi,rdi
+       cmove     rdi,rax
+       call      qword ptr [7B26907A6C28]
+       int       3
+M02_L60:
+       mov       edi,eax
+       mov       rsi,[rbp-0C8]
+       call      qword ptr [7B26907AF0C0]
+       jmp       near ptr M02_L35
+M02_L61:
+       mov       edi,4
+       call      qword ptr [7B26907AEEF8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       r13,rax
+       jmp       near ptr M02_L36
+M02_L62:
+       mov       rdx,[rbp-30]
+       xor       esi,esi
+       call      qword ptr [7B26907A6D18]
+       jmp       near ptr M02_L53
+M02_L63:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,170F
+       mov       rsi,7B26907D7C20
+       call      qword ptr [7B268FC4EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [7B269049E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+M02_L64:
+       test      dword ptr [rbx+34],1600000
+       jne       near ptr M02_L54
+       lea       rdi,[rbp-0B0]
+       call      qword ptr [7B26907AC690]
+       test      eax,eax
+       je        short M02_L65
+       mov       rdi,[rbp-0B0]
+       call      qword ptr [7B26907AC648]
+       jmp       near ptr M02_L55
+M02_L65:
+       mov       rdi,rbx
+       mov       rsi,[rbp-0B0]
+       call      qword ptr [7B26907AC618]
+       jmp       near ptr M02_L55
+M02_L66:
+       sub       rsp,18
+       mov       r15,[rbp-0B8]
+       mov       rdi,[r15+18]
+       test      rdi,rdi
+       je        near ptr M02_L85
+       mov       rbx,[rdi+8]
+       cmp       qword ptr [rbx+8],0
+       setne     r14b
+       movzx     r14d,r14b
+       mov       rdi,7B270E2A0D68
+       mov       rax,7B270EBAC820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       short M02_L67
+       mov       rdi,[rax+8]
+       mov       rcx,[rdi+20]
+       test      rcx,rcx
+       jne       short M02_L68
+M02_L67:
+       mov       edi,4
+       call      qword ptr [7B26907AEEF8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       rcx,rax
+M02_L68:
+       mov       r13,rcx
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L69
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L69:
+       mov       r12,[rax+8]
+       xor       edi,edi
+       mov       [rbp-90],rdi
+       xor       eax,eax
+       test      r12,r12
+       je        short M02_L70
+       mov       rdi,[r12+8]
+       lea       rdx,[rbp-90]
+       mov       rsi,rbx
+       mov       r11,7B268EC60570
+       call      qword ptr [r11]
+       mov       [rbp-94],eax
+       mov       eax,[rbp-94]
+M02_L70:
+       cmp       qword ptr [rbp-90],0
+       je        near ptr M02_L84
+       xor       edi,edi
+       mov       [rbp-0A0],rdi
+       mov       [rbp-0A4],edi
+       test      r12,r12
+       je        short M02_L71
+       mov       [rbp-94],eax
+       movzx     ecx,byte ptr [r12+18]
+       mov       [rbp-0A4],ecx
+       test      r14d,r14d
+       sete      cl
+       movzx     ecx,cl
+       mov       rdi,[r12+8]
+       mov       rsi,rbx
+       mov       r11,7B268EC60568
+       xor       edx,edx
+       call      qword ptr [r11]
+       mov       [rbp-108],rax
+       mov       rdx,[r12+10]
+       mov       [rbp-0A0],rdx
+       jmp       short M02_L74
+M02_L71:
+       test      r14d,r14d
+       jne       short M02_L72
+       mov       rdi,7B16CCC013B0
+       mov       r12,[rdi]
+       jmp       short M02_L73
+M02_L72:
+       mov       [rbp-94],eax
+       mov       rdi,offset MT_System.Threading.AsyncLocalValueMap+OneElementAsyncLocalValueMap
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       mov       rsi,rbx
+       mov       rdi,7B2690851F28
+       xor       edx,edx
+       call      qword ptr [7B26907AEFB8]
+       mov       [rbp-120],rdx
+       lea       rdi,[r12+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r12+10]
+       mov       rsi,[rbp-120]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       eax,[rbp-94]
+M02_L73:
+       mov       [rbp-94],eax
+       mov       [rbp-108],r12
+M02_L74:
+       test      r14d,r14d
+       je        short M02_L76
+       cmp       dword ptr [rbp-94],0
+       jne       short M02_L76
+       cmp       qword ptr [rbp-0A0],0
+       jne       short M02_L75
+       mov       rdi,offset MT_System.Threading.IAsyncLocal[]
+       mov       esi,1
+       call      CORINFO_HELP_NEWARR_1_PTR
+       mov       r12,rax
+       lea       rdi,[r12+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-0A0],r12
+       jmp       short M02_L76
+M02_L75:
+       mov       rdx,[rbp-0A0]
+       mov       r12d,[rdx+8]
+       lea       edx,[r12+1]
+       lea       rsi,[rbp-0A0]
+       mov       rdi,7B2690810C68
+       call      qword ptr [7B269007C480]; System.Array.Resize[[System.__Canon, System.Private.CoreLib]](System.__Canon[] ByRef, Int32)
+       mov       esi,r12d
+       mov       rdi,[rbp-0A0]
+       mov       rdx,rbx
+       call      qword ptr [7B268FC457A0]; System.Runtime.CompilerServices.CastHelpers.StelemRef(System.Object[], IntPtr, System.Object)
+M02_L76:
+       mov       r13,[r13+10]
+       test      r13,r13
+       jne       short M02_L77
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r13,rax
+M02_L77:
+       mov       r12d,[rbp-0A4]
+       test      r12d,r12d
+       jne       short M02_L78
+       mov       rdi,7B16CCC013B0
+       mov       rax,[rbp-108]
+       cmp       rax,[rdi]
+       je        short M02_L79
+M02_L78:
+       mov       rdi,offset MT_System.Threading.ExecutionContext
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       mov       [rbp-110],rsi
+       mov       rax,[rbp-0A0]
+       mov       [rbp-118],rax
+       lea       rdi,[rsi+8]
+       mov       rsi,[rbp-108]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-110]
+       lea       rdi,[rsi+10]
+       mov       rsi,[rbp-118]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-110]
+       mov       [rsi+18],r12b
+       jmp       short M02_L80
+M02_L79:
+       xor       esi,esi
+M02_L80:
+       lea       rdi,[r13+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r14d,r14d
+       je        short M02_L84
+       mov       rsi,[rbp-90]
+       test      rsi,rsi
+       je        short M02_L82
+       mov       rdi,[rbx]
+       mov       rdi,[rdi+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi]
+       mov       r14,rsi
+       cmp       [r14],rdi
+       je        short M02_L81
+       call      qword ptr [7B268FC458C0]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+       mov       r14,rax
+M02_L81:
+       jmp       short M02_L83
+M02_L82:
+       xor       r14d,r14d
+M02_L83:
+       mov       rax,[rbx+8]
+       xor       edi,edi
+       xor       ecx,ecx
+       mov       [rsp],r14
+       mov       [rsp+8],rdi
+       mov       [rsp+10],cl
+       mov       rdi,[rax+8]
+       call      qword ptr [rax+18]
+M02_L84:
+       xor       edi,edi
+       mov       [rbp-90],rdi
+       mov       [rbp-0A0],rdi
+M02_L85:
+       add       rsp,18
+       ret
+       sub       rsp,18
+       cmp       dword ptr [rbp-34],0
+       je        short M02_L87
+       cmp       qword ptr [rbp-0C8],0
+       jne       short M02_L86
+       xor       edi,edi
+       call      qword ptr [7B26907AF0A8]
+       int       3
+M02_L86:
+       mov       rdi,[rbp-0C8]
+       call      00007B270DEE6790
+       test      eax,eax
+       je        short M02_L87
+       mov       edi,eax
+       mov       rsi,[rbp-0C8]
+       call      qword ptr [7B26907AF0C0]
+M02_L87:
+       nop
+       add       rsp,18
+       ret
+       sub       rsp,18
+       mov       rdi,7B270E2A0D68
+       mov       rax,7B270EBAC820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       short M02_L88
+       mov       rdi,[rax+8]
+       mov       r13,[rdi+20]
+       test      r13,r13
+       jne       short M02_L89
+M02_L88:
+       mov       edi,4
+       call      qword ptr [7B26907AEEF8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       r13,rax
+M02_L89:
+       mov       r14,[r13+10]
+       test      r14,r14
+       jne       short M02_L90
+       call      qword ptr [7B269049C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r14,rax
+M02_L90:
+       lea       rdi,[r14+10]
+       mov       rsi,[rbp-128]
+       call      CORINFO_HELP_ASSIGN_REF
+       nop
+       add       rsp,18
+       ret
+; Total bytes of code 3550
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].LazyOfTask()
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        short M00_L00
+       lea       rdi,[r15+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       cmp       qword ptr [r15+8],0
+       je        short M00_L01
+       mov       rdi,r15
+       pop       rbx
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7D441DE9C438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M00_L00:
+       mov       edi,1817
+       mov       rsi,7D441C654000
+       call      qword ptr [7D441D64EF88]
+       mov       rdi,rax
+       call      qword ptr [7D441E1AE9A0]
+       int       3
+M00_L01:
+       mov       rax,[r15+18]
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 142
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7D441E1A7858]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M02_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M02_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M02_L04
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M02_L05
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      00007D449B8E6020
+       test      eax,eax
+       jne       short M02_L02
+       mov       rdi,rbx
+       call      qword ptr [7D441E1AC978]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+M02_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M02_L03
+       mov       esi,2
+       call      qword ptr [7D441DE9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       nop
+M02_L03:
+       mov       rdi,rbx
+       call      00007D449B8E6790
+       test      eax,eax
+       jne       near ptr M02_L11
+M02_L04:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M02_L12
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [7D441DE9C438]
+M02_L05:
+       cmp       eax,8
+       ja        short M02_L06
+       mov       eax,eax
+       lea       rcx,[7D441D6C2788]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M02_L01]
+       add       rcx,rdx
+       jmp       rcx
+M02_L06:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [7D441E1AE9D0]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [7D441E1AEBC8]
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [7D441DE9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M02_L07
+       jmp       short M02_L08
+M02_L07:
+       mov       rdi,rsi
+       mov       rsi,7D441E220C98
+       call      qword ptr [7D441D64F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M02_L08:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M02_L09
+       jmp       short M02_L10
+M02_L09:
+       mov       rdi,rax
+       mov       rsi,7D441E220D38
+       call      qword ptr [7D441D64F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M02_L10:
+       call      qword ptr [7D441E1AEB68]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [7D441E1AEBE0]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [7D441E1AEBF8]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       call      qword ptr [7D441E1AEC10]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [7D441DE9C450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M02_L04
+M02_L11:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [7D441E1AE9B8]
+       jmp       near ptr M02_L04
+M02_L12:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M02_L13
+       mov       rdi,[rbp-28]
+       call      00007D449B8E6790
+       test      eax,eax
+       je        short M02_L13
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [7D441E1AE9B8]
+M02_L13:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 438
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M03_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [7D441E1A7870]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M03_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M03_L03
+M03_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M03_L04
+M03_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M03_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M03_L01
+       mov       rdi,rbx
+       call      qword ptr [7D441E1AED90]
+       jmp       short M03_L01
+M03_L04:
+       test      r15b,2
+       jne       short M03_L05
+       mov       rdi,rbx
+       call      qword ptr [7D441E1AEDC0]
+M03_L05:
+       mov       rdi,rbx
+       call      qword ptr [7D441E1AF210]
+       jmp       short M03_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].LazyOfTask_TaskRun()
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+10]
+       test      rsi,rsi
+       je        short M00_L00
+       lea       rdi,[r15+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       cmp       qword ptr [r15+8],0
+       je        short M00_L01
+       mov       rdi,r15
+       pop       rbx
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [72333B08C438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M00_L00:
+       mov       edi,1817
+       mov       rsi,723339844000
+       call      qword ptr [72333A83EF88]
+       mov       rdi,rax
+       call      qword ptr [72333B39F300]
+       int       3
+M00_L01:
+       mov       rax,[r15+18]
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 142
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [72333B397750]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M02_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M02_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M02_L04
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M02_L05
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      00007233B8AE6020
+       test      eax,eax
+       jne       short M02_L02
+       mov       rdi,rbx
+       call      qword ptr [72333B39CEE8]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+M02_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M02_L03
+       mov       esi,2
+       call      qword ptr [72333B08C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       nop
+M02_L03:
+       mov       rdi,rbx
+       call      00007233B8AE6790
+       test      eax,eax
+       jne       near ptr M02_L11
+M02_L04:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M02_L12
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [72333B08C438]
+M02_L05:
+       cmp       eax,8
+       ja        short M02_L06
+       mov       eax,eax
+       lea       rcx,[72333A8BA988]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M02_L01]
+       add       rcx,rdx
+       jmp       rcx
+M02_L06:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [72333B39F258]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [72333B39F498]
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [72333B08C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M02_L07
+       jmp       short M02_L08
+M02_L07:
+       mov       rdi,rsi
+       mov       rsi,72333B3F4080
+       call      qword ptr [72333A83F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M02_L08:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M02_L09
+       jmp       short M02_L10
+M02_L09:
+       mov       rdi,rax
+       mov       rsi,72333B3F4120
+       call      qword ptr [72333A83F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M02_L10:
+       call      qword ptr [72333B39F438]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [72333B39F4B0]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [72333B39F4C8]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       call      qword ptr [72333B39F4E0]
+       jmp       near ptr M02_L04
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [72333B08C450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M02_L04
+M02_L11:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [72333B39F318]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       jmp       near ptr M02_L04
+M02_L12:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M02_L13
+       mov       rdi,[rbp-28]
+       call      00007233B8AE6790
+       test      eax,eax
+       je        short M02_L13
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [72333B39F318]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+M02_L13:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 438
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M03_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [72333B397768]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M03_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M03_L03
+M03_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M03_L04
+M03_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M03_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M03_L01
+       mov       rdi,rbx
+       call      qword ptr [72333B39F408]
+       jmp       short M03_L01
+M03_L04:
+       test      r15b,2
+       jne       short M03_L05
+       mov       rdi,rbx
+       call      qword ptr [72333B39F8E8]
+M03_L05:
+       mov       rdi,rbx
+       call      qword ptr [72333B444090]
+       jmp       short M03_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].AsyncLazy()
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        short M00_L00
+       lea       rdi,[r15+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[r15+10]
+       test      rax,rax
+       jne       short M00_L01
+       mov       rdi,r15
+       xor       esi,esi
+       pop       rbx
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7A15ADD96808]; System.Threading.Tasks.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetOrStartAttemptAsync(System.Threading.CancellationToken)
+M00_L00:
+       mov       edi,1
+       mov       rsi,7A15ADDC7388
+       call      qword ptr [7A15AD23EF88]
+       mov       rdi,rax
+       call      qword ptr [7A15ADD9FE10]
+       int       3
+M00_L01:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 108
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7A15ADD97558]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetOrStartAttemptAsync(System.Threading.CancellationToken)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+30]
+       mov       rbx,rdi
+       mov       r15,rsi
+M02_L00:
+       mov       r14,[rbx+8]
+       mov       rsi,r14
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       test      rax,rax
+       jne       near ptr M02_L19
+       test      r14,r14
+       je        short M02_L01
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       cmp       [r14],rdi
+       je        near ptr M02_L11
+M02_L01:
+       lea       rdi,[rbx+20]
+       cmp       qword ptr [rdi],0
+       jne       near ptr M02_L18
+M02_L02:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       call      CORINFO_HELP_NEWSFAST
+       mov       r13,rax
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCompletionSource<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       xor       edi,edi
+       mov       [rax+8],rdi
+       mov       [rax+10],rdi
+       mov       [rax+18],rdi
+       mov       dword ptr [rax+34],2000440
+       lea       rdi,[r14+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r13+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r13+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[rbx+8]
+       test      rdi,rdi
+       je        near ptr M02_L21
+       mov       rsi,r13
+       xor       edx,edx
+       call      00007A162B674060
+       test      rax,rax
+       jne       near ptr M02_L00
+       mov       rdi,7A05E8C01380
+       mov       rbx,[rdi]
+       test      rbx,rbx
+       je        near ptr M02_L22
+M02_L03:
+       mov       rdi,7A162B8A0D68
+       mov       rax,7A162C10A820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L23
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M02_L23
+M02_L04:
+       mov       rax,[rax+10]
+       test      rax,rax
+       jne       short M02_L05
+       call      qword ptr [7A15ADA8C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L05:
+       mov       r14,[rax+8]
+       test      r14,r14
+       je        near ptr M02_L13
+       xor       edi,edi
+       cmp       byte ptr [r14+18],0
+       cmovne    r14,rdi
+M02_L06:
+       test      r14,r14
+       je        short M02_L07
+       cmp       byte ptr [r14+19],0
+       je        near ptr M02_L24
+M02_L07:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallbackDefaultContext<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       lea       rdi,[r12+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r12+10]
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+M02_L08:
+       mov       rdi,7A05E8C01398
+       mov       rbx,[rdi]
+       cmp       byte ptr [rbx+38],0
+       jne       near ptr M02_L25
+M02_L09:
+       mov       rdi,[rbx+8]
+       mov       rsi,[rdi+10]
+       mov       rcx,[rsi+8]
+M02_L10:
+       mov       r14d,[rsi+0A0]
+       mov       eax,r14d
+       and       eax,[rsi+18]
+       cmp       eax,[rcx+8]
+       jae       near ptr M02_L28
+       shl       rax,4
+       lea       rdx,[rcx+rax+10]
+       mov       eax,[rdx+8]
+       sub       eax,r14d
+       jne       near ptr M02_L14
+       lea       r8,[rsi+0A0]
+       lea       r9d,[r14+1]
+       mov       eax,r14d
+       lock cmpxchg [r8],r9d
+       cmp       eax,r14d
+       jne       short M02_L10
+       mov       rax,rdx
+       mov       [rbp-30],rax
+       mov       rdi,rax
+       mov       rsi,r12
+       call      CORINFO_HELP_ASSIGN_REF
+       inc       r14d
+       mov       r12,[rbp-30]
+       mov       [r12+8],r14d
+       jmp       near ptr M02_L15
+M02_L11:
+       mov       rdi,r14
+       call      qword ptr [7A15ADD968C8]
+       test      eax,eax
+       je        short M02_L12
+       mov       rdi,offset MT_System.InvalidOperationException
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,r14
+       mov       rsi,7A15A8609FE0
+       call      qword ptr [7A15ADA85260]
+       mov       rdi,r14
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7A15ADD96880]
+M02_L12:
+       mov       rdi,r14
+       mov       rsi,r15
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7A15ADD968E0]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+M02_L13:
+       mov       rdi,7A05E8C01388
+       mov       r14,[rdi]
+       jmp       near ptr M02_L06
+M02_L14:
+       test      eax,eax
+       jge       near ptr M02_L10
+       mov       rsi,r12
+       call      qword ptr [7A15ADD9F600]
+M02_L15:
+       add       rbx,78
+       mov       edi,1
+       xchg      edi,[rbx]
+       test      edi,edi
+       jne       short M02_L16
+       mov       rdi,7A05E8C013C0
+       mov       rbx,[rdi]
+       lea       rdi,[rbx+160]
+       lock inc  dword ptr [rdi]
+       mov       rdi,rbx
+       call      qword ptr [7A15ADD96D78]; System.Threading.PortableThreadPool+WorkerThread.MaybeAddWorkingWorker(System.Threading.PortableThreadPool)
+       cmp       dword ptr [rbx+164],6
+       jne       near ptr M02_L26
+M02_L16:
+       test      r15,r15
+       jne       near ptr M02_L27
+       mov       rdi,[r13+10]
+       mov       rax,[rdi+8]
+M02_L17:
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M02_L18:
+       mov       rdi,[rdi]
+       cmp       dword ptr [rdi+20],0
+       je        near ptr M02_L02
+       jmp       short M02_L20
+M02_L19:
+       jmp       short M02_L17
+M02_L20:
+       mov       rdi,[rbx+20]
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7A15ADD967C0]
+M02_L21:
+       call      qword ptr [7A15ADD9F5D0]
+       int       3
+M02_L22:
+       mov       rdi,offset MT_System.Action<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,7A05E8C01378
+       mov       rsi,[rdi]
+       lea       rdi,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset System.Threading.Tasks.AsyncLazy`1+<>c[[System.Int32, System.Private.CoreLib]].<GetOrStartAttemptAsync>b__11_0(Attempt<Int32>)
+       mov       [rbx+18],rdi
+       mov       rdi,7A05E8C01380
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       near ptr M02_L03
+M02_L23:
+       mov       edi,4
+       call      qword ptr [7A15ADD9F498]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L04
+M02_L24:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallback<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       mov       rdi,r12
+       mov       rsi,rbx
+       mov       rdx,r13
+       mov       rcx,r14
+       call      qword ptr [7A15ADD9F948]
+       jmp       near ptr M02_L08
+M02_L25:
+       mov       rdi,7A05E8C013B0
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       je        near ptr M02_L09
+       mov       rdi,7A05E8C013B0
+       mov       rdi,[rdi]
+       mov       rsi,r12
+       call      qword ptr [7A15ADD9F5E8]
+       jmp       near ptr M02_L09
+M02_L26:
+       mov       rdi,rbx
+       call      qword ptr [7A15ADD96FD0]; System.Threading.PortableThreadPool+GateThread.EnsureRunningSlow(System.Threading.PortableThreadPool)
+       jmp       near ptr M02_L16
+M02_L27:
+       mov       rdi,[r13+10]
+       mov       rbx,[rdi+8]
+       cmp       [rbx],bl
+       mov       rdi,offset MT_System.TimeProvider
+       call      qword ptr [7A15AD235728]; System.Runtime.CompilerServices.StaticsHelpers.GetNonGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdx,7A05E8C01510
+       mov       rdx,[rdx]
+       mov       rcx,r15
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7A15ADE44288]
+M02_L28:
+       call      CORINFO_HELP_RNGCHKFAIL
+       int       3
+; Total bytes of code 1088
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M03_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [7A15ADD97570]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M03_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M03_L03
+M03_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M03_L04
+M03_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M03_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M03_L01
+       mov       rdi,rbx
+       call      qword ptr [7A15ADD9FDF8]
+       jmp       short M03_L01
+M03_L04:
+       test      r15b,2
+       jne       short M03_L05
+       mov       rdi,rbx
+       call      qword ptr [7A15ADD9F990]
+M03_L05:
+       mov       rdi,rbx
+       call      qword ptr [7A15ADE442A0]
+       jmp       short M03_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].AsyncLazy_NoHop()
+       push      rbp
+       push      r15
+       push      r14
+       push      rbx
+       sub       rsp,58
+       lea       rbp,[rsp+70]
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu   ymmword ptr [rbp-50],ymm8
+       vmovdqa   xmmword ptr [rbp-30],xmm8
+       xor       eax,eax
+       mov       [rbp-20],rax
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        near ptr M00_L14
+       lea       rdi,[r15+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[r15+10]
+       test      rax,rax
+       jne       near ptr M00_L15
+M00_L00:
+       mov       rbx,[r15+8]
+       mov       rsi,rbx
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       test      rax,rax
+       jne       near ptr M00_L17
+       test      rbx,rbx
+       je        short M00_L01
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       cmp       [rbx],rdi
+       je        near ptr M00_L05
+M00_L01:
+       lea       rdi,[r15+20]
+       cmp       qword ptr [rdi],0
+       jne       near ptr M00_L16
+M00_L02:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCompletionSource<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       xor       edi,edi
+       mov       [rax+8],rdi
+       mov       [rax+10],rdi
+       mov       [rax+18],rdi
+       mov       dword ptr [rax+34],2000440
+       lea       rdi,[rbx+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r15+8]
+       test      rdi,rdi
+       je        near ptr M00_L19
+       mov       rsi,r14
+       xor       edx,edx
+       call      0000760899074060
+       test      rax,rax
+       jne       near ptr M00_L00
+       xor       edi,edi
+       mov       [rbp-30],rdi
+       mov       [rbp-50],r14
+       mov       dword ptr [rbp-38],0FFFFFFFF
+       mov       rdi,7608992A0D68
+       mov       rax,760899B78820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M00_L20
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M00_L20
+M00_L03:
+       mov       r15,[rax+10]
+       test      r15,r15
+       jne       short M00_L04
+       call      qword ptr [76081B48C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r15,rax
+M00_L04:
+       mov       [rbp-58],r15
+       mov       rsi,[r15+8]
+       mov       [rbp-60],rsi
+       mov       rsi,[r15+10]
+       mov       [rbp-68],rsi
+       jmp       short M00_L07
+M00_L05:
+       mov       rdi,rbx
+       call      qword ptr [76081B796958]
+       test      eax,eax
+       je        short M00_L06
+       mov       rdi,offset MT_System.InvalidOperationException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,rbx
+       mov       rsi,760809C09FE0
+       call      qword ptr [76081B485260]
+       mov       rdi,rbx
+       call      qword ptr [76081B796928]
+       jmp       short M00_L12
+M00_L06:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [76081B796970]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+       jmp       short M00_L12
+M00_L07:
+       lea       rdi,[rbp-50]
+       call      qword ptr [76081B796B50]; System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]].MoveNext()
+       nop
+       mov       rsi,[rbp-68]
+       cmp       rsi,[r15+10]
+       je        short M00_L08
+       lea       rdi,[r15+10]
+       call      CORINFO_HELP_ASSIGN_REF
+M00_L08:
+       mov       rdi,[r15+8]
+       mov       rbx,rdi
+       mov       rsi,[rbp-60]
+       cmp       rsi,rbx
+       je        short M00_L10
+       lea       rdi,[r15+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      rbx,rbx
+       je        short M00_L09
+       cmp       qword ptr [rbx+10],0
+       jne       near ptr M00_L21
+M00_L09:
+       cmp       qword ptr [rbp-60],0
+       jne       short M00_L13
+M00_L10:
+       cmp       qword ptr [rbp-30],0
+       je        near ptr M00_L22
+M00_L11:
+       mov       rax,[r14+10]
+       mov       rax,[rax+8]
+M00_L12:
+       add       rsp,58
+       pop       rbx
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L13:
+       mov       rsi,[rbp-60]
+       cmp       qword ptr [rsi+10],0
+       je        short M00_L10
+       jmp       short M00_L21
+M00_L14:
+       mov       edi,1
+       mov       rsi,76081B7C7C10
+       call      qword ptr [76081AC3EF88]
+       mov       rdi,rax
+       call      qword ptr [76081B79FA20]
+       int       3
+M00_L15:
+       jmp       short M00_L12
+M00_L16:
+       mov       rdi,[rdi]
+       cmp       dword ptr [rdi+20],0
+       je        near ptr M00_L02
+       jmp       short M00_L18
+M00_L17:
+       jmp       short M00_L12
+M00_L18:
+       mov       rdi,[r15+20]
+       call      qword ptr [76081B7968B0]
+       jmp       short M00_L12
+M00_L19:
+       call      qword ptr [76081B79F150]
+       int       3
+M00_L20:
+       mov       edi,4
+       call      qword ptr [76081B79F3A8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M00_L03
+M00_L21:
+       mov       rdi,rbx
+       mov       rsi,[rbp-60]
+       call      qword ptr [76081B79F120]
+       jmp       near ptr M00_L10
+M00_L22:
+       lea       rdi,[rbp-30]
+       call      qword ptr [76081B79F798]
+       jmp       near ptr M00_L11
+       push      rax
+       mov       rsi,[rbp-68]
+       mov       rax,[rbp-58]
+       cmp       rsi,[rax+10]
+       je        short M00_L23
+       lea       rdi,[rax+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-58]
+M00_L23:
+       mov       r14,[rax+8]
+       mov       rsi,[rbp-60]
+       cmp       rsi,r14
+       je        short M00_L26
+       lea       rdi,[rax+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r14,r14
+       je        short M00_L24
+       cmp       qword ptr [r14+10],0
+       jne       short M00_L25
+M00_L24:
+       cmp       qword ptr [rbp-60],0
+       je        short M00_L26
+       mov       rsi,[rbp-60]
+       cmp       qword ptr [rsi+10],0
+       je        short M00_L26
+M00_L25:
+       mov       rdi,r14
+       mov       rsi,[rbp-60]
+       call      qword ptr [76081B79F120]
+M00_L26:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 818
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [76081B79C468]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       push      rbp
+       mov       rbp,rsp
+       test      rsi,rsi
+       jne       short M02_L01
+M02_L00:
+       mov       rax,rsi
+       pop       rbp
+       ret
+M02_L01:
+       cmp       [rsi],rdi
+       je        short M02_L00
+       mov       rax,[rsi]
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+M02_L02:
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       jmp       short M02_L02
+M02_L03:
+       xor       esi,esi
+       jmp       short M02_L00
+; Total bytes of code 93
+```
+```assembly
+; System.Threading.Thread.InitializeCurrentThread()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-30],rax
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [76081A7DEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [76081A7DEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       mov       rbx,[rbp-30]
+       call      qword ptr [76081A7E0B98]
+       lea       rdi,[rax+10]
+       mov       rsi,[rbp-30]
+       call      qword ptr [76081A7DEEB8]; CORINFO_HELP_ASSIGN_REF
+       mov       rax,rbx
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 123
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+       push      r15
+       push      rbx
+       push      rax
+       mov       rbx,rsi
+       test      rbx,rbx
+       jne       short M04_L00
+       mov       rax,[rdi+10]
+       mov       rax,[rax+8]
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       ret
+M04_L00:
+       mov       rdi,[rdi+10]
+       mov       r15,[rdi+8]
+       cmp       [r15],r15b
+       mov       rdi,offset MT_System.TimeProvider
+       call      qword ptr [76081AC35728]; System.Runtime.CompilerServices.StaticsHelpers.GetNonGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdx,75F858C01508
+       mov       rdx,[rdx]
+       mov       rcx,rbx
+       mov       rdi,r15
+       mov       esi,0FFFFFFFF
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       jmp       qword ptr [76081B844078]
+; Total bytes of code 92
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]].MoveNext()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,98
+       lea       rbp,[rsp+0C0]
+       xor       eax,eax
+       mov       [rbp-58],rax
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu   ymmword ptr [rbp-50],ymm8
+       mov       [rbp-30],rax
+       mov       [rbp-70],rdi
+       mov       eax,[rdi+18]
+       mov       rbx,[rdi]
+       test      eax,eax
+       jne       short M05_L02
+       vmovdqu   xmm0,xmmword ptr [rdi+28]
+       vmovdqu   xmmword ptr [rbp-38],xmm0
+       xor       eax,eax
+       mov       [rdi+28],rax
+       mov       [rdi+30],rax
+       mov       dword ptr [rdi+18],0FFFFFFFF
+M05_L00:
+       mov       rsi,[rbp-38]
+       mov       eax,[rbp-30]
+       mov       ecx,[rsi+34]
+       and       ecx,11000000
+       cmp       ecx,1000000
+       jne       near ptr M05_L24
+M05_L01:
+       mov       rdi,[rbp-70]
+       mov       rsi,[rdi+8]
+       xor       eax,eax
+       mov       [rsi+8],rax
+       mov       rsi,[rdi+10]
+       mov       rdi,rbx
+       call      qword ptr [76081B796C58]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].Complete(System.Threading.Tasks.Task`1<Int32>)
+       jmp       near ptr M05_L25
+M05_L02:
+       mov       rax,75F858C01378
+       mov       r15,[rax]
+       mov       r14,r15
+       mov       rdi,7608992A0D68
+       mov       rax,760899B78820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M05_L21
+       mov       rdi,[rax+8]
+       mov       r13,[rdi+20]
+       test      r13,r13
+       je        near ptr M05_L21
+M05_L03:
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M05_L04
+       call      qword ptr [76081B48C048]; System.Threading.Thread.InitializeCurrentThread()
+M05_L04:
+       mov       rdi,[rax+8]
+       test      rdi,rdi
+       je        short M05_L05
+       mov       rdi,[rdi+8]
+       lea       rdx,[rbp-40]
+       mov       rsi,r14
+       mov       r11,760819C50550
+       call      qword ptr [r11]
+       mov       rsi,[rbp-40]
+       jmp       short M05_L06
+M05_L05:
+       xor       esi,esi
+M05_L06:
+       xor       edi,edi
+       mov       [rbp-40],rdi
+       mov       r14,rsi
+       test      r14,r14
+       je        short M05_L07
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazyAttemptFrame
+       cmp       [r14],rdi
+       jne       near ptr M05_L22
+M05_L07:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazyAttemptFrame
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       lea       rdi,[r12+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r12+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       cmp       qword ptr [r15+8],0
+       setne     r14b
+       movzx     r14d,r14b
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M05_L08
+       call      qword ptr [76081B48C048]; System.Threading.Thread.InitializeCurrentThread()
+M05_L08:
+       mov       rax,[rax+8]
+       mov       [rbp-78],rax
+       xor       edi,edi
+       mov       [rbp-48],rdi
+       xor       ecx,ecx
+       test      rax,rax
+       je        short M05_L09
+       mov       rdi,[rax+8]
+       lea       rdx,[rbp-48]
+       mov       rsi,r15
+       mov       r11,760819C50568
+       call      qword ptr [r11]
+       mov       [rbp-4C],eax
+       mov       rax,[rbp-78]
+       mov       ecx,[rbp-4C]
+M05_L09:
+       cmp       [rbp-48],r12
+       je        near ptr M05_L18
+       xor       edi,edi
+       mov       [rbp-58],rdi
+       mov       [rbp-5C],edi
+       test      rax,rax
+       jne       short M05_L10
+       mov       [rbp-4C],ecx
+       mov       rdi,offset MT_System.Threading.AsyncLocalValueMap+OneElementAsyncLocalValueMap
+       call      CORINFO_HELP_NEWSFAST
+       mov       [rbp-98],rax
+       lea       rdi,[rax+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-98]
+       lea       rdi,[rax+10]
+       mov       rsi,r12
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-98]
+       mov       [rbp-80],rax
+       jmp       short M05_L11
+M05_L10:
+       mov       [rbp-4C],ecx
+       movzx     edx,byte ptr [rax+18]
+       mov       [rbp-5C],edx
+       test      r14d,r14d
+       sete      cl
+       movzx     ecx,cl
+       mov       rdi,[rax+8]
+       mov       rsi,r15
+       mov       rdx,r12
+       mov       r11,760819C50560
+       call      qword ptr [r11]
+       mov       [rbp-80],rax
+       mov       rdx,[rbp-78]
+       mov       rdx,[rdx+10]
+       mov       [rbp-58],rdx
+M05_L11:
+       test      r14d,r14d
+       je        short M05_L13
+       cmp       dword ptr [rbp-4C],0
+       jne       short M05_L13
+       cmp       qword ptr [rbp-58],0
+       je        short M05_L12
+       mov       rdx,[rbp-58]
+       mov       ecx,[rdx+8]
+       mov       [rbp-60],ecx
+       lea       edx,[rcx+1]
+       lea       rsi,[rbp-58]
+       mov       rdi,76081B7CD5F0
+       call      qword ptr [76081B06C480]; System.Array.Resize[[System.__Canon, System.Private.CoreLib]](System.__Canon[] ByRef, Int32)
+       mov       esi,[rbp-60]
+       mov       rdi,[rbp-58]
+       mov       rdx,r15
+       call      qword ptr [76081AC357A0]; System.Runtime.CompilerServices.CastHelpers.StelemRef(System.Object[], IntPtr, System.Object)
+       jmp       short M05_L13
+M05_L12:
+       mov       rdi,offset MT_System.Threading.IAsyncLocal[]
+       mov       esi,1
+       call      CORINFO_HELP_NEWARR_1_PTR
+       mov       [rbp-90],rax
+       lea       rdi,[rax+10]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-90]
+       mov       [rbp-58],rax
+M05_L13:
+       mov       r13,[r13+10]
+       test      r13,r13
+       jne       short M05_L14
+       call      qword ptr [76081B48C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r13,rax
+M05_L14:
+       cmp       dword ptr [rbp-5C],0
+       jne       short M05_L15
+       mov       rdi,75F858C01380
+       mov       rax,[rbp-80]
+       cmp       rax,[rdi]
+       jne       short M05_L15
+       xor       esi,esi
+       jmp       short M05_L16
+M05_L15:
+       mov       rdi,offset MT_System.Threading.ExecutionContext
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       mov       [rbp-88],rsi
+       mov       rax,[rbp-58]
+       mov       [rbp-0A0],rax
+       lea       rdi,[rsi+8]
+       mov       rsi,[rbp-80]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-88]
+       lea       rdi,[rsi+10]
+       mov       rsi,[rbp-0A0]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-88]
+       mov       edi,[rbp-5C]
+       mov       [rsi+18],dil
+M05_L16:
+       lea       rdi,[r13+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r14d,r14d
+       je        short M05_L18
+       mov       rsi,[rbp-48]
+       test      rsi,rsi
+       jne       near ptr M05_L20
+       xor       edi,edi
+M05_L17:
+       mov       rax,[r15+8]
+       xor       ecx,ecx
+       mov       [rsp],rdi
+       mov       [rsp+8],r12
+       mov       [rsp+10],cl
+       mov       rdi,[rax+8]
+       call      qword ptr [rax+18]
+M05_L18:
+       xor       edi,edi
+       mov       [rbp-48],rdi
+       mov       [rbp-58],rdi
+       mov       rdi,[rbp-70]
+       lea       rdi,[rdi+8]
+       mov       rsi,r12
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       mov       rdi,rbx
+       call      qword ptr [76081B796BC8]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].InvokeFactory()
+       mov       rdi,[rbp-70]
+       lea       rdi,[rdi+10]
+       mov       rsi,rax
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       mov       rdi,[rbp-70]
+       mov       rsi,[rdi+10]
+       cmp       [rsi],sil
+       mov       [rbp-38],rsi
+       mov       dword ptr [rbp-30],2
+       test      byte ptr [rbp-30],4
+       jne       short M05_L19
+       mov       rsi,[rbp-38]
+       test      dword ptr [rsi+34],1600000
+       jne       near ptr M05_L00
+M05_L19:
+       xor       esi,esi
+       mov       rdi,[rbp-70]
+       mov       [rdi+18],esi
+       lea       rdi,[rdi+28]
+       mov       rsi,[rbp-38]
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       mov       esi,[rbp-30]
+       mov       rdi,[rbp-70]
+       mov       [rdi+30],esi
+       lea       rsi,[rdi+20]
+       call      qword ptr [76081B797D38]; System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.Threading.Tasks.VoidTaskResult, System.Private.CoreLib]].GetStateMachineBox[[System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]], AsyncLazy.Ablation.NoHop]](<RunAsync>d__4<Int32> ByRef, System.Threading.Tasks.Task`1<System.Threading.Tasks.VoidTaskResult> ByRef)
+       mov       rsi,rax
+       lea       rdi,[rbp-38]
+       call      qword ptr [76081B797D68]; System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.Threading.Tasks.VoidTaskResult, System.Private.CoreLib]].AwaitUnsafeOnCompleted[[System.Runtime.CompilerServices.ConfiguredTaskAwaitable+ConfiguredTaskAwaiter, System.Private.CoreLib]](ConfiguredTaskAwaiter ByRef, System.Runtime.CompilerServices.IAsyncStateMachineBox)
+       jmp       near ptr M05_L29
+M05_L20:
+       mov       rdi,rsi
+       mov       rax,offset MT_System.Threading.Tasks.AsyncLazyAttemptFrame
+       cmp       [rdi],rax
+       jne       short M05_L23
+       jmp       near ptr M05_L17
+M05_L21:
+       mov       edi,4
+       call      qword ptr [76081B79F3A8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       r13,rax
+       jmp       near ptr M05_L03
+M05_L22:
+       call      qword ptr [76081AC36310]; System.Runtime.CompilerServices.CastHelpers.ChkCastClass(Void*, System.Object)
+       int       3
+M05_L23:
+       mov       rdi,rax
+       call      qword ptr [76081AC36310]; System.Runtime.CompilerServices.CastHelpers.ChkCastClass(Void*, System.Object)
+       int       3
+M05_L24:
+       mov       rdi,rsi
+       mov       esi,eax
+       call      qword ptr [76081B79C468]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       near ptr M05_L01
+M05_L25:
+       mov       rdi,[rbp-70]
+       mov       dword ptr [rdi+18],0FFFFFFFE
+       xor       eax,eax
+       mov       [rdi+8],rax
+       mov       [rdi+10],rax
+       add       rdi,20
+       cmp       qword ptr [rdi],0
+       je        near ptr M05_L31
+       mov       rbx,[rdi]
+       mov       rdi,75F858C01388
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       jne       near ptr M05_L32
+M05_L26:
+       mov       eax,[rbx+34]
+       mov       [rbp-64],eax
+       test      eax,5600000
+       jne       near ptr M05_L34
+       lea       rdi,[rbx+34]
+       mov       esi,eax
+       or        esi,4000000
+       lock cmpxchg [rdi],esi
+       cmp       eax,[rbp-64]
+       jne       near ptr M05_L33
+M05_L27:
+       mov       byte ptr [rbx+38],0
+       lea       rdi,[rbx+34]
+       mov       eax,[rbx+34]
+       or        eax,1000000
+       xchg      eax,[rdi]
+       mov       r15,[rbx+28]
+       test      r15,r15
+       je        short M05_L28
+       mov       rdi,rbx
+       call      qword ptr [76081B79F4C8]
+       mov       rdi,[r15+10]
+       test      rdi,rdi
+       jne       near ptr M05_L35
+M05_L28:
+       lea       rdi,[rbx+20]
+       test      rdi,rdi
+       je        near ptr M05_L36
+       mov       rsi,75F858C00238
+       mov       rsi,[rsi]
+       call      0000760899074040
+       test      rax,rax
+       jne       short M05_L30
+M05_L29:
+       add       rsp,98
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M05_L30:
+       mov       rdi,rbx
+       mov       rsi,rax
+       call      qword ptr [76081B79C918]; System.Threading.Tasks.Task.RunContinuations(System.Object)
+       jmp       short M05_L29
+M05_L31:
+       mov       rsi,75F858C00250
+       mov       rsi,[rsi]
+       call      CORINFO_HELP_CHECKED_ASSIGN_REF
+       jmp       short M05_L29
+M05_L32:
+       mov       rdi,rbx
+       cmp       [rdi],edi
+       call      qword ptr [76081B797F48]
+       mov       esi,eax
+       mov       rdi,75F858C01388
+       mov       rdi,[rdi]
+       mov       edx,1
+       call      qword ptr [76081B79F720]
+       jmp       near ptr M05_L26
+M05_L33:
+       mov       rdi,rbx
+       mov       esi,4000000
+       mov       edx,5600000
+       call      qword ptr [76081B79F4B0]
+       test      eax,eax
+       jne       near ptr M05_L27
+M05_L34:
+       mov       edi,18
+       call      qword ptr [76081B79C900]
+       int       3
+M05_L35:
+       call      qword ptr [76081B79FF90]
+       jmp       near ptr M05_L28
+M05_L36:
+       call      qword ptr [76081B79F150]
+       int       3
+       sub       rsp,18
+       mov       rsi,rdi
+       mov       rdi,[rbp-70]
+       mov       dword ptr [rdi+18],0FFFFFFFE
+       xor       eax,eax
+       mov       [rdi+8],rax
+       mov       [rdi+10],rax
+       add       rdi,20
+       call      qword ptr [76081B796C88]
+       lea       rax,[M05_L29]
+       add       rsp,18
+       ret
+; Total bytes of code 1507
+```
+```assembly
+; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       push      rbp
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+10]
+       mov       ebx,edi
+       call      qword ptr [76081A7F6AF0]; Precode of System.Threading.Thread.GetThreadStaticsBase()
+       mov       edi,ebx
+       and       edi,0FFFFFF
+       mov       ecx,edi
+       mov       edx,ebx
+       sar       edx,18
+       jne       short M06_L01
+       cmp       [rax],edi
+       jle       short M06_L03
+       mov       rax,[rax+8]
+       cmp       [rax],al
+       add       ecx,0FFFFFFFE
+       movsxd    rdi,ecx
+       mov       rax,[rax+rdi*8+10]
+       test      rax,rax
+       je        short M06_L03
+M06_L00:
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       ret
+M06_L01:
+       mov       edi,ebx
+       sar       edi,18
+       cmp       edi,2
+       jne       short M06_L02
+       movsxd    rcx,ecx
+       add       rax,rcx
+       jmp       short M06_L00
+M06_L02:
+       cmp       [rax+4],ecx
+       jle       short M06_L03
+       mov       rdi,[rax+10]
+       movsxd    rax,ecx
+       mov       rdi,[rdi+rax*8]
+       test      rdi,rdi
+       je        short M06_L03
+       mov       rax,[rdi]
+       test      rax,rax
+       je        short M06_L03
+       jmp       short M06_L00
+M06_L03:
+       mov       edi,ebx
+       lea       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [rax]
+; Total bytes of code 133
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M07_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [76081B79C480]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M07_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M07_L03
+M07_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M07_L04
+M07_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M07_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M07_L01
+       mov       rdi,rbx
+       call      qword ptr [76081B79FA08]
+       jmp       short M07_L01
+M07_L04:
+       test      r15b,2
+       jne       short M07_L05
+       mov       rdi,rbx
+       call      qword ptr [76081B79F7E0]
+M07_L05:
+       mov       rdi,rbx
+       call      qword ptr [76081B844090]
+       jmp       short M07_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].AsyncLazy_NoRecursionDetection()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+30]
+       mov       rbx,rdi
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rsi,[rbx+8]
+       test      rsi,rsi
+       je        near ptr M00_L16
+       lea       rdi,[r15+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[r15+10]
+       test      rax,rax
+       jne       near ptr M00_L17
+M00_L00:
+       mov       rbx,[r15+8]
+       mov       rsi,rbx
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       test      rax,rax
+       jne       near ptr M00_L19
+       test      rbx,rbx
+       je        short M00_L01
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       cmp       [rbx],rdi
+       je        near ptr M00_L11
+M00_L01:
+       lea       rdi,[r15+20]
+       cmp       qword ptr [rdi],0
+       jne       near ptr M00_L18
+M00_L02:
+       mov       rdi,offset MT_System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rdi,offset MT_System.Threading.Tasks.TaskCompletionSource<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       xor       edi,edi
+       mov       [rax+8],rdi
+       mov       [rax+10],rdi
+       mov       [rax+18],rdi
+       mov       dword ptr [rax+34],2000440
+       lea       rdi,[rbx+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r14+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r15+8]
+       test      rdi,rdi
+       je        near ptr M00_L21
+       mov       rsi,r14
+       xor       edx,edx
+       call      00007ED286C74060
+       test      rax,rax
+       jne       near ptr M00_L00
+       mov       rdi,7EC244C01380
+       mov       r15,[rdi]
+       test      r15,r15
+       je        near ptr M00_L22
+M00_L03:
+       mov       rdi,7ED286EA0D68
+       mov       rax,7ED28770E820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M00_L23
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M00_L23
+M00_L04:
+       mov       rax,[rax+10]
+       test      rax,rax
+       jne       short M00_L05
+       call      qword ptr [7ED20909C048]; System.Threading.Thread.InitializeCurrentThread()
+M00_L05:
+       mov       rbx,[rax+8]
+       test      rbx,rbx
+       jne       near ptr M00_L24
+       mov       rdi,7EC244C01388
+       mov       rbx,[rdi]
+M00_L06:
+       test      rbx,rbx
+       je        short M00_L07
+       cmp       byte ptr [rbx+19],0
+       je        near ptr M00_L25
+M00_L07:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallbackDefaultContext<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r13,rax
+       lea       rdi,[r13+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r13+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+M00_L08:
+       mov       rdi,7EC244C01398
+       mov       rbx,[rdi]
+       cmp       byte ptr [rbx+38],0
+       jne       near ptr M00_L26
+M00_L09:
+       mov       rdi,[rbx+8]
+       mov       rsi,[rdi+10]
+       mov       rcx,[rsi+8]
+M00_L10:
+       mov       r15d,[rsi+0A0]
+       mov       eax,r15d
+       and       eax,[rsi+18]
+       cmp       eax,[rcx+8]
+       jae       near ptr M00_L28
+       shl       rax,4
+       lea       r12,[rcx+rax+10]
+       mov       eax,[r12+8]
+       sub       eax,r15d
+       jne       short M00_L12
+       lea       rdx,[rsi+0A0]
+       lea       r8d,[r15+1]
+       mov       eax,r15d
+       lock cmpxchg [rdx],r8d
+       cmp       eax,r15d
+       jne       short M00_L10
+       mov       rdi,r12
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+       inc       r15d
+       mov       [r12+8],r15d
+       jmp       short M00_L13
+M00_L11:
+       mov       rdi,rbx
+       xor       esi,esi
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7ED2093A6988]; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+M00_L12:
+       test      eax,eax
+       jge       short M00_L10
+       mov       rsi,r13
+       call      qword ptr [7ED2093AF528]
+M00_L13:
+       add       rbx,78
+       mov       edi,1
+       xchg      edi,[rbx]
+       test      edi,edi
+       jne       short M00_L14
+       mov       rdi,7EC244C013C0
+       mov       rbx,[rdi]
+       lea       rdi,[rbx+160]
+       lock inc  dword ptr [rdi]
+       mov       rdi,rbx
+       call      qword ptr [7ED2093A6E20]; System.Threading.PortableThreadPool+WorkerThread.MaybeAddWorkingWorker(System.Threading.PortableThreadPool)
+       cmp       dword ptr [rbx+164],6
+       jne       near ptr M00_L27
+M00_L14:
+       mov       rax,[r14+10]
+       mov       rax,[rax+8]
+M00_L15:
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L16:
+       mov       edi,1
+       mov       rsi,7ED2093D7C18
+       call      qword ptr [7ED20884EF88]
+       mov       rdi,rax
+       call      qword ptr [7ED2093AF960]
+       int       3
+M00_L17:
+       jmp       short M00_L15
+M00_L18:
+       mov       rdi,[rdi]
+       cmp       dword ptr [rdi+20],0
+       je        near ptr M00_L02
+       jmp       short M00_L20
+M00_L19:
+       jmp       short M00_L15
+M00_L20:
+       mov       rdi,[r15+20]
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       jmp       qword ptr [7ED2093A68B0]
+M00_L21:
+       call      qword ptr [7ED2093AF498]
+       int       3
+M00_L22:
+       mov       rdi,offset MT_System.Action<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,7EC244C01378
+       mov       rsi,[rdi]
+       lea       rdi,[r15+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset System.Threading.Tasks.AsyncLazy`1+<>c[[System.Int32, System.Private.CoreLib]].<GetOrStartAttemptAsync>b__11_0(Attempt<Int32>)
+       mov       [r15+18],rdi
+       mov       rdi,7EC244C01380
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       near ptr M00_L03
+M00_L23:
+       mov       edi,4
+       call      qword ptr [7ED2093AF360]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M00_L04
+M00_L24:
+       xor       edi,edi
+       cmp       byte ptr [rbx+18],0
+       cmovne    rbx,rdi
+       jmp       near ptr M00_L06
+M00_L25:
+       mov       rdi,offset MT_System.Threading.QueueUserWorkItemCallback<System.Threading.Tasks.AsyncLazy<System.Int32>+Attempt>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r13,rax
+       mov       rdi,r13
+       mov       rsi,r15
+       mov       rdx,r14
+       mov       rcx,rbx
+       call      qword ptr [7ED2093AFA20]
+       jmp       near ptr M00_L08
+M00_L26:
+       mov       rdi,7EC244C013B0
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       je        near ptr M00_L09
+       mov       rdi,7EC244C013B0
+       mov       rdi,[rdi]
+       mov       rsi,r13
+       call      qword ptr [7ED2093AF510]
+       jmp       near ptr M00_L09
+M00_L27:
+       mov       rdi,rbx
+       call      qword ptr [7ED2093A7078]; System.Threading.PortableThreadPool+GateThread.EnsureRunningSlow(System.Threading.PortableThreadPool)
+       jmp       near ptr M00_L14
+M00_L28:
+       call      CORINFO_HELP_RNGCHKFAIL
+       int       3
+; Total bytes of code 994
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7ED2093A7600]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       push      rbp
+       mov       rbp,rsp
+       test      rsi,rsi
+       jne       short M02_L01
+M02_L00:
+       mov       rax,rsi
+       pop       rbp
+       ret
+M02_L01:
+       cmp       [rsi],rdi
+       je        short M02_L00
+       mov       rax,[rsi]
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+M02_L02:
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       jne       short M02_L04
+M02_L03:
+       xor       esi,esi
+       jmp       short M02_L00
+M02_L04:
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       test      rax,rax
+       je        short M02_L03
+       mov       rax,[rax+10]
+       cmp       rax,rdi
+       je        short M02_L00
+       jmp       short M02_L02
+; Total bytes of code 93
+```
+```assembly
+; System.Threading.Thread.InitializeCurrentThread()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-30],rax
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [7ED2083EEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [7ED2083EEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       mov       rbx,[rbp-30]
+       call      qword ptr [7ED2083F0B98]
+       lea       rdi,[rax+10]
+       mov       rsi,[rbp-30]
+       call      qword ptr [7ED2083EEEB8]; CORINFO_HELP_ASSIGN_REF
+       mov       rax,rbx
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 123
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+Attempt[[System.Int32, System.Private.CoreLib]].WaitAsync(System.Threading.CancellationToken)
+       push      r15
+       push      rbx
+       push      rax
+       mov       rbx,rsi
+       test      rbx,rbx
+       jne       short M04_L00
+       mov       rax,[rdi+10]
+       mov       rax,[rax+8]
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       ret
+M04_L00:
+       mov       rdi,[rdi+10]
+       mov       r15,[rdi+8]
+       cmp       [r15],r15b
+       mov       rdi,offset MT_System.TimeProvider
+       call      qword ptr [7ED208845728]; System.Runtime.CompilerServices.StaticsHelpers.GetNonGCStaticBase(System.Runtime.CompilerServices.MethodTable*)
+       mov       rdx,7EC244C01510
+       mov       rdx,[rdx]
+       mov       rcx,rbx
+       mov       rdi,r15
+       mov       esi,0FFFFFFFF
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       jmp       qword ptr [7ED209464180]
+; Total bytes of code 92
+```
+```assembly
+; System.Threading.PortableThreadPool+WorkerThread.MaybeAddWorkingWorker(System.Threading.PortableThreadPool)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,18
+       lea       rbp,[rsp+40]
+       mov       rax,[rdi+0A0]
+       movsx     rsi,ax
+       mov       rcx,rax
+       shr       rcx,20
+       movsx     rcx,cx
+       cmp       esi,ecx
+       jge       near ptr M05_L08
+M05_L00:
+       lea       ecx,[rsi+1]
+       movsx     rbx,cx
+       mov       rcx,rax
+       shr       rcx,10
+       movsx     rcx,cx
+       cmp       ecx,ebx
+       jge       near ptr M05_L09
+       mov       r15d,ebx
+M05_L01:
+       test      ebx,ebx
+       jle       near ptr M05_L10
+       mov       edx,ebx
+M05_L02:
+       mov       r8,rax
+       and       r8,0FFFFFFFFFFFF0000
+       movzx     edx,dx
+       or        rdx,r8
+       test      r15d,r15d
+       jle       near ptr M05_L11
+       mov       r8d,r15d
+M05_L03:
+       mov       r9,0FFFFFFFF0000FFFF
+       and       rdx,r9
+       movzx     r8d,r8w
+       shl       r8,10
+       or        rdx,r8
+       lea       r8,[rdi+0A0]
+       mov       [rbp-38],rax
+       lock cmpxchg [r8],rdx
+       mov       rdx,[rbp-38]
+       cmp       rax,rdx
+       jne       near ptr M05_L14
+       sub       r15d,ecx
+       sub       ebx,esi
+       test      ebx,ebx
+       jle       short M05_L07
+       mov       rdi,7EC244C013C8
+       mov       r14,[rdi]
+       mov       r13,[r14+60]
+M05_L04:
+       mov       [rbp-30],r13
+       mov       edi,ebx
+       add       rdi,[rbp-30]
+       mov       [rbp-30],rdi
+       mov       r12d,[rbp-30]
+       mov       rax,r13
+       shr       rax,20
+       movzx     eax,ax
+       mov       rdi,r13
+       shr       rdi,30
+       movzx     edi,dil
+       add       eax,edi
+       cmp       r12d,eax
+       ja        short M05_L12
+M05_L05:
+       sub       r12d,edi
+       mov       rdi,r13
+       shr       rdi,38
+       movzx     edi,dil
+       sub       r12d,edi
+       test      r12d,r12d
+       jg        short M05_L15
+M05_L06:
+       lea       rdi,[r14+60]
+       mov       rsi,[rbp-30]
+       mov       rax,r13
+       lock cmpxchg [rdi],rsi
+       cmp       rax,r13
+       jne       short M05_L13
+       test      r12d,r12d
+       jg        short M05_L17
+M05_L07:
+       test      r15d,r15d
+       jg        near ptr M05_L18
+M05_L08:
+       add       rsp,18
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M05_L09:
+       mov       r15d,ecx
+       jmp       near ptr M05_L01
+M05_L10:
+       xor       edx,edx
+       jmp       near ptr M05_L02
+M05_L11:
+       xor       r8d,r8d
+       jmp       near ptr M05_L03
+M05_L12:
+       mov       r12d,eax
+       jmp       short M05_L05
+M05_L13:
+       mov       r13,rax
+       jmp       near ptr M05_L04
+M05_L14:
+       mov       rdx,rax
+       movsx     rsi,dx
+       mov       rcx,rdx
+       shr       rcx,20
+       movsx     rcx,cx
+       cmp       esi,ecx
+       mov       rax,rdx
+       jl        near ptr M05_L00
+       jmp       short M05_L08
+M05_L15:
+       cmp       r12d,ebx
+       jle       short M05_L16
+       mov       r12d,ebx
+M05_L16:
+       lea       rdi,[rbp-30]
+       mov       esi,r12d
+       call      qword ptr [7ED2093AFFA8]; System.Threading.LowLevelLifoSemaphore+Counts.AddUpToMaxCountOfWaitersSignaledToWake(UInt32)
+       jmp       near ptr M05_L06
+M05_L17:
+       mov       rdi,[r14+8]
+       mov       esi,r12d
+       cmp       [rdi],edi
+       call      qword ptr [7ED2093AFFC0]; System.Threading.Semaphore.Release(Int32)
+       jmp       near ptr M05_L07
+M05_L18:
+       call      qword ptr [7ED2093A6FD0]; System.Threading.PortableThreadPool+WorkerThread.CreateWorkerThread()
+       dec       r15d
+       jmp       near ptr M05_L07
+; Total bytes of code 440
+```
+```assembly
+; System.Threading.Tasks.AsyncLazy`1+<>c[[System.Int32, System.Private.CoreLib]].<GetOrStartAttemptAsync>b__11_0(Attempt<Int32>)
+       push      rbp
+       push      r15
+       push      rbx
+       sub       rsp,50
+       lea       rbp,[rsp+60]
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu   ymmword ptr [rbp-40],ymm8
+       vmovdqa   xmmword ptr [rbp-20],xmm8
+       cmp       [rsi],sil
+       mov       [rbp-40],rsi
+       mov       dword ptr [rbp-30],0FFFFFFFF
+       mov       rdi,7ED286EA0D68
+       mov       rax,7ED28770E820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M06_L08
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M06_L08
+M06_L00:
+       mov       rbx,[rax+10]
+       test      rbx,rbx
+       jne       short M06_L01
+       call      qword ptr [7ED20909C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       rbx,rax
+M06_L01:
+       mov       [rbp-48],rbx
+       mov       rsi,[rbx+8]
+       mov       [rbp-50],rsi
+       mov       rsi,[rbx+10]
+       mov       [rbp-58],rsi
+       lea       rdi,[rbp-40]
+       call      qword ptr [7ED2093A7A80]; System.Threading.Tasks.AsyncLazy`1+Attempt+<RunAsync>d__4[[System.Int32, System.Private.CoreLib]].MoveNext()
+       nop
+       mov       rsi,[rbp-58]
+       cmp       rsi,[rbx+10]
+       je        short M06_L02
+       lea       rdi,[rbx+10]
+       call      CORINFO_HELP_ASSIGN_REF
+M06_L02:
+       mov       r15,[rbx+8]
+       mov       rsi,[rbp-50]
+       cmp       rsi,r15
+       je        short M06_L04
+       lea       rdi,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r15,r15
+       je        short M06_L03
+       cmp       qword ptr [r15+10],0
+       jne       short M06_L07
+M06_L03:
+       cmp       qword ptr [rbp-50],0
+       jne       short M06_L06
+M06_L04:
+       cmp       qword ptr [rbp-28],0
+       je        short M06_L09
+M06_L05:
+       add       rsp,50
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M06_L06:
+       mov       rsi,[rbp-50]
+       cmp       qword ptr [rsi+10],0
+       je        short M06_L04
+M06_L07:
+       mov       rdi,r15
+       mov       rsi,[rbp-50]
+       call      qword ptr [7ED2093AF3D8]
+       jmp       short M06_L04
+M06_L08:
+       mov       edi,4
+       call      qword ptr [7ED2093AF360]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M06_L00
+M06_L09:
+       lea       rdi,[rbp-28]
+       call      qword ptr [7ED2093AF8B8]
+       jmp       short M06_L05
+       push      rax
+       mov       rsi,[rbp-58]
+       mov       rax,[rbp-48]
+       cmp       rsi,[rax+10]
+       je        short M06_L10
+       lea       rdi,[rax+10]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-48]
+M06_L10:
+       mov       r15,[rax+8]
+       mov       rsi,[rbp-50]
+       cmp       rsi,r15
+       je        short M06_L13
+       lea       rdi,[rax+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r15,r15
+       je        short M06_L11
+       cmp       qword ptr [r15+10],0
+       jne       short M06_L12
+M06_L11:
+       cmp       qword ptr [rbp-50],0
+       je        short M06_L13
+       mov       rsi,[rbp-50]
+       cmp       qword ptr [rsi+10],0
+       je        short M06_L13
+M06_L12:
+       mov       rdi,r15
+       mov       rsi,[rbp-50]
+       call      qword ptr [7ED2093AF3D8]
+M06_L13:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 368
+```
+```assembly
+; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       push      rbp
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+10]
+       mov       ebx,edi
+       call      qword ptr [7ED208406AF0]; Precode of System.Threading.Thread.GetThreadStaticsBase()
+       mov       edi,ebx
+       and       edi,0FFFFFF
+       mov       ecx,edi
+       mov       edx,ebx
+       sar       edx,18
+       jne       short M07_L01
+       cmp       [rax],edi
+       jle       short M07_L03
+       mov       rax,[rax+8]
+       cmp       [rax],al
+       add       ecx,0FFFFFFFE
+       movsxd    rdi,ecx
+       mov       rax,[rax+rdi*8+10]
+       test      rax,rax
+       je        short M07_L03
+M07_L00:
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       ret
+M07_L01:
+       mov       edi,ebx
+       sar       edi,18
+       cmp       edi,2
+       jne       short M07_L02
+       movsxd    rcx,ecx
+       add       rax,rcx
+       jmp       short M07_L00
+M07_L02:
+       cmp       [rax+4],ecx
+       jle       short M07_L03
+       mov       rdi,[rax+10]
+       movsxd    rax,ecx
+       mov       rdi,[rdi+rax*8]
+       test      rdi,rdi
+       je        short M07_L03
+       mov       rax,[rdi]
+       test      rax,rax
+       je        short M07_L03
+       jmp       short M07_L00
+M07_L03:
+       mov       edi,ebx
+       lea       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       add       rsp,8
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [rax]
+; Total bytes of code 133
+```
+```assembly
+; System.Threading.PortableThreadPool+GateThread.EnsureRunningSlow(System.Threading.PortableThreadPool)
+       push      rbp
+       mov       rbp,rsp
+       add       rdi,164
+       mov       eax,6
+       xchg      eax,[rdi]
+       cmp       eax,4
+       je        short M08_L03
+       test      al,4
+       je        short M08_L02
+M08_L00:
+       mov       rdi,7ED2094E7B58
+       call      CORINFO_HELP_COUNTPROFILE32
+M08_L01:
+       nop
+       pop       rbp
+       ret
+M08_L02:
+       mov       rdi,7ED2094E7B54
+       call      CORINFO_HELP_COUNTPROFILE32
+       call      qword ptr [7ED2093A7090]; System.Threading.PortableThreadPool+GateThread.CreateGateThread()
+       jmp       short M08_L00
+M08_L03:
+       mov       rdi,7ED2094E7B50
+       call      CORINFO_HELP_COUNTPROFILE32
+       mov       rdi,7EC244C013E8
+       mov       rdi,[rdi]
+       call      qword ptr [7ED2093AFDC8]
+       jmp       short M08_L01
+; Total bytes of code 104
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M09_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [7ED2093A7618]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M09_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M09_L03
+M09_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M09_L04
+M09_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M09_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M09_L01
+       mov       rdi,rbx
+       call      qword ptr [7ED2093AF948]
+       jmp       short M09_L01
+M09_L04:
+       test      r15b,2
+       jne       short M09_L05
+       mov       rdi,rbx
+       call      qword ptr [7ED2093AFA50]
+M09_L05:
+       mov       rdi,rbx
+       call      qword ptr [7ED209464198]
+       jmp       short M09_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].Nito()
+       push      rbp
+       push      r15
+       push      r14
+       push      rbx
+       sub       rsp,18
+       lea       rbp,[rsp+30]
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        near ptr M00_L05
+       mov       rdi,offset MT_Nito.AsyncEx.AsyncLazy<System.Int32>+<>c__DisplayClass14_0
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       lea       rdi,[r15+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.Func<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       lea       rdi,[rbx+8]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset Nito.AsyncEx.AsyncLazy`1+<>c__DisplayClass14_0[[System.Int32, System.Private.CoreLib]].<RunOnThreadPool>b__0()
+       mov       [rbx+18],rdi
+       mov       rdi,offset MT_System.Object
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r14+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-28],r15
+       xor       edi,edi
+       mov       [rbp-1C],edi
+       mov       rdi,r15
+       call      000075A5F86E6020
+       test      eax,eax
+       je        short M00_L01
+M00_L00:
+       mov       dword ptr [rbp-1C],1
+       cmp       qword ptr [r14+8],0
+       je        short M00_L02
+       mov       rdi,r14
+       call      qword ptr [75A57AC9C438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+       mov       rbx,rax
+       jmp       short M00_L03
+M00_L01:
+       mov       rdi,r15
+       call      qword ptr [75A57AFACF90]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       short M00_L00
+M00_L02:
+       mov       rbx,[r14+18]
+M00_L03:
+       mov       rdi,r15
+       call      000075A5F86E6790
+       test      eax,eax
+       jne       short M00_L06
+M00_L04:
+       mov       rax,rbx
+       add       rsp,18
+       pop       rbx
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L05:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,10E
+       mov       rsi,75A57AFD7C10
+       call      qword ptr [75A57A44EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [75A57AC9E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+M00_L06:
+       mov       edi,eax
+       mov       rsi,r15
+       call      qword ptr [75A57AFACFC0]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       jmp       short M00_L04
+       push      rax
+       cmp       dword ptr [rbp-1C],0
+       je        short M00_L07
+       mov       rdi,[rbp-28]
+       call      000075A5F86E6790
+       test      eax,eax
+       je        short M00_L07
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [75A57AFACFC0]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+M00_L07:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 385
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [75A57AFA77F8]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; Nito.AsyncEx.AsyncLazy`1+<>c__DisplayClass14_0[[System.Int32, System.Private.CoreLib]].<RunOnThreadPool>b__0()
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       push      rax
+       lea       rbp,[rsp+30]
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        near ptr M02_L15
+       mov       r15,offset MT_System.Threading.Tasks.Task<System.Threading.Tasks.Task<System.Int32>>
+       mov       rdi,r15
+       call      qword ptr [75A57AFA69B8]; System.Threading.Tasks.Task`1[[System.__Canon, System.Private.CoreLib]].get_Factory()
+       cmp       [rax],al
+       mov       rdi,7595B4C01390
+       mov       r14,[rdi]
+       mov       rdi,r15
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       lea       rdi,[r15+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       edi,edi
+       mov       [r15+10],rdi
+       lea       rdi,[r15+18]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       edi,2008
+       mov       [r15+34],edi
+       mov       rdi,75A5F8AA0D68
+       mov       rax,75A5F9358820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L14
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M02_L14
+M02_L00:
+       mov       rax,[rax+10]
+       test      rax,rax
+       jne       short M02_L01
+       call      qword ptr [75A57AC9C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L01:
+       mov       rbx,[rax+8]
+       test      rbx,rbx
+       jne       near ptr M02_L16
+       mov       rdi,7595B4C013A0
+       mov       rbx,[rdi]
+M02_L02:
+       test      rbx,rbx
+       je        short M02_L04
+       mov       rdi,7595B4C013A0
+       cmp       rbx,[rdi]
+       je        short M02_L05
+       mov       rax,[r15+28]
+       test      rax,rax
+       jne       short M02_L03
+       mov       rdi,offset MT_System.Threading.Tasks.Task+ContingentProperties
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       dword ptr [r14+3C],1
+       lea       rdi,[r15+28]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,r14
+M02_L03:
+       lea       rdi,[rax+8]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       short M02_L05
+M02_L04:
+       or        dword ptr [r15+34],20000000
+M02_L05:
+       mov       rdi,r15
+       xor       esi,esi
+       call      qword ptr [75A57AFA6BB0]; System.Threading.Tasks.Task.ScheduleAndStart(Boolean)
+       mov       rdi,offset MT_System.Threading.Tasks.UnwrapPromise<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       movzx     r14d,word ptr [r15+34]
+       and       r14d,4
+       test      r14d,0FFFFFFBB
+       jne       near ptr M02_L13
+       test      r14b,4
+       je        short M02_L08
+       mov       rdi,75A5F8AA0D68
+       mov       rax,75A5F9358820
+       call      rax
+       cmp       dword ptr [rax],8
+       jle       near ptr M02_L17
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+40]
+       test      rax,rax
+       je        near ptr M02_L17
+M02_L06:
+       mov       r13,[rax+10]
+       test      r13,r13
+       je        short M02_L08
+       mov       rax,[rbx+28]
+       test      rax,rax
+       jne       short M02_L07
+       mov       rdi,offset MT_System.Threading.Tasks.Task+ContingentProperties
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       mov       dword ptr [r12+3C],1
+       lea       rdi,[rbx+28]
+       mov       rsi,r12
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,r12
+M02_L07:
+       lea       rdi,[rax+30]
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+M02_L08:
+       xor       edi,edi
+       mov       [rbx+8],rdi
+       mov       [rbx+10],rdi
+       mov       [rbx+18],rdi
+       test      r14d,0FFFFFFA0
+       jne       near ptr M02_L13
+       mov       edi,r14d
+       or        edi,400
+       or        edi,2000000
+       mov       [rbx+34],edi
+       mov       rdi,[rbx+28]
+       test      rdi,rdi
+       jne       near ptr M02_L18
+M02_L09:
+       mov       byte ptr [rbx+3D],1
+       mov       rdi,7595B4C013B0
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       jne       near ptr M02_L19
+M02_L10:
+       cmp       byte ptr [75A57945B06C],0
+       jne       near ptr M02_L20
+M02_L11:
+       test      dword ptr [r15+34],1600000
+       jne       near ptr M02_L21
+       test      dword ptr [r15+34],1600000
+       jne       near ptr M02_L24
+       cmp       qword ptr [r15+20],0
+       jne       near ptr M02_L23
+       lea       rdi,[r15+20]
+       test      rdi,rdi
+       je        near ptr M02_L22
+       mov       rsi,rbx
+       xor       edx,edx
+       call      000075A5F8874060
+       test      rax,rax
+       jne       near ptr M02_L23
+M02_L12:
+       mov       rax,rbx
+       add       rsp,8
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M02_L13:
+       mov       edi,2D
+       call      qword ptr [75A57A44F0D8]
+       int       3
+M02_L14:
+       mov       edi,4
+       call      qword ptr [75A57AFAEF58]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L00
+M02_L15:
+       mov       edi,2E
+       call      qword ptr [75A57A44FAE0]
+       int       3
+M02_L16:
+       xor       edi,edi
+       cmp       byte ptr [rbx+18],0
+       cmovne    rbx,rdi
+       jmp       near ptr M02_L02
+M02_L17:
+       mov       edi,8
+       call      qword ptr [75A57AFAEF58]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L06
+M02_L18:
+       mov       rdi,[rdi+30]
+       test      rdi,rdi
+       je        near ptr M02_L09
+       test      r14b,4
+       je        near ptr M02_L09
+       test      byte ptr [rdi+34],8
+       jne       near ptr M02_L09
+       call      qword ptr [75A57AFAF0F0]
+       jmp       near ptr M02_L09
+M02_L19:
+       mov       rdi,rbx
+       call      qword ptr [75A57AFA73D8]
+       mov       esi,eax
+       mov       rdi,7595B4C013B0
+       mov       rdi,[rdi]
+       mov       rdx,75A57140AC10
+       xor       ecx,ecx
+       call      qword ptr [75A57AFA73F0]
+       jmp       near ptr M02_L10
+M02_L20:
+       mov       rdi,rbx
+       call      qword ptr [75A57AFA7408]
+       jmp       near ptr M02_L11
+M02_L21:
+       mov       rdi,rbx
+       mov       rsi,r15
+       call      qword ptr [75A57AFA7438]; System.Threading.Tasks.UnwrapPromise`1[[System.Int32, System.Private.CoreLib]].ProcessCompletedOuterTask(System.Threading.Tasks.Task)
+       jmp       near ptr M02_L12
+M02_L22:
+       call      qword ptr [75A57AFAF078]
+       int       3
+M02_L23:
+       mov       rdi,r15
+       mov       rsi,rbx
+       xor       edx,edx
+       call      qword ptr [75A57AFACF78]; System.Threading.Tasks.Task.AddTaskContinuationComplex(System.Object, Boolean)
+       test      eax,eax
+       jne       near ptr M02_L12
+M02_L24:
+       mov       rdi,rbx
+       mov       rsi,r15
+       call      qword ptr [75A57AFDDDD0]; System.Threading.Tasks.UnwrapPromise`1[[System.Int32, System.Private.CoreLib]].Invoke(System.Threading.Tasks.Task)
+       jmp       near ptr M02_L12
+; Total bytes of code 900
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M03_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M03_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M03_L05
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M03_L06
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      000075A5F86E6020
+       test      eax,eax
+       je        short M03_L03
+M03_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M03_L04
+       mov       esi,2
+       call      qword ptr [75A57AC9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M03_L04
+M03_L03:
+       mov       rdi,rbx
+       call      qword ptr [75A57AFACF90]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       short M03_L02
+M03_L04:
+       mov       rdi,rbx
+       call      000075A5F86E6790
+       test      eax,eax
+       jne       near ptr M03_L12
+M03_L05:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M03_L13
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [75A57AC9C438]
+M03_L06:
+       cmp       eax,8
+       ja        short M03_L07
+       mov       eax,eax
+       lea       rcx,[75A57A4CB890]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M03_L01]
+       add       rcx,rdx
+       jmp       rcx
+M03_L07:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [75A57AFAF390]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [75A57AFAF5A0]
+       jmp       short M03_L05
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [75A57AC9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M03_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M03_L08
+       jmp       short M03_L09
+M03_L08:
+       mov       rdi,rsi
+       mov       rsi,75A57AFF8FA0
+       call      qword ptr [75A57A44F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M03_L09:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M03_L10
+       jmp       short M03_L11
+M03_L10:
+       mov       rdi,rax
+       mov       rsi,75A57AFF9040
+       call      qword ptr [75A57A44F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M03_L11:
+       call      qword ptr [75A57AFAF540]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [75A57AFAF5B8]
+       jmp       near ptr M03_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [75A57AFAF5D0]
+       jmp       near ptr M03_L05
+       mov       rdi,[rbp-20]
+       call      qword ptr [75A57AFAF5E8]
+       jmp       near ptr M03_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [75A57AC9C450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M03_L05
+M03_L12:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [75A57AFACFC0]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       jmp       near ptr M03_L05
+M03_L13:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M03_L14
+       mov       rdi,[rbp-28]
+       call      000075A5F86E6790
+       test      eax,eax
+       je        short M03_L14
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [75A57AFACFC0]; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+M03_L14:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 441
+```
+```assembly
+; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       mov       [rbp-30],rdi
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [75A579FEEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [75A579FEEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       nop
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 95
+```
+```assembly
+; System.Threading.Monitor.Exit_Slowpath(LeaveHelperAction, System.Object)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,78
+       lea       rbp,[rsp+0A0]
+       mov       [rbp-30],rsi
+       mov       esi,edi
+       lea       rdi,[rbp-30]
+       mov       [rbp-94],rdi
+       mov       [rbp-8C],esi
+       lea       rdi,[rbp-88]
+       call      qword ptr [75A579FEEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-94]
+       mov       esi,[rbp-8C]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [75A579FEEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       nop
+       add       rsp,78
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 109
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M06_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [75A57AFA7810]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M06_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M06_L03
+M06_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M06_L04
+M06_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M06_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M06_L01
+       mov       rdi,rbx
+       call      qword ptr [75A57AFAF4E0]
+       jmp       short M06_L01
+M06_L04:
+       test      r15b,2
+       jne       short M06_L05
+       mov       rdi,rbx
+       call      qword ptr [75A57AFAF9D8]
+M06_L05:
+       mov       rdi,rbx
+       call      qword ptr [75A57B0640D8]
+       jmp       short M06_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].Nito_ExecuteOnCallingThread()
+       push      rbp
+       push      r15
+       push      r14
+       push      rbx
+       sub       rsp,18
+       lea       rbp,[rsp+30]
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        near ptr M00_L05
+       mov       rdi,offset MT_System.Object
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,offset MT_System.Lazy<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       lea       rdi,[r14+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset MT_System.LazyHelper
+       call      CORINFO_HELP_NEWSFAST
+       mov       dword ptr [rax+10],8
+       lea       rdi,[r14+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-28],r15
+       xor       edi,edi
+       mov       [rbp-1C],edi
+       mov       rdi,r15
+       call      000076F4D76E6020
+       test      eax,eax
+       je        short M00_L01
+M00_L00:
+       mov       dword ptr [rbp-1C],1
+       cmp       qword ptr [r14+8],0
+       je        short M00_L02
+       mov       rdi,r14
+       call      qword ptr [76F459C9C438]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+       mov       rbx,rax
+       jmp       short M00_L03
+M00_L01:
+       mov       rdi,r15
+       call      qword ptr [76F459FAEBE0]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       short M00_L00
+M00_L02:
+       mov       rbx,[r14+18]
+M00_L03:
+       mov       rdi,r15
+       call      000076F4D76E6790
+       test      eax,eax
+       jne       short M00_L06
+M00_L04:
+       mov       rax,rbx
+       add       rsp,18
+       pop       rbx
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M00_L05:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,10E
+       mov       rsi,76F459FD7390
+       call      qword ptr [76F45944EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [76F459C9E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+M00_L06:
+       mov       edi,eax
+       mov       rsi,r15
+       call      qword ptr [76F459FAE808]
+       jmp       short M00_L04
+       push      rax
+       cmp       dword ptr [rbp-1C],0
+       je        short M00_L07
+       mov       rdi,[rbp-28]
+       call      000076F4D76E6790
+       test      eax,eax
+       je        short M00_L07
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [76F459FAE808]
+M00_L07:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 311
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [76F459FA77F8]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].CreateValue()
+M02_L00:
+       push      rbp
+       push      rbx
+       sub       rsp,28
+       lea       rbp,[rsp+30]
+       mov       [rbp-10],rdi
+       mov       [rbp-20],rdi
+M02_L01:
+       mov       rbx,[rdi+8]
+       test      rbx,rbx
+       je        short M02_L05
+       mov       eax,[rbx+10]
+       cmp       eax,8
+       jne       short M02_L06
+       mov       [rbp-28],rbx
+       xor       eax,eax
+       mov       [rbp-14],eax
+       mov       rdi,rbx
+       call      000076F4D76E6020
+       test      eax,eax
+       je        short M02_L03
+M02_L02:
+       mov       dword ptr [rbp-14],1
+       mov       rdi,[rbp-20]
+       cmp       [rdi+8],rbx
+       jne       short M02_L04
+       mov       esi,2
+       call      qword ptr [76F459C9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L04
+M02_L03:
+       mov       rdi,rbx
+       call      qword ptr [76F459FAEBE0]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       short M02_L02
+M02_L04:
+       mov       rdi,rbx
+       call      000076F4D76E6790
+       test      eax,eax
+       jne       near ptr M02_L12
+M02_L05:
+       mov       rdi,[rbp-20]
+       cmp       qword ptr [rdi+8],0
+       je        near ptr M02_L13
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       jmp       qword ptr [76F459C9C438]
+M02_L06:
+       cmp       eax,8
+       ja        short M02_L07
+       mov       eax,eax
+       lea       rcx,[76F4594C3320]
+       mov       ecx,[rcx+rax*4]
+       lea       rdx,[M02_L01]
+       add       rcx,rdx
+       jmp       rcx
+M02_L07:
+       mov       rdi,[rbx+8]
+       cmp       [rdi],edi
+       call      qword ptr [76F459FAEA30]
+       int       3
+       mov       rdi,[rbp-20]
+       call      qword ptr [76F459FAEC58]
+       jmp       short M02_L05
+       mov       rdi,[rbp-20]
+       xor       esi,esi
+       call      qword ptr [76F459C9C468]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ViaFactory(System.Threading.LazyThreadSafetyMode)
+       jmp       short M02_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,[rdi]
+       mov       rax,[rsi+30]
+       mov       rax,[rax]
+       mov       rax,[rax+10]
+       test      rax,rax
+       je        short M02_L08
+       jmp       short M02_L09
+M02_L08:
+       mov       rdi,rsi
+       mov       rsi,76F459FF5958
+       call      qword ptr [76F45944F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+M02_L09:
+       mov       rdi,[rax+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi+18]
+       test      rdi,rdi
+       je        short M02_L10
+       jmp       short M02_L11
+M02_L10:
+       mov       rdi,rax
+       mov       rsi,76F459FF59F8
+       call      qword ptr [76F45944F270]; System.Runtime.CompilerServices.GenericsHelpers.Class(IntPtr, IntPtr)
+       mov       rdi,rax
+M02_L11:
+       call      qword ptr [76F459FAEBF8]
+       mov       rdx,rax
+       mov       rsi,rbx
+       mov       rdi,[rbp-20]
+       call      qword ptr [76F459FAEC70]
+       jmp       near ptr M02_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       call      qword ptr [76F459FAEC88]
+       jmp       near ptr M02_L05
+       mov       rdi,[rbp-20]
+       call      qword ptr [76F459FAECA0]
+       jmp       near ptr M02_L05
+       mov       rdi,[rbp-20]
+       mov       rsi,rbx
+       mov       edx,1
+       call      qword ptr [76F459C9C450]; System.Lazy`1[[System.__Canon, System.Private.CoreLib]].ExecutionAndPublication(System.LazyHelper, Boolean)
+       jmp       near ptr M02_L05
+M02_L12:
+       mov       edi,eax
+       mov       rsi,rbx
+       call      qword ptr [76F459FAE808]
+       jmp       near ptr M02_L05
+M02_L13:
+       mov       rax,[rdi+18]
+       add       rsp,28
+       pop       rbx
+       pop       rbp
+       ret
+       push      rax
+       cmp       dword ptr [rbp-14],0
+       je        short M02_L14
+       mov       rdi,[rbp-28]
+       call      000076F4D76E6790
+       test      eax,eax
+       je        short M02_L14
+       mov       edi,eax
+       mov       rsi,[rbp-28]
+       call      qword ptr [76F459FAE808]
+M02_L14:
+       nop
+       add       rsp,8
+       ret
+; Total bytes of code 441
+```
+```assembly
+; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,68
+       lea       rbp,[rsp+90]
+       mov       [rbp-30],rdi
+       lea       rdi,[rbp-30]
+       mov       [rbp-90],rdi
+       lea       rdi,[rbp-88]
+       call      qword ptr [76F458FEEF00]; CORINFO_HELP_JIT_PINVOKE_BEGIN
+       mov       rax,[System.Reflection.CustomAttributeExtensions.GetCustomAttribute[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)]
+       mov       rdi,[rbp-90]
+       call      qword ptr [rax]
+       lea       rdi,[rbp-88]
+       call      qword ptr [76F458FEEF08]; CORINFO_HELP_JIT_PINVOKE_END
+       nop
+       add       rsp,68
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 95
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M04_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [76F459FA7810]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M04_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M04_L03
+M04_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M04_L04
+M04_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M04_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M04_L01
+       mov       rdi,rbx
+       call      qword ptr [76F459FAEE20]
+       jmp       short M04_L01
+M04_L04:
+       test      r15b,2
+       jne       short M04_L05
+       mov       rdi,rbx
+       call      qword ptr [76F459FAEE50]
+M04_L05:
+       mov       rdi,rbx
+       call      qword ptr [76F459FAF2B8]
+       jmp       short M04_L02
+; Total bytes of code 125
+```
+
+## .NET 10.0.12 (10.0.12, 10.0.1226.42308), X64 RyuJIT x86-64-v4 (Job: DefaultJob)
+
+```assembly
+; AsyncLazyBenchmarks.FirstCallBenchmarks`1[[System.Int32, System.Private.CoreLib]].VsThreading()
+       push      r15
+       push      rbx
+       push      rax
+       mov       rbx,rdi
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.AsyncLazy<System.Int32>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rbx,[rbx+8]
+       mov       rdi,offset MT_System.Object
+       call      CORINFO_HELP_NEWSFAST
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       test      rbx,rbx
+       je        short M00_L00
+       lea       rdi,[r15+20]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       edi,edi
+       mov       [r15+10],rdi
+       mov       rdi,r15
+       xor       esi,esi
+       add       rsp,8
+       pop       rbx
+       pop       r15
+       jmp       qword ptr [7E8CB4996910]; Microsoft.VisualStudio.Threading.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetValueAsync(System.Threading.CancellationToken)
+M00_L00:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,164
+       mov       rsi,7E8CB49C7C20
+       call      qword ptr [7E8CB3E3EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [7E8CB468E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+; Total bytes of code 157
+```
+```assembly
+; BenchmarkDotNet.Helpers.AwaitHelper.GetResult[[System.Int32, System.Private.CoreLib]](System.Threading.Tasks.Task`1<Int32>)
+       push      rbx
+       mov       rbx,rdi
+       mov       edi,[rbx+34]
+       and       edi,11000000
+       cmp       edi,1000000
+       jne       short M01_L01
+M01_L00:
+       mov       eax,[rbx+38]
+       pop       rbx
+       ret
+M01_L01:
+       mov       rdi,rbx
+       xor       esi,esi
+       call      qword ptr [7E8CB499D800]; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       jmp       short M01_L00
+; Total bytes of code 39
+```
+```assembly
+; Microsoft.VisualStudio.Threading.AsyncLazy`1[[System.Int32, System.Private.CoreLib]].GetValueAsync(System.Threading.CancellationToken)
+       push      rbp
+       push      r15
+       push      r14
+       push      r13
+       push      r12
+       push      rbx
+       sub       rsp,128
+       lea       rbp,[rsp+150]
+       xor       eax,eax
+       mov       [rbp-0C8],rax
+       vxorps    xmm8,xmm8,xmm8
+       vmovdqu32 [rbp-0C0],zmm8
+       vmovdqu32 [rbp-80],zmm8
+       mov       [rbp-40],rax
+       mov       [rbp-0B8],rdi
+       mov       [rbp-30],rsi
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.AsyncLazy<System.Int32>+<>c__DisplayClass20_0
+       call      CORINFO_HELP_NEWSFAST
+       mov       [rbp-0C0],rax
+       lea       rdi,[rax+8]
+       mov       rsi,[rbp-0B8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0B8]
+       mov       rdi,[rsi+28]
+       test      rdi,rdi
+       jne       near ptr M02_L56
+M02_L00:
+       mov       rdi,[rsi+18]
+       test      rdi,rdi
+       jne       near ptr M02_L57
+M02_L01:
+       mov       rsi,[rbp-0B8]
+       cmp       qword ptr [rsi+28],0
+       jne       near ptr M02_L52
+       mov       rdi,[rsi+8]
+       test      rdi,rdi
+       je        near ptr M02_L58
+       call      00007E8D320E5C00
+       test      eax,eax
+       jne       near ptr M02_L59
+       xor       edi,edi
+       mov       rax,[rbp-0C0]
+       mov       [rax+10],rdi
+       mov       rsi,[rbp-0B8]
+       mov       rdi,[rsi+8]
+       mov       [rbp-0C8],rdi
+       xor       edi,edi
+       mov       [rbp-34],edi
+       cmp       qword ptr [rbp-0C8],0
+       je        near ptr M02_L29
+       mov       rdi,[rbp-0C8]
+       call      00007E8D320E6020
+       test      eax,eax
+       je        near ptr M02_L30
+M02_L02:
+       mov       dword ptr [rbp-34],1
+       mov       rsi,[rbp-0B8]
+       cmp       qword ptr [rsi+28],0
+       jne       near ptr M02_L34
+       cmp       qword ptr [rbp-30],0
+       je        short M02_L03
+       mov       rdi,[rbp-30]
+       cmp       dword ptr [rdi+20],0
+       jne       near ptr M02_L31
+M02_L03:
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.InlineResumable
+       call      CORINFO_HELP_NEWSFAST
+       mov       rcx,[rbp-0C0]
+       lea       rdi,[rcx+10]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0B8]
+       mov       rsi,[rsi+20]
+       mov       rcx,[rbp-0C0]
+       lea       rdi,[rcx+18]
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       edi,edi
+       mov       rsi,[rbp-0B8]
+       mov       [rsi+20],rdi
+       mov       rdi,offset MT_System.Func<System.Threading.Tasks.Task<System.Int32>>
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       lea       rdi,[rbx+8]
+       mov       rsi,[rbp-0C0]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rdi,offset Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0[[System.Int32, System.Private.CoreLib]].<GetValueAsync>b__0()
+       mov       [rbx+18],rdi
+       mov       rsi,[rbp-0B8]
+       cmp       byte ptr [rsi+38],0
+       jne       near ptr M02_L18
+       cmp       qword ptr [rsi+18],0
+       jne       near ptr M02_L32
+M02_L04:
+       mov       rdi,offset MT_Microsoft.VisualStudio.Threading.AsyncLocal<System.Object>
+       call      CORINFO_HELP_NEWSFAST
+       mov       r15,rax
+       mov       rdi,offset MT_System.Threading.AsyncLocal<System.Object>
+       call      CORINFO_HELP_NEWSFAST
+       lea       rdi,[r15+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       r14,[r15+8]
+       mov       rdi,7E7CF0C01378
+       mov       r13,[rdi]
+       cmp       qword ptr [r14+8],0
+       setne     r12b
+       movzx     r12d,r12b
+       mov       rdi,7E8D324A0D68
+       mov       rax,7E8D32E35820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L33
+       mov       rdi,[rax+8]
+       mov       rax,[rdi+20]
+       test      rax,rax
+       je        near ptr M02_L33
+M02_L05:
+       mov       [rbp-130],rax
+       mov       rcx,[rax+10]
+       test      rcx,rcx
+       jne       short M02_L06
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       rcx,rax
+M02_L06:
+       mov       rcx,[rcx+8]
+       mov       [rbp-0D0],rcx
+       xor       edi,edi
+       mov       [rbp-40],rdi
+       xor       r8d,r8d
+       test      rcx,rcx
+       je        short M02_L07
+       mov       rdi,[rcx+8]
+       lea       rdx,[rbp-40]
+       mov       rsi,r14
+       mov       r11,7E8CB2E50590
+       call      qword ptr [r11]
+       mov       [rbp-44],eax
+       mov       rcx,[rbp-0D0]
+       mov       r8d,[rbp-44]
+M02_L07:
+       cmp       [rbp-40],r13
+       je        near ptr M02_L17
+       xor       edi,edi
+       mov       [rbp-50],rdi
+       mov       [rbp-54],edi
+       test      rcx,rcx
+       je        short M02_L08
+       mov       [rbp-44],r8d
+       movzx     edx,byte ptr [rcx+18]
+       mov       [rbp-54],edx
+       test      r12d,r12d
+       sete      cl
+       movzx     ecx,cl
+       mov       r10,[rbp-0D0]
+       mov       rdi,[r10+8]
+       mov       rsi,r14
+       mov       rdx,r13
+       mov       r11,7E8CB2E50588
+       call      qword ptr [r11]
+       mov       [rbp-0D8],rax
+       mov       rdx,[rbp-0D0]
+       mov       rdx,[rdx+10]
+       mov       [rbp-50],rdx
+       jmp       short M02_L09
+M02_L08:
+       mov       [rbp-44],r8d
+       mov       rdi,offset MT_System.Threading.AsyncLocalValueMap+OneElementAsyncLocalValueMap
+       call      CORINFO_HELP_NEWSFAST
+       mov       [rbp-0F0],rax
+       lea       rdi,[rax+8]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-0F0]
+       lea       rdi,[rax+10]
+       mov       rsi,r13
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-0F0]
+       mov       [rbp-0D8],rax
+M02_L09:
+       test      r12d,r12d
+       je        short M02_L11
+       cmp       dword ptr [rbp-44],0
+       jne       short M02_L11
+       cmp       qword ptr [rbp-50],0
+       je        short M02_L10
+       mov       rdx,[rbp-50]
+       mov       ecx,[rdx+8]
+       mov       [rbp-58],ecx
+       lea       edx,[rcx+1]
+       lea       rsi,[rbp-50]
+       mov       rdi,7E8CB4A00C68
+       call      qword ptr [7E8CB426C480]; System.Array.Resize[[System.__Canon, System.Private.CoreLib]](System.__Canon[] ByRef, Int32)
+       mov       esi,[rbp-58]
+       mov       rdi,[rbp-50]
+       mov       rdx,r14
+       call      qword ptr [7E8CB3E357A0]; System.Runtime.CompilerServices.CastHelpers.StelemRef(System.Object[], IntPtr, System.Object)
+       jmp       short M02_L11
+M02_L10:
+       mov       rdi,offset MT_System.Threading.IAsyncLocal[]
+       mov       esi,1
+       call      CORINFO_HELP_NEWARR_1_PTR
+       mov       [rbp-0E8],rax
+       lea       rdi,[rax+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rax,[rbp-0E8]
+       mov       [rbp-50],rax
+M02_L11:
+       mov       rcx,[rbp-130]
+       mov       rcx,[rcx+10]
+       test      rcx,rcx
+       jne       short M02_L12
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       [rbp-0F8],rax
+       mov       rcx,[rbp-0F8]
+M02_L12:
+       cmp       dword ptr [rbp-54],0
+       je        near ptr M02_L25
+       mov       [rbp-0F8],rcx
+M02_L13:
+       mov       rdi,offset MT_System.Threading.ExecutionContext
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       mov       [rbp-0E0],rsi
+       mov       rax,[rbp-50]
+       mov       [rbp-100],rax
+       lea       rdi,[rsi+8]
+       mov       rsi,[rbp-0D8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0E0]
+       lea       rdi,[rsi+10]
+       mov       rsi,[rbp-100]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0E0]
+       mov       edi,[rbp-54]
+       mov       [rsi+18],dil
+M02_L14:
+       mov       rdi,[rbp-0F8]
+       lea       rdi,[rdi+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r12d,r12d
+       je        short M02_L17
+       mov       rsi,[rbp-40]
+       test      rsi,rsi
+       jne       near ptr M02_L27
+       xor       r12d,r12d
+M02_L15:
+       mov       rdi,[r14]
+       mov       rdi,[rdi+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi]
+       mov       rax,r13
+       cmp       [rax],rdi
+       je        short M02_L16
+       mov       rsi,r13
+       call      qword ptr [7E8CB3E358C0]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+M02_L16:
+       mov       rcx,[r14+8]
+       xor       edi,edi
+       mov       [rsp],r12
+       mov       [rsp+8],rax
+       mov       [rsp+10],dil
+       mov       rdi,[rcx+8]
+       call      qword ptr [rcx+18]
+M02_L17:
+       xor       edi,edi
+       mov       [rbp-40],rdi
+       mov       [rbp-50],rdi
+       mov       rsi,[rbp-0B8]
+       lea       rdi,[rsi+18]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-0B8]
+M02_L18:
+       cmp       qword ptr [rsi+10],0
+       jne       short M02_L20
+       mov       rdi,offset Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0[[System.Int32, System.Private.CoreLib]].<GetValueAsync>b__0()
+       cmp       [rbx+18],rdi
+       jne       near ptr M02_L23
+       mov       rdi,[rbx+8]
+       xor       eax,eax
+       mov       [rbp-68],rax
+       mov       [rbp-88],rdi
+       mov       dword ptr [rbp-70],0FFFFFFFF
+       lea       rdi,[rbp-88]
+       call      qword ptr [7E8CB4997B58]; System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0+<<GetValueAsync>b__0>d[[System.Int32, System.Private.CoreLib]], Microsoft.VisualStudio.Threading]](<<GetValueAsync>b__0>d<Int32> ByRef)
+       mov       rsi,[rbp-68]
+       test      rsi,rsi
+       je        near ptr M02_L22
+M02_L19:
+       mov       r15,[rbp-0B8]
+       lea       rdi,[r15+28]
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       near ptr M02_L24
+M02_L20:
+       mov       rsi,[rbp-0B8]
+       mov       rdi,[rsi+10]
+       cmp       [rdi],dil
+       mov       rsi,rbx
+       xor       edx,edx
+       xor       ecx,ecx
+       xor       r8d,r8d
+       call      qword ptr [7E8CB4A55938]
+       mov       r15,[rbp-0B8]
+       lea       rdi,[r15+30]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lock or   dword ptr [rsp],0
+       mov       rdi,[r15+30]
+       cmp       [rdi],dil
+       call      qword ptr [7E8CB4A559E0]
+       mov       rsi,rax
+       test      rsi,rsi
+       je        short M02_L21
+       mov       rdi,offset MT_System.Threading.Tasks.Task<System.Int32>
+       cmp       [rsi],rdi
+       je        short M02_L21
+       mov       rsi,rax
+       call      qword ptr [7E8CB4264AF8]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       mov       rsi,rax
+M02_L21:
+       lea       rdi,[r15+28]
+       call      CORINFO_HELP_ASSIGN_REF
+       jmp       short M02_L24
+M02_L22:
+       lea       rdi,[rbp-68]
+       call      qword ptr [7E8CB4A54A20]
+       mov       rsi,rax
+       jmp       near ptr M02_L19
+M02_L23:
+       mov       rdi,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       rsi,rax
+       jmp       near ptr M02_L19
+M02_L24:
+       call      M02_L66
+       jmp       near ptr M02_L34
+M02_L25:
+       mov       rdi,7E7CF0C013B0
+       mov       rax,[rbp-0D8]
+       cmp       rax,[rdi]
+       jne       short M02_L26
+       xor       esi,esi
+       mov       [rbp-0F8],rcx
+       jmp       near ptr M02_L14
+M02_L26:
+       mov       [rbp-0F8],rcx
+       jmp       near ptr M02_L13
+M02_L27:
+       mov       rdi,[r14]
+       mov       rdi,[rdi+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi]
+       mov       r12,rsi
+       cmp       [r12],rdi
+       je        short M02_L28
+       call      qword ptr [7E8CB3E358C0]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+       mov       r12,rax
+M02_L28:
+       jmp       near ptr M02_L15
+M02_L29:
+       xor       edi,edi
+       call      qword ptr [7E8CB4A54CD8]
+       int       3
+M02_L30:
+       mov       rdi,[rbp-0C8]
+       call      qword ptr [7E8CB4A55278]; System.Threading.Monitor.Enter_Slowpath(System.Object)
+       jmp       near ptr M02_L02
+M02_L31:
+       lea       rdi,[rbp-30]
+       call      qword ptr [7E8CB4A55290]
+       int       3
+M02_L32:
+       mov       rdi,7E8CB4A757B0
+       call      qword ptr [7E8CB4996D48]
+       jmp       near ptr M02_L04
+M02_L33:
+       mov       edi,4
+       call      qword ptr [7E8CB4A546D8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       jmp       near ptr M02_L05
+M02_L34:
+       mov       rdi,[rbp-0C8]
+       call      00007E8D320E6790
+       test      eax,eax
+       jne       near ptr M02_L60
+M02_L35:
+       mov       rsi,[rbp-0C0]
+       mov       rdi,[rsi+10]
+       test      rdi,rdi
+       je        near ptr M02_L52
+       mov       byte ptr [rdi+18],1
+       mov       rbx,[rdi+8]
+       xor       eax,eax
+       mov       [rdi+8],rax
+       mov       r15,[rdi+10]
+       mov       rdi,7E8D324A0D68
+       mov       rax,7E8D32E35820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       near ptr M02_L61
+       mov       rdi,[rax+8]
+       mov       r13,[rdi+20]
+       test      r13,r13
+       je        near ptr M02_L61
+M02_L36:
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L37
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L37:
+       mov       r14,[rax+10]
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L38
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L38:
+       lea       rdi,[rax+10]
+       mov       rsi,r15
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-128],r14
+       test      rbx,rbx
+       je        near ptr M02_L50
+       mov       rdi,offset System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Int32, System.Private.CoreLib],[Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0+<<GetValueAsync>b__0>d[[System.Int32, System.Private.CoreLib]], Microsoft.VisualStudio.Threading]].MoveNext()
+       cmp       [rbx+18],rdi
+       jne       near ptr M02_L49
+       mov       rbx,[rbx+8]
+       mov       rdi,7E7CF0C013A8
+       mov       rdi,[rdi]
+       movzx     r15d,byte ptr [rdi+9D]
+       test      r15d,r15d
+       jne       near ptr M02_L44
+M02_L39:
+       mov       rdi,[rbx+10]
+       test      rdi,rdi
+       je        near ptr M02_L45
+       mov       rsi,7E7CF0C013B8
+       mov       rsi,[rsi]
+       mov       rdx,rbx
+       call      qword ptr [7E8CB499C3F0]; System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, System.Object)
+M02_L40:
+       mov       edi,[rbx+34]
+       test      edi,1600000
+       je        short M02_L43
+       cmp       byte ptr [7E8CB2E4B06C],0
+       jne       near ptr M02_L46
+M02_L41:
+       xor       edi,edi
+       mov       [rbx+40],rdi
+       mov       [rbx+48],rdi
+       mov       [rbx+50],rdi
+       mov       [rbx+58],rdi
+       mov       [rbx+60],rdi
+       mov       [rbx+68],rdi
+       mov       [rbx+10],rdi
+       mov       rdi,7E7CF0C013A8
+       mov       rdi,[rdi]
+       cmp       byte ptr [rdi+9D],0
+       je        short M02_L43
+       movzx     eax,byte ptr [rdi+9D]
+       mov       ecx,[rdi+98]
+       mov       rdi,[rdi+80]
+       test      eax,eax
+       je        short M02_L43
+       test      ecx,ecx
+       je        short M02_L42
+       cmp       ecx,3
+       jl        short M02_L43
+M02_L42:
+       test      rdi,rdi
+       je        short M02_L47
+       test      edi,100
+       jne       short M02_L47
+M02_L43:
+       test      r15d,r15d
+       je        short M02_L50
+       jmp       short M02_L48
+M02_L44:
+       mov       rdi,rbx
+       call      qword ptr [7E8CB499C3C0]
+       mov       esi,eax
+       mov       rdi,7E7CF0C013A8
+       mov       rdi,[rdi]
+       mov       edx,2
+       call      qword ptr [7E8CB499C3D8]
+       jmp       near ptr M02_L39
+M02_L45:
+       lea       rdi,[rbx+40]
+       call      qword ptr [7E8CB4997BB8]; Microsoft.VisualStudio.Threading.AsyncLazy`1+<>c__DisplayClass20_0+<<GetValueAsync>b__0>d[[System.Int32, System.Private.CoreLib]].MoveNext()
+       jmp       near ptr M02_L40
+M02_L46:
+       mov       rdi,rbx
+       call      qword ptr [7E8CB499D8F0]
+       jmp       near ptr M02_L41
+M02_L47:
+       mov       rdi,rbx
+       call      qword ptr [7E8CB4686880]; System.GC.SuppressFinalize(System.Object)
+       jmp       short M02_L43
+M02_L48:
+       mov       rdi,7E7CF0C013A8
+       mov       rdi,[rdi]
+       mov       esi,2
+       call      qword ptr [7E8CB499C438]
+       jmp       short M02_L50
+M02_L49:
+       mov       rdi,[rbx+8]
+       call      qword ptr [rbx+18]
+       nop
+M02_L50:
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L51
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L51:
+       lea       rdi,[rax+10]
+       mov       rsi,r14
+       call      CORINFO_HELP_ASSIGN_REF
+M02_L52:
+       mov       rsi,[rbp-0B8]
+       lock or   dword ptr [rsp],0
+       mov       rdi,[rsi+30]
+       test      rdi,rdi
+       jne       near ptr M02_L62
+       xor       eax,eax
+M02_L53:
+       test      rax,rax
+       jne       short M02_L55
+       mov       rsi,[rbp-0B8]
+       mov       rbx,[rsi+28]
+       mov       rdi,[rbp-30]
+       mov       [rbp-0B0],rdi
+       test      rbx,rbx
+       je        near ptr M02_L63
+       cmp       qword ptr [rbp-0B0],0
+       jne       near ptr M02_L64
+M02_L54:
+       mov       rax,rbx
+M02_L55:
+       add       rsp,128
+       pop       rbx
+       pop       r12
+       pop       r13
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M02_L56:
+       test      dword ptr [rdi+34],1600000
+       jne       near ptr M02_L01
+       jmp       near ptr M02_L00
+M02_L57:
+       mov       rdi,[rdi+8]
+       cmp       [rdi],edi
+       call      qword ptr [7E8CB4A559B0]
+       test      rax,rax
+       je        near ptr M02_L01
+       call      qword ptr [7E8CB4A559C8]
+       mov       rdi,rax
+       mov       rdx,7E7CF0C01530
+       mov       rdx,[rdx]
+       mov       rsi,7E8CB020C450
+       mov       rax,[rax]
+       mov       rax,[rax+48]
+       call      qword ptr [rax+28]
+       mov       rdi,rax
+       xor       eax,eax
+       test      rdi,rdi
+       cmove     rdi,rax
+       call      qword ptr [7E8CB4996C28]
+       int       3
+M02_L58:
+       mov       edi,94D
+       mov       rsi,7E8CB2E44000
+       call      qword ptr [7E8CB3E3EF88]
+       mov       rdi,rax
+       call      qword ptr [7E8CB4A54CD8]
+       int       3
+M02_L59:
+       call      qword ptr [7E8CB4A559C8]
+       mov       rdi,rax
+       mov       rdx,7E7CF0C01530
+       mov       rdx,[rdx]
+       mov       rsi,7E8CB020C450
+       mov       rax,[rax]
+       mov       rax,[rax+48]
+       call      qword ptr [rax+28]
+       mov       rdi,rax
+       xor       eax,eax
+       test      rdi,rdi
+       cmove     rdi,rax
+       call      qword ptr [7E8CB4996C28]
+       int       3
+M02_L60:
+       mov       edi,eax
+       mov       rsi,[rbp-0C8]
+       call      qword ptr [7E8CB4A54CF0]
+       jmp       near ptr M02_L35
+M02_L61:
+       mov       edi,4
+       call      qword ptr [7E8CB4A546D8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       r13,rax
+       jmp       near ptr M02_L36
+M02_L62:
+       mov       rdx,[rbp-30]
+       xor       esi,esi
+       call      qword ptr [7E8CB4996D18]
+       jmp       near ptr M02_L53
+M02_L63:
+       mov       rdi,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       edi,170F
+       mov       rsi,7E8CB49C7C20
+       call      qword ptr [7E8CB3E3EF88]
+       mov       rsi,rax
+       mov       rdi,rbx
+       call      qword ptr [7E8CB468E1C0]
+       mov       rdi,rbx
+       call      CORINFO_HELP_THROW
+       int       3
+M02_L64:
+       test      dword ptr [rbx+34],1600000
+       jne       near ptr M02_L54
+       lea       rdi,[rbp-0B0]
+       call      qword ptr [7E8CB499D6C8]
+       test      eax,eax
+       je        short M02_L65
+       mov       rdi,[rbp-0B0]
+       call      qword ptr [7E8CB499D680]
+       jmp       near ptr M02_L55
+M02_L65:
+       mov       rdi,rbx
+       mov       rsi,[rbp-0B0]
+       call      qword ptr [7E8CB499D620]
+       jmp       near ptr M02_L55
+M02_L66:
+       sub       rsp,18
+       mov       r15,[rbp-0B8]
+       mov       rdi,[r15+18]
+       test      rdi,rdi
+       je        near ptr M02_L85
+       mov       rbx,[rdi+8]
+       cmp       qword ptr [rbx+8],0
+       setne     r14b
+       movzx     r14d,r14b
+       mov       rdi,7E8D324A0D68
+       mov       rax,7E8D32E35820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       short M02_L67
+       mov       rdi,[rax+8]
+       mov       rcx,[rdi+20]
+       test      rcx,rcx
+       jne       short M02_L68
+M02_L67:
+       mov       edi,4
+       call      qword ptr [7E8CB4A546D8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       rcx,rax
+M02_L68:
+       mov       r13,rcx
+       mov       rax,[r13+10]
+       test      rax,rax
+       jne       short M02_L69
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+M02_L69:
+       mov       r12,[rax+8]
+       xor       edi,edi
+       mov       [rbp-90],rdi
+       xor       eax,eax
+       test      r12,r12
+       je        short M02_L70
+       mov       rdi,[r12+8]
+       lea       rdx,[rbp-90]
+       mov       rsi,rbx
+       mov       r11,7E8CB2E505A8
+       call      qword ptr [r11]
+       mov       [rbp-94],eax
+       mov       eax,[rbp-94]
+M02_L70:
+       cmp       qword ptr [rbp-90],0
+       je        near ptr M02_L84
+       xor       edi,edi
+       mov       [rbp-0A0],rdi
+       mov       [rbp-0A4],edi
+       test      r12,r12
+       je        short M02_L71
+       mov       [rbp-94],eax
+       movzx     ecx,byte ptr [r12+18]
+       mov       [rbp-0A4],ecx
+       test      r14d,r14d
+       sete      cl
+       movzx     ecx,cl
+       mov       rdi,[r12+8]
+       mov       rsi,rbx
+       mov       r11,7E8CB2E505A0
+       xor       edx,edx
+       call      qword ptr [r11]
+       mov       [rbp-108],rax
+       mov       rdx,[r12+10]
+       mov       [rbp-0A0],rdx
+       jmp       short M02_L74
+M02_L71:
+       test      r14d,r14d
+       jne       short M02_L72
+       mov       rdi,7E7CF0C013B0
+       mov       r12,[rdi]
+       jmp       short M02_L73
+M02_L72:
+       mov       [rbp-94],eax
+       mov       rdi,offset MT_System.Threading.AsyncLocalValueMap+OneElementAsyncLocalValueMap
+       call      CORINFO_HELP_NEWSFAST
+       mov       r12,rax
+       mov       rsi,rbx
+       mov       rdi,7E8CB4A621A8
+       xor       edx,edx
+       call      qword ptr [7E8CB4A54960]
+       mov       [rbp-120],rdx
+       lea       rdi,[r12+8]
+       mov       rsi,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       lea       rdi,[r12+10]
+       mov       rsi,[rbp-120]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       eax,[rbp-94]
+M02_L73:
+       mov       [rbp-94],eax
+       mov       [rbp-108],r12
+M02_L74:
+       test      r14d,r14d
+       je        short M02_L76
+       cmp       dword ptr [rbp-94],0
+       jne       short M02_L76
+       cmp       qword ptr [rbp-0A0],0
+       jne       short M02_L75
+       mov       rdi,offset MT_System.Threading.IAsyncLocal[]
+       mov       esi,1
+       call      CORINFO_HELP_NEWARR_1_PTR
+       mov       r12,rax
+       lea       rdi,[r12+10]
+       mov       rsi,rbx
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-0A0],r12
+       jmp       short M02_L76
+M02_L75:
+       mov       rdx,[rbp-0A0]
+       mov       r12d,[rdx+8]
+       lea       edx,[r12+1]
+       lea       rsi,[rbp-0A0]
+       mov       rdi,7E8CB4A00C68
+       call      qword ptr [7E8CB426C480]; System.Array.Resize[[System.__Canon, System.Private.CoreLib]](System.__Canon[] ByRef, Int32)
+       mov       esi,r12d
+       mov       rdi,[rbp-0A0]
+       mov       rdx,rbx
+       call      qword ptr [7E8CB3E357A0]; System.Runtime.CompilerServices.CastHelpers.StelemRef(System.Object[], IntPtr, System.Object)
+M02_L76:
+       mov       r13,[r13+10]
+       test      r13,r13
+       jne       short M02_L77
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r13,rax
+M02_L77:
+       mov       r12d,[rbp-0A4]
+       test      r12d,r12d
+       jne       short M02_L78
+       mov       rdi,7E7CF0C013B0
+       mov       rax,[rbp-108]
+       cmp       rax,[rdi]
+       je        short M02_L79
+M02_L78:
+       mov       rdi,offset MT_System.Threading.ExecutionContext
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       mov       [rbp-110],rsi
+       mov       rax,[rbp-0A0]
+       mov       [rbp-118],rax
+       lea       rdi,[rsi+8]
+       mov       rsi,[rbp-108]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-110]
+       lea       rdi,[rsi+10]
+       mov       rsi,[rbp-118]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       rsi,[rbp-110]
+       mov       [rsi+18],r12b
+       jmp       short M02_L80
+M02_L79:
+       xor       esi,esi
+M02_L80:
+       lea       rdi,[r13+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       test      r14d,r14d
+       je        short M02_L84
+       mov       rsi,[rbp-90]
+       test      rsi,rsi
+       je        short M02_L82
+       mov       rdi,[rbx]
+       mov       rdi,[rdi+30]
+       mov       rdi,[rdi]
+       mov       rdi,[rdi]
+       mov       r14,rsi
+       cmp       [r14],rdi
+       je        short M02_L81
+       call      qword ptr [7E8CB3E358C0]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+       mov       r14,rax
+M02_L81:
+       jmp       short M02_L83
+M02_L82:
+       xor       r14d,r14d
+M02_L83:
+       mov       rax,[rbx+8]
+       xor       edi,edi
+       xor       ecx,ecx
+       mov       [rsp],r14
+       mov       [rsp+8],rdi
+       mov       [rsp+10],cl
+       mov       rdi,[rax+8]
+       call      qword ptr [rax+18]
+M02_L84:
+       xor       edi,edi
+       mov       [rbp-90],rdi
+       mov       [rbp-0A0],rdi
+M02_L85:
+       add       rsp,18
+       ret
+       sub       rsp,18
+       cmp       dword ptr [rbp-34],0
+       je        short M02_L87
+       cmp       qword ptr [rbp-0C8],0
+       jne       short M02_L86
+       xor       edi,edi
+       call      qword ptr [7E8CB4A54CD8]
+       int       3
+M02_L86:
+       mov       rdi,[rbp-0C8]
+       call      00007E8D320E6790
+       test      eax,eax
+       je        short M02_L87
+       mov       edi,eax
+       mov       rsi,[rbp-0C8]
+       call      qword ptr [7E8CB4A54CF0]
+M02_L87:
+       nop
+       add       rsp,18
+       ret
+       sub       rsp,18
+       mov       rdi,7E8D324A0D68
+       mov       rax,7E8D32E35820
+       call      rax
+       cmp       dword ptr [rax],4
+       jle       short M02_L88
+       mov       rdi,[rax+8]
+       mov       r13,[rdi+20]
+       test      r13,r13
+       jne       short M02_L89
+M02_L88:
+       mov       edi,4
+       call      qword ptr [7E8CB4A546D8]; System.Runtime.CompilerServices.StaticsHelpers.GetOptimizedGCThreadStaticBase(Int32)
+       mov       r13,rax
+M02_L89:
+       mov       r14,[r13+10]
+       test      r14,r14
+       jne       short M02_L90
+       call      qword ptr [7E8CB468C048]; System.Threading.Thread.InitializeCurrentThread()
+       mov       r14,rax
+M02_L90:
+       lea       rdi,[r14+10]
+       mov       rsi,[rbp-128]
+       call      CORINFO_HELP_ASSIGN_REF
+       nop
+       add       rsp,18
+       ret
+; Total bytes of code 3580
+```
+```assembly
+; System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(System.Threading.Tasks.Task, System.Threading.Tasks.ConfigureAwaitOptions)
+       push      rbp
+       push      r15
+       push      rbx
+       lea       rbp,[rsp+10]
+       mov       rbx,rdi
+       mov       r15d,esi
+       test      dword ptr [rbx+34],1600000
+       jne       short M03_L00
+       mov       rdi,rbx
+       mov       esi,0FFFFFFFF
+       xor       edx,edx
+       call      qword ptr [7E8CB499D818]; System.Threading.Tasks.Task.InternalWait(Int32, System.Threading.CancellationToken)
+M03_L00:
+       test      dword ptr [rbx+34],10000000
+       jne       short M03_L03
+M03_L01:
+       mov       edi,[rbx+34]
+       and       edi,1600000
+       cmp       edi,1000000
+       jne       short M03_L04
+M03_L02:
+       pop       rbx
+       pop       r15
+       pop       rbp
+       ret
+M03_L03:
+       mov       rdi,rbx
+       mov       rax,[rbx]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+20]
+       test      eax,eax
+       je        short M03_L01
+       mov       rdi,rbx
+       call      qword ptr [7E8CB4A54CC0]
+       jmp       short M03_L01
+M03_L04:
+       test      r15b,2
+       jne       short M03_L05
+       mov       rdi,rbx
+       call      qword ptr [7E8CB4A55500]
+M03_L05:
+       mov       rdi,rbx
+       call      qword ptr [7E8CB4A55A40]
+       jmp       short M03_L02
+; Total bytes of code 125
+```
+

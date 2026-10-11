@@ -1,0 +1,17 @@
+environment: linux-x64
+commit: fdb8e88423f4
+mode: full
+date (UTC): 2026-10-10T17:53:04Z
+vm size: Standard_D8s_v5
+region: SwedenCentral
+image: ubuntu-24_04-lts server
+Architecture:                            x86_64
+CPU(s):                                  8
+Model name:                              INTEL(R) XEON(R) PLATINUM 8573C
+Thread(s) per core:                      2
+Core(s) per socket:                      4
+CPU(s) scaling MHz:                      115%
+Hypervisor vendor:                       Microsoft
+os: Ubuntu 24.04.4 LTS
+kernel: Linux 6.17.0-1022-azure
+sdk: 10.0.401

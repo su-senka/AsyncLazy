@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\Ablation.props" />
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);ASYNCLAZY_ABLATE_RECURSION_DETECTION</DefineConstants>
+  </PropertyGroup>
+</Project>

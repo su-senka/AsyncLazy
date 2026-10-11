@@ -1,0 +1,26 @@
+# Executed by Azure Run Command (as SYSTEM), which allows 90 minutes at most, so it only starts
+# vm-windows.ps1 as a scheduled task and returns. run.sh fills in the __NAME__ placeholders.
+$ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+$Root = '__ROOT__'
+New-Item -ItemType Directory -Force -Path $Root | Out-Null
+[ordered]@{
+    BlobBase   = '__BASE__'
+    BlobSas    = '__SAS__'
+    SdkVersion = '__SDK__'
+    EnvName    = '__ENV__'
+    Commit     = '__COMMIT__'
+    Mode       = '__MODE__'
+    RunId      = '__RUNID__'
+} | ConvertTo-Json | Set-Content -Path (Join-Path $Root 'config.json')
+Invoke-WebRequest -UseBasicParsing -Uri '__BASE__/vm-windows.ps1?__SAS__' -OutFile (Join-Path $Root 'run.ps1')
+
+$action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$Root\run.ps1`""
+$principal = New-ScheduledTaskPrincipal -UserId 'SYSTEM' -LogonType ServiceAccount -RunLevel Highest
+$settings = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Hours 8) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+$settings.Priority = 4   # Task Scheduler's default, 7, is below normal priority
+Register-ScheduledTask -TaskName 'AsyncLazyBench' -Action $action -Principal $principal -Settings $settings -Force | Out-Null
+Start-ScheduledTask -TaskName 'AsyncLazyBench'
+'launched'
